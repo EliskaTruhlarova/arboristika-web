@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jan Novák · Arboristika</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+/* =============================================
+   BARVY — upravte zde pro celý web
+   ============================================= */
+:root {
+  --zelena-tmavy:   #3d6620;   /* tlačítka, footer */
+  --zelena-stredni: #5a8a30;   /* akcenty, ikony */
+  --zelena-svetly:  #a8c882;   /* zvýraznění textu */
+  --zelena-pozadi:  #eef5e6;   /* světlé pozadí karet */
+  --zelena-bg:      #f0f5ea;   /* sekce hero-right */
+  --krem:           #f7f5f0;   /* stránkové pozadí */
+  --bila:           #ffffff;
+  --text-tmavy:     #1e2a1a;   /* hlavní text */
+  --text-stredni:   #5a6855;   /* odstavcový text */
+  --text-svetly:    #8a9080;   /* popisky, meta */
+  --text-jemny:     #a0a890;   /* labely */
+  --ramecek:        #dedad0;   /* ohraničení */
+  --ramecek-svetly: #e0dbd0;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--krem);
+  color: var(--text-tmavy);
+  font-size: 14px;
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--sans); cursor: pointer; }
+ul { list-style: none; }
+
+/* =============================================
+   NAVIGACE
+   ============================================= */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bila);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 60px;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-tmavy);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.nav-logo-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--zelena-stredni);
+  flex-shrink: 0;
+}
+.nav-links {
+  display: flex;
+  gap: 0;
+}
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-jemny);
+  padding: 0 16px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--zelena-tmavy);
+  border-bottom-color: var(--zelena-stredni);
+}
+.nav-cta {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--zelena-tmavy);
+  color: var(--bila);
+  padding: 9px 20px;
+  border-radius: 3px;
+  border: none;
+  transition: background 0.15s;
+}
+.nav-cta:hover { background: var(--zelena-stredni); }
+
+/* =============================================
+   STRÁNKY (záložky)
+   ============================================= */
+.page { display: none; }
+.page.active { display: block; }
+
+/* =============================================
+   SDÍLENÉ KOMPONENTY
+   ============================================= */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--zelena-stredni);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: var(--zelena-stredni);
+  flex-shrink: 0;
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-jemny);
+  margin-bottom: 20px;
+}
+.section-divider {
+  height: 0.5px;
+  background: var(--ramecek-svetly);
+  margin: 0;
+}
+.btn-primary {
+  background: var(--zelena-tmavy);
+  color: var(--bila);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 12px 26px;
+  border-radius: 3px;
+  border: none;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--zelena-stredni); }
+.btn-outline {
+  background: transparent;
+  color: var(--zelena-tmavy);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 12px 26px;
+  border-radius: 3px;
+  border: 1.5px solid var(--zelena-stredni);
+  transition: all 0.15s;
+}
+.btn-outline:hover { background: var(--zelena-pozadi); }
+.card {
+  background: var(--bila);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 10px;
+}
+.cta-strip {
+  background: var(--zelena-tmavy);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.cta-strip-text {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--bila);
+}
+.cta-strip-text span {
+  display: block;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+.cta-strip .btn-white {
+  background: var(--bila);
+  color: var(--zelena-tmavy);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 11px 24px;
+  border-radius: 3px;
+  border: none;
+  white-space: nowrap;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.cta-strip .btn-white:hover { background: var(--zelena-pozadi); }
+
+/* =============================================
+   ÚVODNÍ STRÁNKA
+   ============================================= */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bila);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  min-height: 420px;
+}
+.hero-left {
+  padding: 56px 48px 56px 32px;
+  border-right: 0.5px solid var(--ramecek-svetly);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-left h1 {
+  font-family: var(--serif);
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  color: var(--text-tmavy);
+}
+.hero-left h1 em {
+  font-style: italic;
+  color: #4a7228;
+}
+.hero-sub {
+  font-size: 14px;
+  color: var(--text-stredni);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  max-width: 360px;
+}
+.hero-btns { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.hero-stats {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 0.5px solid var(--ramecek);
+  display: flex;
+  gap: 32px;
+}
+.stat-num {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--zelena-tmavy);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--text-jemny);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.hero-right {
+  background: var(--zelena-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.hero-tree { max-width: 220px; width: 100%; }
+
+/* Přehled služeb na úvodní */
+.home-services {
+  padding: 40px 32px;
+  background: var(--krem);
+}
+.home-svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.home-svc-card {
+  background: var(--bila);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 10px;
+  padding: 22px 20px;
+  transition: border-color 0.15s;
+  cursor: pointer;
+}
+.home-svc-card:hover { border-color: var(--zelena-stredni); }
+.svc-icon {
+  width: 40px; height: 40px;
+  background: var(--zelena-pozadi);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: #4a7228;
+  font-size: 19px;
+  margin-bottom: 14px;
+}
+.home-svc-card h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-tmavy);
+  margin-bottom: 6px;
+}
+.home-svc-card p {
+  font-size: 12px;
+  color: var(--text-svetly);
+  line-height: 1.65;
+}
+
+/* Reference mini na úvodní */
+.home-reviews {
+  background: var(--bila);
+  border-top: 0.5px solid var(--ramecek-svetly);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  padding: 40px 32px;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.review-card {
+  background: var(--krem);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 10px;
+  padding: 20px 18px;
+}
+.review-stars {
+  color: var(--zelena-stredni);
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.review-text {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+  color: #4a5a42;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.review-author {
+  font-size: 11px;
+  color: var(--text-jemny);
+  letter-spacing: 0.05em;
+}
+
+/* =============================================
+   O MNĚ
+   ============================================= */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bila);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.about-hero-left {
+  padding: 52px 48px 52px 32px;
+  border-right: 0.5px solid var(--ramecek-svetly);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.about-hero-left h1 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+.about-hero-left h1 em { font-style: italic; color: #4a7228; }
+.about-lead {
+  font-size: 14px;
+  color: var(--text-stredni);
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+.about-quote {
+  border-left: 3px solid #b8d898;
+  padding: 12px 0 12px 20px;
+  margin-top: 4px;
+}
+.about-quote p {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+  color: #3a5028;
+  line-height: 1.5;
+}
+.about-hero-right {
+  background: var(--zelena-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+}
+.photo-frame {
+  width: 200px;
+  aspect-ratio: 3/4;
+  background: #c8deb0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #6a8a50;
+  text-align: center;
+  padding: 20px;
+  flex-direction: column;
+  gap: 8px;
+}
+.photo-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(255,255,255,0.9);
+  padding: 10px 14px;
+  font-size: 11px;
+  color: #4a5a42;
+}
+.photo-caption strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-tmavy);
+  margin-bottom: 1px;
+}
+
+/* Certifikáty */
+.about-certs {
+  padding: 36px 32px;
+  background: var(--bila);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.cert-card {
+  background: var(--krem);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 8px;
+  padding: 18px 16px;
+}
+.cert-icon {
+  width: 38px; height: 38px;
+  background: var(--zelena-pozadi);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: #4a7228;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.cert-name { font-size: 13px; font-weight: 500; color: var(--text-tmavy); margin-bottom: 3px; }
+.cert-org { font-size: 11px; color: var(--text-jemny); margin-bottom: 8px; }
+.cert-year { font-size: 11px; color: var(--zelena-stredni); font-weight: 500; }
+
+/* Příběh + timeline */
+.about-story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.about-story-left {
+  background: var(--krem);
+  padding: 36px 32px;
+  border-right: 0.5px solid var(--ramecek-svetly);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.about-story-left p {
+  font-size: 13px;
+  color: var(--text-stredni);
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+.about-story-left p:last-child { margin-bottom: 0; }
+.about-timeline {
+  background: var(--bila);
+  padding: 36px 32px;
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.tl-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.tl-item:last-child { margin-bottom: 0; }
+.tl-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 36px;
+}
+.tl-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #b8d898;
+  border: 2px solid var(--zelena-stredni);
+  flex-shrink: 0;
+}
+.tl-line {
+  flex: 1;
+  width: 1px;
+  background: var(--ramecek);
+  margin: 4px 0;
+}
+.tl-year {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--zelena-stredni);
+  text-align: center;
+  margin-top: 2px;
+}
+.tl-body { padding-top: 0; }
+.tl-title { font-size: 13px; font-weight: 500; color: var(--text-tmavy); margin-bottom: 3px; }
+.tl-desc { font-size: 12px; color: var(--text-svetly); line-height: 1.6; }
+
+/* Hodnoty */
+.about-values {
+  padding: 36px 32px;
+  background: var(--bila);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.value-card {
+  background: var(--krem);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 8px;
+  padding: 22px 18px;
+}
+.value-num {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 300;
+  color: #d4e8c0;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.value-title { font-size: 13px; font-weight: 500; color: var(--text-tmavy); margin-bottom: 6px; }
+.value-desc { font-size: 12px; color: var(--text-svetly); line-height: 1.65; }
+
+/* =============================================
+   SLUŽBY
+   ============================================= */
+.services-hero {
+  background: var(--bila);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  padding: 44px 32px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.services-hero h1 {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.services-hero h1 em { font-style: italic; color: #4a7228; }
+.services-hero p {
+  font-size: 13px;
+  color: var(--text-stredni);
+  line-height: 1.8;
+}
+.svc-nums { display: flex; gap: 28px; justify-content: center; }
+.svc-num-val {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--zelena-tmavy);
+  line-height: 1;
+  text-align: center;
+}
+.svc-num-label {
+  font-size: 11px;
+  color: var(--text-jemny);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  text-align: center;
+}
+.services-grid-wrap { padding: 32px 32px 0; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.svc-card {
+  background: var(--bila);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.svc-card:hover { border-color: #a8c882; }
+.svc-card.open { border-color: var(--zelena-stredni); }
+.svc-card-top { padding: 20px 18px 16px; }
+.svc-card-icon-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.svc-card-num {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: #d8e8c8;
+  line-height: 1;
+}
+.svc-card-title { font-size: 15px; font-weight: 500; color: var(--text-tmavy); margin-bottom: 6px; }
+.svc-card-short { font-size: 12px; color: var(--text-svetly); line-height: 1.6; }
+.svc-card-footer {
+  border-top: 0.5px solid #e8e3d8;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.svc-card-price { font-size: 12px; color: var(--zelena-stredni); font-weight: 500; }
+.svc-card-more {
+  font-size: 11px;
+  color: var(--text-jemny);
+  display: flex; align-items: center; gap: 4px;
+  letter-spacing: 0.06em;
+}
+.svc-detail {
+  background: #f0f5ea;
+  border-top: 0.5px solid #b8d898;
+  padding: 22px 20px;
+  display: none;
+}
+.svc-card.open .svc-detail { display: block; }
+.svc-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.svc-detail-desc {
+  font-size: 13px;
+  color: #4a5a42;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+.svc-detail-label {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8aaa70;
+  margin-bottom: 10px;
+}
+.svc-detail-list { }
+.svc-detail-list li {
+  font-size: 12px;
+  color: var(--text-stredni);
+  padding: 5px 0;
+  border-bottom: 0.5px solid #d4e8c0;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.svc-detail-list li:last-child { border-bottom: none; }
+.svc-detail-list li i { color: var(--zelena-stredni); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.svc-detail-box {
+  background: var(--bila);
+  border: 0.5px solid #c8dea8;
+  border-radius: 6px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+.svc-detail-box-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8aaa70;
+  margin-bottom: 6px;
+}
+.svc-detail-box-text { font-size: 12px; color: var(--text-stredni); line-height: 1.65; }
+.svc-detail-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 0.5px solid #c8dea8;
+}
+.svc-detail-price {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--zelena-tmavy);
+}
+.svc-detail-price span {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: #8aaa70;
+  font-weight: 300;
+}
+
+/* =============================================
+   KONTAKT
+   ============================================= */
+.contact-hero {
+  background: var(--bila);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  padding: 44px 32px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.contact-hero h1 {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.contact-hero h1 em { font-style: italic; color: #4a7228; }
+.contact-hero p { font-size: 13px; color: var(--text-stredni); line-height: 1.8; }
+.contact-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.contact-info {
+  background: var(--bila);
+  padding: 36px 32px;
+  border-right: 0.5px solid var(--ramecek-svetly);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.contact-form-wrap {
+  background: var(--krem);
+  padding: 36px 32px;
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.contact-row {
+  display: flex; gap: 14px; align-items: flex-start;
+  margin-bottom: 20px;
+}
+.contact-row:last-child { margin-bottom: 0; }
+.c-icon {
+  width: 36px; height: 36px;
+  background: var(--zelena-pozadi);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: #4a7228;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.c-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-jemny);
+  margin-bottom: 2px;
+}
+.c-val { font-size: 13px; color: var(--text-tmavy); }
+.c-val small { display: block; font-size: 11px; color: var(--text-jemny); margin-top: 1px; }
+.avail-days { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 16px; }
+.day-pill {
+  font-size: 11px;
+  padding: 5px 11px;
+  border-radius: 3px;
+  border: 0.5px solid rgba(90,138,48,0.25);
+  color: var(--zelena-stredni);
+  background: var(--zelena-pozadi);
+}
+.day-pill.off {
+  color: var(--text-jemny);
+  border-color: var(--ramecek);
+  background: transparent;
+}
+
+/* Mapa */
+.contact-map {
+  background: var(--bila);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  padding: 36px 32px;
+}
+.map-placeholder {
+  background: #e8f0e0;
+  border: 0.5px solid var(--ramecek);
+  border-radius: 10px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--zelena-stredni);
+  font-size: 13px;
+}
+.map-placeholder i { font-size: 32px; }
+.map-placeholder p { color: var(--text-jemny); font-size: 12px; }
+
+/* =============================================
+   KONZULTACE ZDARMA
+   ============================================= */
+.consult-intro {
+  background: var(--bila);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  padding: 44px 32px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.consult-intro h1 {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.consult-intro h1 em { font-style: italic; color: #4a7228; }
+.consult-intro p { font-size: 13px; color: var(--text-stredni); line-height: 1.8; }
+.consult-perks { display: flex; flex-direction: column; gap: 16px; }
+.perk-row { display: flex; gap: 14px; align-items: flex-start; }
+.perk-icon {
+  width: 38px; height: 38px;
+  background: var(--zelena-pozadi);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: #4a7228;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.perk-title { font-size: 13px; font-weight: 500; color: var(--text-tmavy); margin-bottom: 2px; }
+.perk-desc { font-size: 12px; color: var(--text-svetly); line-height: 1.55; }
+
+/* Steps */
+.consult-steps {
+  background: var(--krem);
+  padding: 32px 32px;
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.step-card {
+  background: var(--bila);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 8px;
+  padding: 20px 18px;
+}
+.step-num {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 300;
+  color: #d4e8c0;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.step-title { font-size: 13px; font-weight: 500; color: var(--text-tmavy); margin-bottom: 5px; }
+.step-desc { font-size: 12px; color: var(--text-svetly); line-height: 1.6; }
+
+/* Formulář */
+.consult-body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+}
+.consult-form-wrap {
+  background: var(--bila);
+  padding: 36px 32px;
+  border-right: 0.5px solid var(--ramecek-svetly);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.form-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-tmavy);
+  margin-bottom: 26px;
+}
+.fieldset { margin-bottom: 24px; }
+.fieldset-legend {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-jemny);
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid #e8e3d8;
+  display: block;
+  width: 100%;
+  margin-bottom: 14px;
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { margin-bottom: 12px; }
+.field:last-child { margin-bottom: 0; }
+.field label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-jemny);
+  margin-bottom: 6px;
+}
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  background: #fafaf7;
+  border: 0.5px solid var(--ramecek);
+  color: var(--text-tmavy);
+  font-family: var(--sans);
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus { border-color: var(--zelena-stredni); }
+.field textarea { resize: vertical; min-height: 90px; }
+.svc-btns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.svc-btn {
+  background: var(--krem);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 6px;
+  padding: 11px 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+}
+.svc-btn:hover { border-color: #a8c882; }
+.svc-btn.sel { border-color: var(--zelena-stredni); background: var(--zelena-pozadi); }
+.svc-btn-title { font-size: 12px; font-weight: 500; color: var(--text-tmavy); }
+.svc-btn.sel .svc-btn-title { color: var(--zelena-tmavy); }
+.svc-btn-sub { font-size: 11px; color: var(--text-jemny); margin-top: 1px; }
+.time-btns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.time-btn {
+  background: var(--krem);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 4px;
+  padding: 9px 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--text-stredni);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+}
+.time-btn:hover { border-color: #a8c882; }
+.time-btn.sel { background: var(--zelena-pozadi); border-color: var(--zelena-stredni); color: var(--zelena-tmavy); font-weight: 500; }
+.form-note { font-size: 11px; color: #b0b8a8; text-align: center; margin-top: 10px; }
+
+.consult-sidebar {
+  background: var(--krem);
+  padding: 36px 24px;
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.sidebar-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-jemny);
+  margin-bottom: 14px;
+}
+.faq-item {
+  border-bottom: 0.5px solid var(--ramecek);
+  padding: 10px 0;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-size: 12px; font-weight: 500; color: var(--text-tmavy); margin-bottom: 4px; }
+.faq-a { font-size: 12px; color: var(--text-svetly); line-height: 1.6; }
+.testimonial-mini {
+  background: var(--bila);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 8px;
+  padding: 16px 14px;
+}
+.t-stars { color: var(--zelena-stredni); font-size: 12px; letter-spacing: 2px; margin-bottom: 8px; }
+.t-text {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  color: #4a5a42;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.t-author { font-size: 11px; color: var(--text-jemny); }
+
+/* =============================================
+   REFERENCE
+   ============================================= */
+.ref-hero {
+  background: var(--bila);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  padding: 44px 32px 40px;
+}
+.ref-hero h1 {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.ref-hero h1 em { font-style: italic; color: #4a7228; }
+.ref-hero p { font-size: 13px; color: var(--text-stredni); max-width: 520px; line-height: 1.8; }
+.ref-stats-row {
+  display: flex;
+  gap: 36px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 0.5px solid var(--ramecek);
+}
+.ref-stat-num {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--zelena-tmavy);
+  line-height: 1;
+}
+.ref-stat-label {
+  font-size: 11px;
+  color: var(--text-jemny);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* Portfolio */
+.ref-portfolio { padding: 36px 32px; background: var(--krem); }
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.portfolio-card {
+  background: var(--bila);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.portfolio-card.featured { grid-column: span 2; }
+.portfolio-img {
+  width: 100%;
+  background: #d4e8c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.portfolio-card:not(.featured) .portfolio-img { height: 160px; }
+.portfolio-card.featured .portfolio-img { height: 220px; }
+.portfolio-img svg { width: 100%; height: 100%; }
+.port-tag {
+  position: absolute;
+  top: 12px; left: 12px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.88);
+  color: #4a7228;
+  border: 0.5px solid #b8d898;
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+.portfolio-body { padding: 16px 18px 18px; }
+.portfolio-title { font-size: 14px; font-weight: 500; color: var(--text-tmavy); margin-bottom: 4px; }
+.portfolio-meta { font-size: 12px; color: var(--text-jemny); }
+
+/* Reviews */
+.ref-reviews {
+  background: var(--bila);
+  border-top: 0.5px solid var(--ramecek-svetly);
+  padding: 36px 32px;
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.ref-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.ref-review-card {
+  background: var(--krem);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 10px;
+  padding: 20px 18px;
+}
+
+/* =============================================
+   FORMULÁŘE — sdílený styl
+   ============================================= */
+.submit-btn {
+  width: 100%;
+  background: var(--zelena-tmavy);
+  color: var(--bila);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.submit-btn:hover { background: var(--zelena-stredni); }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background: #2a3d22;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+}
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
+
+/* =============================================
+   HAMBURGER TLAČÍTKO (skryté na desktopu)
+   ============================================= */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.nav-hamburger:hover { background: var(--zelena-pozadi); }
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-tmavy);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.2s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobilní rozbalovací menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0; right: 0;
+  background: var(--bila);
+  border-bottom: 1px solid var(--ramecek-svetly);
+  z-index: 99;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.22s ease, opacity 0.2s ease;
+}
+.mobile-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+.mobile-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-stredni);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  transition: background 0.12s, color 0.12s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover,
+.mobile-menu a.active {
+  background: var(--zelena-pozadi);
+  color: var(--zelena-tmavy);
+}
+.mobile-menu a i { font-size: 18px; color: var(--zelena-stredni); width: 22px; }
+.mobile-menu-cta {
+  margin: 12px 24px 16px;
+  display: block;
+  background: var(--zelena-tmavy);
+  color: var(--bila) !important;
+  text-align: center;
+  border-radius: 4px;
+  padding: 14px 20px !important;
+  font-weight: 500 !important;
+}
+.mobile-menu-cta:hover { background: var(--zelena-stredni) !important; color: var(--bila) !important; }
+.mobile-menu-cta i { color: var(--bila) !important; }
+
+/* =============================================
+   RESPONZIVITA
+   ============================================= */
+@media (max-width: 768px) {
+  /* Nav — skrýt desktop prvky, ukázat hamburger */
+  .nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .mobile-menu { display: block; }
+
+  /* Padding sekcí */
+  .hero, .about-hero, .about-certs, .about-values,
+  .home-services, .home-reviews,
+  .services-hero, .services-grid-wrap,
+  .contact-hero, .contact-info, .contact-form-wrap, .contact-map,
+  .consult-intro, .consult-steps, .consult-form-wrap, .consult-sidebar,
+  .ref-hero, .ref-portfolio, .ref-reviews,
+  .about-story-left, .about-timeline { padding-left: 16px; padding-right: 16px; }
+
+  /* Gridy → jeden sloupec */
+  .hero, .about-hero, .about-story, .contact-hero,
+  .contact-body, .consult-intro, .consult-body,
+  .services-hero, .home-svc-grid, .cert-grid,
+  .values-grid, .portfolio-grid, .reviews-grid,
+  .ref-reviews-grid { grid-template-columns: 1fr; }
+
+  /* Hero */
+  .hero-left {
+    padding: 36px 16px 32px;
+    border-right: none;
+    border-bottom: 0.5px solid var(--ramecek-svetly);
+  }
+  .hero-left h1 { font-size: 38px; }
+  .hero-right, .about-hero-right { display: none; }
+  .hero-stats { gap: 20px; }
+
+  /* About */
+  .about-hero-left { padding: 36px 16px; border-right: none; border-bottom: 0.5px solid var(--ramecek-svetly); }
+  .about-hero-left h1 { font-size: 34px; }
+  .about-story-left { border-right: none; border-bottom: 0.5px solid var(--ramecek-svetly); }
+  .cert-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Hodnoty */
+  .values-grid { grid-template-columns: 1fr; }
+
+  /* Služby */
+  .services-hero { padding: 32px 16px 28px; gap: 24px; }
+  .services-hero h1 { font-size: 34px; }
+  .svc-nums { justify-content: flex-start; gap: 20px; flex-wrap: wrap; }
+  .services-grid-wrap { padding: 24px 16px 0; }
+  .services-grid { grid-template-columns: 1fr; }
+  .svc-detail-grid { grid-template-columns: 1fr; }
+
+  /* Kontakt */
+  .contact-hero { padding: 32px 16px 28px; gap: 24px; }
+  .contact-hero h1 { font-size: 34px; }
+  .contact-info { border-right: none; border-bottom: 0.5px solid var(--ramecek-svetly); }
+  .contact-map { padding: 24px 16px; }
+
+  /* Konzultace */
+  .consult-intro { padding: 32px 16px 28px; gap: 24px; }
+  .consult-intro h1 { font-size: 34px; }
+  .consult-steps { padding: 24px 16px; }
+  .steps-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .consult-body { grid-template-columns: 1fr; }
+  .consult-sidebar { border-left: none; border-top: 0.5px solid var(--ramecek-svetly); }
+  .field-row { grid-template-columns: 1fr; }
+  .svc-btns { grid-template-columns: 1fr; }
+  .time-btns { grid-template-columns: 1fr; }
+
+  /* Reference */
+  .ref-hero { padding: 32px 16px 28px; }
+  .ref-hero h1 { font-size: 34px; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-card.featured { grid-column: span 1; }
+  .ref-reviews-grid { grid-template-columns: 1fr; }
+  .ref-stat-row { gap: 20px; }
+
+  /* CTA strip */
+  .cta-strip { flex-direction: column; align-items: flex-start; gap: 14px; padding: 24px 16px; }
+
+  /* Footer */
+  footer { flex-direction: column; gap: 6px; align-items: flex-start; padding: 18px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- =============================================
+     NAVIGACE
+     ============================================= -->
+<nav class="nav">
+  <div class="nav-logo" onclick="showPage('home');closeMobileMenu()">
+    <div class="nav-logo-dot"></div>
+    <!-- Upravte: název firmy -->
+    Jan Novák · Arboristika
+  </div>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('services');return false;" id="nav-services">Služby</a>
+    <a href="#" onclick="showPage('about');return false;" id="nav-about">O mně</a>
+    <a href="#" onclick="showPage('references');return false;" id="nav-references">Reference</a>
+    <a href="#" onclick="showPage('contact');return false;" id="nav-contact">Kontakt</a>
+  </div>
+  <button class="nav-cta" onclick="showPage('consult')">Konzultace zdarma</button>
+  <!-- Hamburger tlačítko — viditelné jen na mobilu -->
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Otevřít menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobilní rozbalovací menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('home');closeMobileMenu();return false;" id="mnav-home">
+    <i class="ti ti-home-2"></i> Úvod
+  </a>
+  <a href="#" onclick="showPage('services');closeMobileMenu();return false;" id="mnav-services">
+    <i class="ti ti-tree"></i> Služby
+  </a>
+  <a href="#" onclick="showPage('about');closeMobileMenu();return false;" id="mnav-about">
+    <i class="ti ti-user"></i> O mně
+  </a>
+  <a href="#" onclick="showPage('references');closeMobileMenu();return false;" id="mnav-references">
+    <i class="ti ti-photo"></i> Reference
+  </a>
+  <a href="#" onclick="showPage('contact');closeMobileMenu();return false;" id="mnav-contact">
+    <i class="ti ti-map-pin"></i> Kontakt
+  </a>
+  <a href="#" class="mobile-menu-cta" onclick="showPage('consult');closeMobileMenu();return false;">
+    <i class="ti ti-calendar"></i> Konzultace zdarma
+  </a>
+</div>
+
+<!-- =============================================
+     ÚVODNÍ STRÁNKA
+     ============================================= -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="eyebrow">Certifikovaný arborista · Praha a okolí</div>
+      <!-- Upravte: hlavní nadpis -->
+      <h1>Péče o stromy<br/>s <em>odborností</em><br/>a citem</h1>
+      <!-- Upravte: podnadpis -->
+      <p class="hero-sub">Posudky, rizikové kácení, ošetření dřevin. Každý strom je jiný — přistupuji k němu individuálně, bez subdodavatelů.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('consult')">Konzultace zdarma</button>
+        <button class="btn-outline" onclick="showPage('references')">Moje práce</button>
+      </div>
+      <div class="hero-stats">
+        <!-- Upravte: statistiky -->
+        <div><div class="stat-num">12+</div><div class="stat-label">let praxe</div></div>
+        <div><div class="stat-num">500+</div><div class="stat-label">ošetřených stromů</div></div>
+        <div><div class="stat-num">ISA</div><div class="stat-label">certifikát</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <!-- Ilustrace stromu — lze nahradit <img> -->
+      <svg class="hero-tree" viewBox="0 0 220 300" xmlns="http://www.w3.org/2000/svg">
+        <rect x="98" y="185" width="24" height="115" rx="6" fill="#8ab870" opacity="0.45"/>
+        <ellipse cx="110" cy="152" rx="65" ry="58" fill="#b8d898" opacity="0.65"/>
+        <ellipse cx="74" cy="174" rx="47" ry="38" fill="#cce4aa" opacity="0.55"/>
+        <ellipse cx="148" cy="168" rx="50" ry="40" fill="#cce4aa" opacity="0.55"/>
+        <ellipse cx="110" cy="134" rx="52" ry="46" fill="#d8ecc0" opacity="0.7"/>
+        <ellipse cx="110" cy="118" rx="38" ry="32" fill="#e4f4d0" opacity="0.8"/>
+        <rect x="102" y="205" width="16" height="95" rx="5" fill="#7aaa58" opacity="0.4"/>
+        <path d="M110 222 Q74 202 54 177" stroke="#8ab870" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45"/>
+        <path d="M110 242 Q146 217 166 187" stroke="#8ab870" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="home-services">
+    <div class="section-label">Co pro vás udělám</div>
+    <div class="home-svc-grid">
+      <div class="home-svc-card" onclick="showPage('services')">
+        <div class="svc-icon"><i class="ti ti-tree" aria-hidden="true"></i></div>
+        <h3>Řez stromu</h3>
+        <p>Tvarování, redukce koruny, výchovný a bezpečnostní řez. Prodloužení zdraví stromu.</p>
+      </div>
+      <div class="home-svc-card" onclick="showPage('services')">
+        <div class="svc-icon"><i class="ti ti-file-search" aria-hidden="true"></i></div>
+        <h3>Dendrologický průzkum</h3>
+        <p>Písemné hodnocení zdravotního stavu, statiky a rizik. Podklad pro úřady i pojišťovny.</p>
+      </div>
+      <div class="home-svc-card" onclick="showPage('services')">
+        <div class="svc-icon"><i class="ti ti-axe" aria-hidden="true"></i></div>
+        <h3>Kácení</h3>
+        <p>Rizikové kácení z lana v náročných podmínkách — zástavba, omezený prostor, výšky.</p>
+      </div>
+      <div class="home-svc-card" onclick="showPage('services')">
+        <div class="svc-icon"><i class="ti ti-clipboard-list" aria-hidden="true"></i></div>
+        <h3>Inventarizace</h3>
+        <p>Soupis a hodnocení dřevin na pozemku. Ideální pro správy domů, obce i firmy.</p>
+      </div>
+      <div class="home-svc-card" onclick="showPage('services')">
+        <div class="svc-icon"><i class="ti ti-plant" aria-hidden="true"></i></div>
+        <h3>Výsadba</h3>
+        <p>Výběr vhodné dřeviny, správná příprava stanoviště a odborná výsadba se zárukou ujmutí.</p>
+      </div>
+      <div class="home-svc-card" onclick="showPage('services')">
+        <div class="svc-icon"><i class="ti ti-message-dots" aria-hidden="true"></i></div>
+        <h3>Odborné konzultace</h3>
+        <p>Poradím s péčí o konkrétní strom, s výběrem dřeviny nebo s plánováním zahrady.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-reviews">
+    <div class="section-label">Co říkají klienti</div>
+    <div class="reviews-grid">
+      <!-- Upravte: reference -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Profesionální přístup, přesné a čisté provedení. Posudek byl hotový do tří dnů."</p>
+        <div class="review-author">Markéta V. · správa bytového domu</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Kácení staré borovice proběhlo bez jediného škrábanku na plotu i trávníku."</p>
+        <div class="review-author">Tomáš R. · soukromá zahrada, Průhonice</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Posudek byl srozumitelný i pro laika. Na místě vše vysvětlil a navrhl dlouhodobý plán."</p>
+        <div class="review-author">Jana K. · obec Říčany</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-strip">
+    <div class="cta-strip-text">
+      Nejste si jistí, co váš strom potřebuje?
+      <span>Přijedu se podívat — první konzultace je zdarma</span>
+    </div>
+    <button class="btn-white" onclick="showPage('consult')">Konzultace zdarma →</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Jan Novák · Arboristika</div>
+    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+  </footer>
+</div>
+
+<!-- =============================================
+     O MNĚ
+     ============================================= -->
+<div class="page" id="page-about">
+
+  <section class="about-hero">
+    <div class="about-hero-left">
+      <div class="eyebrow">O mně</div>
+      <!-- Upravte: nadpis -->
+      <h1>Stromy jsou<br/>moje <em>vášeň</em><br/>i řemeslo</h1>
+      <!-- Upravte: představení -->
+      <p class="about-lead">Jsem Jan Novák, certifikovaný arborista s více než 12 lety praxe. Pracuji sám — každou zakázku řeším osobně od prvního pohledu na strom až po úklid pracoviště.</p>
+      <div class="about-quote">
+        <!-- Upravte: citát -->
+        <p>„Zdravý strom nepotřebuje pozornost. Nemocný strom potřebuje správného člověka."</p>
+      </div>
+    </div>
+    <div class="about-hero-right">
+      <!-- Nahraďte <div class="photo-placeholder"> za <img src="foto.jpg" alt="Jan Novák"> -->
+      <div class="photo-frame">
+        <div class="photo-placeholder">
+          <i class="ti ti-user" style="font-size:36px;color:#8ab870"></i>
+          Vložte svoji fotku
+        </div>
+        <div class="photo-caption">
+          <!-- Upravte: jméno a titul -->
+          <strong>Jan Novák</strong>
+          Certifikovaný arborista · ISA
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-certs">
+    <div class="section-label">Vzdělání a certifikace</div>
+    <div class="cert-grid">
+      <!-- Upravte: certifikáty -->
+      <div class="cert-card">
+        <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+        <div class="cert-name">ISA Certified Arborist</div>
+        <div class="cert-org">International Society of Arboriculture</div>
+        <div class="cert-year">od 2014</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
+        <div class="cert-name">Ing. lesní inženýrství</div>
+        <div class="cert-org">ČZU Praha</div>
+        <div class="cert-year">2012</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="ti ti-first-aid-kit" aria-hidden="true"></i></div>
+        <div class="cert-name">Práce ve výškách</div>
+        <div class="cert-org">ČÚBP · opakovaně obnoven</div>
+        <div class="cert-year">platné 2026</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
+        <div class="cert-name">Pojištění odpovědnosti</div>
+        <div class="cert-org">5 000 000 Kč · Generali</div>
+        <div class="cert-year">platné 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="about-story">
+    <div class="about-story-left">
+      <div class="section-label">Můj příběh</div>
+      <!-- Upravte: příběh -->
+      <p>Ke stromům jsem přišel přes les. Po studiu na ČZU jsem několik let pracoval v lesním hospodářství, ale vždy mě víc zajímaly stromy v krajině a ve městech — tam, kde mají příběh a kde na nich záleží konkrétním lidem.</p>
+      <p>V roce 2013 jsem složil zkoušku ISA a od té doby pracuji jako samostatný arborista. Záměrně zůstávám sólový — bez subkontraktorů, bez spěchu. Každého klienta obsloužím osobně.</p>
+      <p>Specializuji se na náročné případy: stromy v zástavbě, v blízkosti elektrického vedení nebo s pokročilým poškozením. Rád poradím i tehdy, když ostatní říkají, že strom musí pryč.</p>
+    </div>
+    <div class="about-timeline">
+      <div class="section-label">Kariéra</div>
+      <!-- Upravte: timeline -->
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div><div class="tl-year">2012</div></div>
+        <div class="tl-body">
+          <div class="tl-title">Ing. — ČZU Praha</div>
+          <div class="tl-desc">Obor lesní inženýrství, specializace dendrologie a ochrana dřevin.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div><div class="tl-year">2013</div></div>
+        <div class="tl-body">
+          <div class="tl-title">ISA Certified Arborist</div>
+          <div class="tl-desc">Mezinárodní certifikace — složení zkoušky v Berlíně.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div><div class="tl-year">2014</div></div>
+        <div class="tl-body">
+          <div class="tl-title">Zahájení samostatné praxe</div>
+          <div class="tl-desc">První zakázky v Praze a Středočeském kraji.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div><div class="tl-year">2018</div></div>
+        <div class="tl-body">
+          <div class="tl-title">Posudky pro úřady</div>
+          <div class="tl-desc">Spolupráce s městskými částmi Praha 2, 4 a 10.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-year">dnes</div></div>
+        <div class="tl-body">
+          <div class="tl-title">500+ ošetřených stromů</div>
+          <div class="tl-desc">Stále sólová praxe, důraz na kvalitu a osobní přístup.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="about-values">
+    <div class="section-label">Proč si mě klienti volí znovu</div>
+    <div class="values-grid">
+      <!-- Upravte: hodnoty -->
+      <div class="value-card">
+        <div class="value-num">01</div>
+        <div class="value-title">Osobní přístup</div>
+        <div class="value-desc">Pracuji sám. Na každé zakázce jste v přímém kontaktu se mnou — ne s dispečerem.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <div class="value-title">Zachování stromu</div>
+        <div class="value-desc">Kácení je vždy poslední možnost. Nejdřív hledám cesty, jak strom zachránit.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">03</div>
+        <div class="value-title">Jasná komunikace</div>
+        <div class="value-desc">Před každou prací dostanete písemnou nabídku a vysvětlení proč. Žádná překvapení.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-strip">
+    <div class="cta-strip-text">
+      Pojďme se potkat u vašeho stromu
+      <span>První konzultace na místě je zdarma</span>
+    </div>
+    <button class="btn-white" onclick="showPage('consult')">Objednat konzultaci →</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Jan Novák · Arboristika</div>
+    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+  </footer>
+</div>
+
+<!-- =============================================
+     SLUŽBY
+     ============================================= -->
+<div class="page" id="page-services">
+
+  <section class="services-hero">
+    <div>
+      <div class="eyebrow">Nabízené služby</div>
+      <h1>Co pro vás<br/><em>udělám</em></h1>
+      <p>Od prvního posouzení stromu přes odborný posudek až po kácení nebo novou výsadbu. Každou službu zajišťuji osobně.</p>
+    </div>
+    <div class="svc-nums">
+      <div><div class="svc-num-val">6</div><div class="svc-num-label">služeb</div></div>
+      <div><div class="svc-num-val">12+</div><div class="svc-num-label">let praxe</div></div>
+      <div><div class="svc-num-val">500+</div><div class="svc-num-label">realizací</div></div>
+    </div>
+  </section>
+
+  <div class="services-grid-wrap">
+    <div class="section-label">Klikněte na službu pro detail</div>
+    <div class="services-grid">
+
+      <!-- SLUŽBA 1 — Řez stromu -->
+      <div class="svc-card open" onclick="toggleSvc(this)">
+        <div class="svc-card-top">
+          <div class="svc-card-icon-row">
+            <div class="svc-icon"><i class="ti ti-tree" aria-hidden="true"></i></div>
+            <div class="svc-card-num">01</div>
+          </div>
+          <div class="svc-card-title">Řez stromu</div>
+          <p class="svc-card-short">Tvarování, redukce koruny, výchovný a bezpečnostní řez.</p>
+        </div>
+        <div class="svc-card-footer">
+          <!-- Upravte: cena -->
+          <div class="svc-card-price">od 1 800 Kč</div>
+          <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
+        </div>
+        <div class="svc-detail">
+          <div class="svc-detail-grid">
+            <div>
+              <!-- Upravte: popis služby -->
+              <p class="svc-detail-desc">Správný řez prodlouží životnost stromu a sníží riziko odlomení větví. Provádím bezpečnostní, tvarovací i výchovný řez s ohledem na fyziologii dřeviny.</p>
+              <div class="svc-detail-label">Co je zahrnuto</div>
+              <ul class="svc-detail-list">
+                <li><i class="ti ti-check" aria-hidden="true"></i> Bezpečnostní řez — odstranění suchých větví</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Redukce koruny — snížení hmotnosti</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Tvarování a rovnováha koruny</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Výchovný řez mladých stromů</li>
+              </ul>
+            </div>
+            <div>
+              <div class="svc-detail-box">
+                <div class="svc-detail-box-label">Kdy je vhodný čas?</div>
+                <!-- Upravte: tip -->
+                <div class="svc-detail-box-text">Většinu dřevin lze řezat mimo vegetační klid (podzim–zima). Ovocné stromy ideálně v únoru–březnu.</div>
+              </div>
+              <div class="svc-detail-price-row">
+                <div class="svc-detail-price">od 1 800 Kč <span>/ strom</span></div>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Objednat</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLUŽBA 2 — Dendrologický průzkum -->
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-card-top">
+          <div class="svc-card-icon-row">
+            <div class="svc-icon"><i class="ti ti-file-search" aria-hidden="true"></i></div>
+            <div class="svc-card-num">02</div>
+          </div>
+          <div class="svc-card-title">Dendrologický průzkum</div>
+          <p class="svc-card-short">Posouzení zdravotního stavu, statiky a rizik. Podklad pro úřady.</p>
+        </div>
+        <div class="svc-card-footer">
+          <div class="svc-card-price">od 2 500 Kč</div>
+          <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
+        </div>
+        <div class="svc-detail">
+          <div class="svc-detail-grid">
+            <div>
+              <p class="svc-detail-desc">Písemné hodnocení zdravotního stavu, statické stability a míry rizika. Výstupem je zpráva použitelná jako podklad pro stavební řízení nebo pojistnou událost.</p>
+              <div class="svc-detail-label">Co je zahrnuto</div>
+              <ul class="svc-detail-list">
+                <li><i class="ti ti-check" aria-hidden="true"></i> Terénní průzkum a fotodokumentace</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Hodnocení zdravotního stavu</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Posouzení statické stability</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Doporučení pěstebních opatření</li>
+              </ul>
+            </div>
+            <div>
+              <div class="svc-detail-box">
+                <div class="svc-detail-box-label">Kdy ho potřebujete?</div>
+                <div class="svc-detail-box-text">Před kácením chráněného stromu, při stavbě v blízkosti dřevin, po bouři nebo při podezření na hnilobu.</div>
+              </div>
+              <div class="svc-detail-price-row">
+                <div class="svc-detail-price">od 2 500 Kč <span>/ strom</span></div>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Objednat</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLUŽBA 3 — Inventarizace -->
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-card-top">
+          <div class="svc-card-icon-row">
+            <div class="svc-icon"><i class="ti ti-clipboard-list" aria-hidden="true"></i></div>
+            <div class="svc-card-num">03</div>
+          </div>
+          <div class="svc-card-title">Inventarizace dřevin</div>
+          <p class="svc-card-short">Soupis a hodnocení stromů na pozemku pro správy domů a obce.</p>
+        </div>
+        <div class="svc-card-footer">
+          <div class="svc-card-price">dle rozsahu</div>
+          <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
+        </div>
+        <div class="svc-detail">
+          <div class="svc-detail-grid">
+            <div>
+              <p class="svc-detail-desc">Systematický soupis všech dřevin na daném území s hodnocením stavu, rizik a doporučením opatření. Výsledkem je tabulka nebo GIS vrstva pro správu zeleně.</p>
+              <div class="svc-detail-label">Co je zahrnuto</div>
+              <ul class="svc-detail-list">
+                <li><i class="ti ti-check" aria-hidden="true"></i> Polohopis a dendrometrické údaje</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Hodnocení zdravotního stavu</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Tabulka + mapové podklady</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Plán péče s prioritami</li>
+              </ul>
+            </div>
+            <div>
+              <div class="svc-detail-box">
+                <div class="svc-detail-box-label">Pro koho je vhodná?</div>
+                <div class="svc-detail-box-text">Správy bytových domů, SVJ, obce, firmy se zahradou, investoři před rozvojem pozemku.</div>
+              </div>
+              <div class="svc-detail-price-row">
+                <div class="svc-detail-price">dle rozsahu <span>/ poptejte</span></div>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Poptávka</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLUŽBA 4 — Výsadba -->
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-card-top">
+          <div class="svc-card-icon-row">
+            <div class="svc-icon"><i class="ti ti-plant" aria-hidden="true"></i></div>
+            <div class="svc-card-num">04</div>
+          </div>
+          <div class="svc-card-title">Výsadba</div>
+          <p class="svc-card-short">Výběr vhodné dřeviny, příprava stanoviště a odborná výsadba.</p>
+        </div>
+        <div class="svc-card-footer">
+          <div class="svc-card-price">dle rozsahu</div>
+          <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
+        </div>
+        <div class="svc-detail">
+          <div class="svc-detail-grid">
+            <div>
+              <p class="svc-detail-desc">Správný strom na správné místo. Poradím s výběrem druhu, zajistím kvalitní sadební materiál a provedu výsadbu s následnou péčí.</p>
+              <div class="svc-detail-label">Co je zahrnuto</div>
+              <ul class="svc-detail-list">
+                <li><i class="ti ti-check" aria-hidden="true"></i> Konzultace výběru dřeviny</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Příprava jámy a substrátu</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Odborná výsadba s kotvením</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Zálivkový režim a následná péče</li>
+              </ul>
+            </div>
+            <div>
+              <div class="svc-detail-box">
+                <div class="svc-detail-box-label">Nejlepší čas výsadby</div>
+                <div class="svc-detail-box-text">Podzim (říjen–listopad) nebo brzy na jaře (březen–duben). Kontejnerované stromy lze sázet celé léto.</div>
+              </div>
+              <div class="svc-detail-price-row">
+                <div class="svc-detail-price">dle rozsahu <span>/ poptejte</span></div>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Poptávka</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLUŽBA 5 — Kácení -->
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-card-top">
+          <div class="svc-card-icon-row">
+            <div class="svc-icon"><i class="ti ti-axe" aria-hidden="true"></i></div>
+            <div class="svc-card-num">05</div>
+          </div>
+          <div class="svc-card-title">Kácení</div>
+          <p class="svc-card-short">Bezpečné kácení z lana v náročných podmínkách — zástavba, výšky.</p>
+        </div>
+        <div class="svc-card-footer">
+          <div class="svc-card-price">od 4 000 Kč</div>
+          <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
+        </div>
+        <div class="svc-detail">
+          <div class="svc-detail-grid">
+            <div>
+              <p class="svc-detail-desc">Rizikové kácení z lana bez plošiny — bezpečně i tam, kde není místo pro těžkou techniku. Strom rozebírám po sekcích shora dolů.</p>
+              <div class="svc-detail-label">Co je zahrnuto</div>
+              <ul class="svc-detail-list">
+                <li><i class="ti ti-check" aria-hidden="true"></i> Arboristická technika — práce z lana</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Řízené spouštění sekcí</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Štěpkování a odvoz materiálu</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Frézování pařezu (volitelně)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="svc-detail-box">
+                <div class="svc-detail-box-label">Potřebujete povolení?</div>
+                <div class="svc-detail-box-text">Stromy s obvodem kmene nad 80 cm vyžadují povolení úřadu. Pomohu s žádostí a zajistím posudek jako podklad.</div>
+              </div>
+              <div class="svc-detail-price-row">
+                <div class="svc-detail-price">od 4 000 Kč <span>/ strom</span></div>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Objednat</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLUŽBA 6 — Odborné konzultace -->
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-card-top">
+          <div class="svc-card-icon-row">
+            <div class="svc-icon"><i class="ti ti-message-dots" aria-hidden="true"></i></div>
+            <div class="svc-card-num">06</div>
+          </div>
+          <div class="svc-card-title">Odborné konzultace</div>
+          <p class="svc-card-short">Poradím s péčí o strom, výběrem dřeviny nebo s plánováním zahrady.</p>
+        </div>
+        <div class="svc-card-footer">
+          <div class="svc-card-price">první zdarma</div>
+          <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
+        </div>
+        <div class="svc-detail">
+          <div class="svc-detail-grid">
+            <div>
+              <p class="svc-detail-desc">Přijedu, podívám se a řeknu vám na rovinu, co doporučuji — bez zbytečných prací navíc. První konzultace přímo u stromu je vždy zdarma.</p>
+              <div class="svc-detail-label">Co je zahrnuto</div>
+              <ul class="svc-detail-list">
+                <li><i class="ti ti-check" aria-hidden="true"></i> Posouzení stavu stromu na místě</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Doporučení dalšího postupu</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Odpovědi na vaše otázky</li>
+                <li><i class="ti ti-check" aria-hidden="true"></i> Písemné shrnutí e-mailem</li>
+              </ul>
+            </div>
+            <div>
+              <div class="svc-detail-box">
+                <div class="svc-detail-box-label">Kdy se oplatí zavolat?</div>
+                <div class="svc-detail-box-text">Kdykoli máte pochybnosti o zdraví stromu nebo plánujete stavbu v jeho blízkosti.</div>
+              </div>
+              <div class="svc-detail-price-row">
+                <div class="svc-detail-price">první zdarma <span>/ bez závazku</span></div>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Objednat</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div class="cta-strip-text">
+      Nejste si jistí, která služba je ta pravá?
+      <span>Konzultace na místě je zdarma — přijedu a poradím</span>
+    </div>
+    <button class="btn-white" onclick="showPage('consult')">Konzultace zdarma →</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Jan Novák · Arboristika</div>
+    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+  </footer>
+</div>
+
+<!-- =============================================
+     KONTAKT
+     ============================================= -->
+<div class="page" id="page-contact">
+
+  <section class="contact-hero">
+    <div>
+      <div class="eyebrow">Kontakt</div>
+      <h1>Napište<br/>nebo zavolejte <em>přímo</em></h1>
+      <p>Jsem k dispozici každý pracovní den. Odpovídám do 24 hodin, většinou dříve.</p>
+    </div>
+    <div style="display:flex;gap:28px;justify-content:center;flex-wrap:wrap;">
+      <div><div class="svc-num-val">24h</div><div class="svc-num-label">odpověď</div></div>
+      <div><div class="svc-num-val">30km</div><div class="svc-num-label">doprava zdarma</div></div>
+      <div><div class="svc-num-val">Po–So</div><div class="svc-num-label">dostupnost</div></div>
+    </div>
+  </section>
+
+  <div class="contact-body">
+    <div class="contact-info">
+      <div class="section-label">Kontaktní údaje</div>
+      <!-- Upravte: kontakty -->
+      <div class="contact-row">
+        <div class="c-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
+        <div><div class="c-label">Telefon</div><div class="c-val">+420 777 123 456<small>Po–So 7:00–18:00</small></div></div>
+      </div>
+      <div class="contact-row">
+        <div class="c-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
+        <div><div class="c-label">E-mail</div><div class="c-val">jan@arboristika-novak.cz<small>Odpověď do 24 h</small></div></div>
+      </div>
+      <div class="contact-row">
+        <div class="c-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+        <div><div class="c-label">Sídlo</div><div class="c-val">Praha — Vinohrady<small>Výjezdy po celém Středočeském kraji</small></div></div>
+      </div>
+      <div class="contact-row">
+        <div class="c-icon"><i class="ti ti-truck" aria-hidden="true"></i></div>
+        <div><div class="c-label">Doprava</div><div class="c-val">Do 30 km zdarma<small>30–80 km: 6 Kč/km · nad 80 km dle domluvy</small></div></div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <div class="section-label">Pracovní doba</div>
+        <div class="avail-days">
+          <div class="day-pill">Po</div>
+          <div class="day-pill">Út</div>
+          <div class="day-pill">St</div>
+          <div class="day-pill">Čt</div>
+          <div class="day-pill">Pá</div>
+          <div class="day-pill">So</div>
+          <div class="day-pill off">Ne</div>
+        </div>
+        <p style="font-size:12px;color:var(--text-jemny);margin-top:12px;">Po–Pá 7:00–18:00 · So 8:00–14:00</p>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <div class="section-label">Rychlá zpráva</div>
+      <div class="form-title">Napište mi</div>
+      <div class="field"><label>Jméno a příjmení</label><input type="text" placeholder="Jana Nováková"></div>
+      <div class="field-row">
+        <div class="field"><label>Telefon</label><input type="tel" placeholder="+420 777 000 000"></div>
+        <div class="field"><label>E-mail</label><input type="email" placeholder="jana@example.cz"></div>
+      </div>
+      <div class="field"><label>Adresa stromu</label><input type="text" placeholder="Ulice, Praha"></div>
+      <div class="field" style="margin-top:4px;"><label>Zpráva</label><textarea placeholder="Popište, s čím potřebujete pomoci…"></textarea></div>
+      <button class="submit-btn" style="margin-top:12px;">Odeslat zprávu</button>
+      <p class="form-note" style="margin-top:10px;">Odesláním souhlasíte se zpracováním osobních údajů.</p>
+    </div>
+  </div>
+
+  <section class="contact-map">
+    <div class="section-label">Oblast působení</div>
+    <!-- Nahraďte: Google Maps embed nebo jiná mapa -->
+    <div class="map-placeholder">
+      <i class="ti ti-map-2" style="font-size:40px;color:#8ab870"></i>
+      <strong style="color:var(--text-tmavy);font-size:14px;">Praha a Středočeský kraj</strong>
+      <p>Zde vložte Google Maps embed nebo interaktivní mapu</p>
+      <p style="font-size:11px;">Maps embed: vložte &lt;iframe src="..."&gt; místo tohoto bloku</p>
+    </div>
+  </section>
+
+  <div class="cta-strip">
+    <div class="cta-strip-text">
+      Potřebujete přijet přímo na místo?
+      <span>Objednejte bezplatnou konzultaci u vašeho stromu</span>
+    </div>
+    <button class="btn-white" onclick="showPage('consult')">Konzultace zdarma →</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Jan Novák · Arboristika</div>
+    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+  </footer>
+</div>
+
+<!-- =============================================
+     KONZULTACE ZDARMA
+     ============================================= -->
+<div class="page" id="page-consult">
+
+  <section class="consult-intro">
+    <div>
+      <div class="eyebrow">Konzultace zdarma</div>
+      <h1>Přijedu se<br/>podívat na <em>váš strom</em></h1>
+      <p>Vyplňte formulář a domluvíme termín. Přijedu, posoudím situaci přímo na místě a navrhnu řešení — bez závazku a bez poplatku.</p>
+    </div>
+    <div class="consult-perks">
+      <div class="perk-row">
+        <div class="perk-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+        <div><div class="perk-title">Přijedu k vám</div><div class="perk-desc">Praha a Středočeský kraj. Doprava do 30 km od Prahy zdarma.</div></div>
+      </div>
+      <div class="perk-row">
+        <div class="perk-icon"><i class="ti ti-clock" aria-hidden="true"></i></div>
+        <div><div class="perk-title">Odpovím do 24 hodin</div><div class="perk-desc">Termín obvykle domluvíme do týdne od odeslání poptávky.</div></div>
+      </div>
+      <div class="perk-row">
+        <div class="perk-icon"><i class="ti ti-file-description" aria-hidden="true"></i></div>
+        <div><div class="perk-title">Dostanete písemné shrnutí</div><div class="perk-desc">Po konzultaci zašlu e-mailem stručný závěr a doporučení.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="consult-steps">
+    <div class="section-label">Jak konzultace probíhá</div>
+    <div class="steps-row">
+      <div class="step-card"><div class="step-num">01</div><div class="step-title">Vyplníte formulář</div><div class="step-desc">Popište situaci a přiložte případně fotku stromu e-mailem.</div></div>
+      <div class="step-card"><div class="step-num">02</div><div class="step-title">Domluvíme termín</div><div class="step-desc">Ozvím se do 24 h a navrhneme čas, který vám vyhovuje.</div></div>
+      <div class="step-card"><div class="step-num">03</div><div class="step-title">Přijedu na místo</div><div class="step-desc">Prohlédnu strom, zhodnotím stav a zodpovím vaše otázky.</div></div>
+      <div class="step-card"><div class="step-num">04</div><div class="step-title">Dostanete nabídku</div><div class="step-desc">Písemné shrnutí závěrů a cenová nabídka bez závazku.</div></div>
+    </div>
+  </section>
+
+  <div class="consult-body">
+    <div class="consult-form-wrap">
+      <div class="form-title">Objednat konzultaci</div>
+
+      <div class="fieldset">
+        <span class="fieldset-legend">Vaše kontaktní údaje</span>
+        <div class="field-row">
+          <div class="field"><label>Jméno a příjmení</label><input type="text" placeholder="Jana Nováková"></div>
+          <div class="field"><label>Telefon</label><input type="tel" placeholder="+420 777 000 000"></div>
+        </div>
+        <div class="field"><label>E-mail</label><input type="email" placeholder="jana@example.cz"></div>
+        <div class="field"><label>Adresa nebo lokalita stromu</label><input type="text" placeholder="Mánesova 12, Praha 2"></div>
+      </div>
+
+      <div class="fieldset">
+        <span class="fieldset-legend">O co jde?</span>
+        <div class="svc-btns">
+          <div class="svc-btn sel" onclick="this.classList.toggle('sel')">
+            <div class="svc-btn-title">Nevím — potřebuji poradit</div>
+            <div class="svc-btn-sub">Chci odborný názor</div>
+          </div>
+          <div class="svc-btn" onclick="this.classList.toggle('sel')">
+            <div class="svc-btn-title">Kácení</div>
+            <div class="svc-btn-sub">Strom chci pokácet</div>
+          </div>
+          <div class="svc-btn" onclick="this.classList.toggle('sel')">
+            <div class="svc-btn-title">Dendrologický průzkum</div>
+            <div class="svc-btn-sub">Potřebuji písemné hodnocení</div>
+          </div>
+          <div class="svc-btn" onclick="this.classList.toggle('sel')">
+            <div class="svc-btn-title">Řez / ošetření koruny</div>
+            <div class="svc-btn-sub">Řez, vzpěry, ošetření</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <span class="fieldset-legend">Preferovaný čas výjezdu</span>
+        <div class="time-btns">
+          <div class="time-btn sel" onclick="selectTime(this)">Ráno (7–10)</div>
+          <div class="time-btn" onclick="selectTime(this)">Dopoledne (10–13)</div>
+          <div class="time-btn" onclick="selectTime(this)">Odpoledne (13–17)</div>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <span class="fieldset-legend">Popis situace</span>
+        <div class="field">
+          <textarea placeholder="Druh stromu (pokud víte), přibližná výška, co vás trápí, blízkost budov nebo vedení…"></textarea>
+        </div>
+      </div>
+
+      <button class="submit-btn">Odeslat poptávku — konzultace zdarma</button>
+      <p class="form-note">Odesláním souhlasíte se zpracováním osobních údajů. Nikam nic neprodávám.</p>
+    </div>
+
+    <div class="consult-sidebar">
+      <div>
+        <div class="sidebar-label">Přímý kontakt</div>
+        <!-- Upravte: kontakty -->
+        <div class="contact-row">
+          <div class="c-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
+          <div><div class="c-label">Telefon</div><div class="c-val">+420 777 123 456<small>Po–So 7:00–18:00</small></div></div>
+        </div>
+        <div class="contact-row">
+          <div class="c-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
+          <div><div class="c-label">E-mail</div><div class="c-val">jan@arboristika-novak.cz<small>Odpověď do 24 h</small></div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sidebar-label">Časté otázky</div>
+        <!-- Upravte: FAQ -->
+        <div class="faq-item"><div class="faq-q">Je konzultace opravdu zdarma?</div><div class="faq-a">Ano, bez poplatku i bez závazku. Platíte jen tehdy, pokud se rozhodnete objednat práci.</div></div>
+        <div class="faq-item"><div class="faq-q">Jak daleko dojíždíte?</div><div class="faq-a">Praha a Středočeský kraj. Nad 30 km se účtuje příplatek 6 Kč/km.</div></div>
+        <div class="faq-item"><div class="faq-q">Potřebuji povolení ke kácení?</div><div class="faq-a">Záleží na druhu a obvodu kmene. Poradím vám na místě a pomohu s žádostí.</div></div>
+        <div class="faq-item"><div class="faq-q">Pracujete i o víkendu?</div><div class="faq-a">Konzultace ano (Po–So). Kácení a ošetření domlouvám převážně v týdnu.</div></div>
+      </div>
+
+      <div>
+        <div class="sidebar-label">Co říkají klienti</div>
+        <div class="testimonial-mini">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">„Přijel do hodiny od zavolání, vše klidně vysvětlil. Nabídka přišla e-mailem ještě ten večer."</p>
+          <div class="t-author">Markéta V. · Praha 4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Jan Novák · Arboristika</div>
+    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+  </footer>
+</div>
+
+<!-- =============================================
+     REFERENCE
+     ============================================= -->
+<div class="page" id="page-references">
+
+  <section class="ref-hero">
+    <div class="eyebrow">Portfolio prací</div>
+    <h1>Moje <em>práce</em></h1>
+    <p>Výběr realizovaných zakázek — od posudků po náročné rizikové kácení. Fotky před a po, popis situace a výsledku.</p>
+    <div class="ref-stats-row">
+      <div><div class="ref-stat-num">500+</div><div class="ref-stat-label">ošetřených stromů</div></div>
+      <div><div class="ref-stat-num">12+</div><div class="ref-stat-label">let praxe</div></div>
+      <div><div class="ref-stat-num">100%</div><div class="ref-stat-label">spokojených klientů</div></div>
+    </div>
+  </section>
+
+  <section class="ref-portfolio">
+    <div class="section-label">Realizované zakázky</div>
+    <div class="portfolio-grid">
+
+      <!-- Hlavní karta — vyplňte nebo nahraďte fotografií -->
+      <div class="portfolio-card featured">
+        <div class="portfolio-img">
+          <!-- Nahraďte: <img src="foto-hlavni.jpg" alt="Popis"> -->
+          <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" style="height:100%">
+            <rect width="680" height="220" fill="#d4e8c0"/>
+            <rect x="0" y="140" width="680" height="80" fill="#c4daa8"/>
+            <rect x="195" y="50" width="16" height="170" rx="5" fill="#7aaa58" opacity="0.7"/>
+            <ellipse cx="203" cy="46" rx="48" ry="40" fill="#a8c882" opacity="0.85"/>
+            <ellipse cx="175" cy="64" rx="34" ry="27" fill="#b8d898"/>
+            <ellipse cx="232" cy="60" rx="38" ry="29" fill="#b8d898"/>
+            <rect x="390" y="35" width="13" height="185" rx="4" fill="#7aaa58" opacity="0.65"/>
+            <ellipse cx="397" cy="32" rx="42" ry="34" fill="#a8c882" opacity="0.8"/>
+            <ellipse cx="368" cy="52" rx="30" ry="23" fill="#b8d898" opacity="0.8"/>
+            <ellipse cx="426" cy="48" rx="33" ry="25" fill="#b8d898" opacity="0.8"/>
+            <rect x="560" y="55" width="11" height="165" rx="4" fill="#7aaa58" opacity="0.55"/>
+            <ellipse cx="566" cy="52" rx="35" ry="28" fill="#a8c882" opacity="0.7"/>
+          </svg>
+          <div class="port-tag">Rizikové kácení</div>
+        </div>
+        <div class="portfolio-body">
+          <!-- Upravte: název a popis -->
+          <div class="portfolio-title">Stará lípa u bytového domu — Vinohrady, Praha</div>
+          <div class="portfolio-meta">Praha 2 · Jaro 2024 · Lípa ve IV. stupni hniloby, práce z lana bez plošiny v koordinaci se správou domu</div>
+        </div>
+      </div>
+
+      <!-- Karta 2 -->
+      <div class="portfolio-card">
+        <div class="portfolio-img">
+          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="height:100%">
+            <rect width="340" height="160" fill="#daeacc"/>
+            <rect x="120" y="40" width="11" height="120" rx="4" fill="#7aaa58" opacity="0.65"/>
+            <ellipse cx="126" cy="36" rx="34" ry="28" fill="#a8c882" opacity="0.85"/>
+            <rect x="200" y="35" width="10" height="125" rx="4" fill="#7aaa58" opacity="0.6"/>
+            <ellipse cx="205" cy="32" rx="30" ry="25" fill="#a8c882" opacity="0.8"/>
+          </svg>
+          <div class="port-tag">Dendrologický průzkum</div>
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-title">Dendrologický průzkum — sídliště Chodov</div>
+          <div class="portfolio-meta">Praha 11 · 14 stromů · posudek pro správu městského obvodu</div>
+        </div>
+      </div>
+
+      <!-- Karta 3 -->
+      <div class="portfolio-card">
+        <div class="portfolio-img">
+          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="height:100%">
+            <rect width="340" height="160" fill="#e4f0d8"/>
+            <rect x="160" y="30" width="14" height="130" rx="5" fill="#7aaa58" opacity="0.65"/>
+            <ellipse cx="167" cy="26" rx="50" ry="42" fill="#b8d898" opacity="0.8"/>
+            <ellipse cx="130" cy="50" rx="36" ry="28" fill="#cce4aa" opacity="0.7"/>
+            <ellipse cx="204" cy="46" rx="38" ry="30" fill="#cce4aa" opacity="0.7"/>
+            <path d="M130 65 Q95 50 75 32" stroke="#5a8a30" stroke-width="2" fill="none" stroke-dasharray="4 3" opacity="0.6"/>
+            <path d="M204 62 Q240 47 260 30" stroke="#5a8a30" stroke-width="2" fill="none" stroke-dasharray="4 3" opacity="0.6"/>
+          </svg>
+          <div class="port-tag">Vzpěry</div>
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-title">Dynamické vzpěry — dub letní, soukromá zahrada</div>
+          <div class="portfolio-meta">Středočeský kraj · Podzim 2023 · Stabilizace vícekmenného dubu</div>
+        </div>
+      </div>
+
+      <!-- Karta 4 — přidejte vlastní fotku -->
+      <div class="portfolio-card">
+        <div class="portfolio-img" style="background:#e8f2e0;flex-direction:column;gap:8px;color:#6a8a50;font-size:12px;">
+          <i class="ti ti-photo-plus" style="font-size:36px;color:#a8c882"></i>
+          <span>Přidejte vlastní fotku</span>
+        </div>
+        <div class="portfolio-body">
+          <!-- Upravte: popis zakázky -->
+          <div class="portfolio-title">Vaše zakázka</div>
+          <div class="portfolio-meta">Nahraďte vlastní fotografií a popisem</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Reference klientů -->
+  <section class="ref-reviews">
+    <div class="section-label">Co říkají klienti</div>
+    <div class="ref-reviews-grid">
+      <!-- Upravte: reference -->
+      <div class="ref-review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Profesionální přístup, přesné a čisté provedení. Stromy jsou v perfektním stavu a posudek byl hotový do tří dnů."</p>
+        <div class="review-author">Markéta V. · správa bytového domu</div>
+      </div>
+      <div class="ref-review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Kácení staré boroviny proběhlo bez jediného škrábanku na plotu i trávníku. Práce na laně opravdu funguje."</p>
+        <div class="review-author">Tomáš R. · soukromá zahrada, Průhonice</div>
+      </div>
+      <div class="ref-review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Posudek byl srozumitelný i pro laika. Oceňuji, že na místě vysvětlil vše osobně a doporučil dlouhodobý plán péče."</p>
+        <div class="review-author">Jana K. · obec Říčany</div>
+      </div>
+      <div class="ref-review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Přijel do hodiny od zavolání, vše klidně vysvětlil. Nabídka přišla e-mailem ještě ten večer."</p>
+        <div class="review-author">Petr M. · Praha 4</div>
+      </div>
+      <div class="ref-review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Inventarizace 30 stromů byla hotová za dva dny. Zpráva přehledná, mapa přesná. Doporučuji každé obci."</p>
+        <div class="review-author">Bc. Monika H. · Obecní úřad Průhonice</div>
+      </div>
+      <div class="ref-review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Výsadba tří lip podle jeho doporučení a všechny se krásně ujaly. Ví, co dělá, a vysvětlí proč."</p>
+        <div class="review-author">Roman Š. · firemní areál, Středočeský kraj</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-strip">
+    <div class="cta-strip-text">
+      Máte podobný projekt?
+      <span>Přijedu se podívat — první konzultace je zdarma</span>
+    </div>
+    <button class="btn-white" onclick="showPage('consult')">Konzultace zdarma →</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Jan Novák · Arboristika</div>
+    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+  </footer>
+</div>
+
+<!-- =============================================
+     JAVASCRIPT
+     ============================================= -->
+<script>
+const pages = ['home','about','services','contact','consult','references'];
+
+function showPage(id) {
+  pages.forEach(p => {
+    const el = document.getElementById('page-' + p);
+    if (el) el.classList.toggle('active', p === id);
+  });
+  // Desktop nav
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.remove('active');
+    if (a.id === 'nav-' + id) a.classList.add('active');
+  });
+  // Mobilní nav
+  document.querySelectorAll('.mobile-menu a').forEach(a => {
+    a.classList.remove('active');
+    if (a.id === 'mnav-' + id) a.classList.add('active');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.getElementById('hamburger');
+  const isOpen = menu.classList.contains('open');
+  menu.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', !isOpen);
+  // Zamknout scroll stránky při otevřeném menu
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('hamburger').setAttribute('aria-expanded', false);
+  document.body.style.overflow = '';
+}
+
+// Zavřít menu kliknutím mimo
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.getElementById('hamburger');
+  if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+    closeMobileMenu();
+  }
+});
+
+function toggleSvc(card) {
+  const wasOpen = card.classList.contains('open');
+  document.querySelectorAll('.svc-card').forEach(c => c.classList.remove('open'));
+  if (!wasOpen) card.classList.add('open');
+}
+
+function selectTime(btn) {
+  btn.closest('.time-btns').querySelectorAll('.time-btn').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+}
+</script>
+
+</body>
+</html>
