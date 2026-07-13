@@ -1398,7 +1398,8 @@ footer {
       <p class="hero-sub">Posudky, rizikové kácení, ošetření dřevin. Každý strom je jiný — přistupuji k němu individuálně, bez subdodavatelů.</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="showPage('consult')">Konzultace zdarma</button>
-        <button class="btn-outline" onclick="showPage('references')">Moje práce</button>
+        <!-- Tlačítko na Reference dočasně skryté — odstraňte style, až budete mít reálný obsah -->
+        <button class="btn-outline" onclick="showPage('references')" style="display:none">Moje práce</button>
       </div>
       <div class="hero-stats">
         <!-- Upravte: statistiky -->
@@ -2164,16 +2165,20 @@ footer {
      ============================================= -->
 <div class="page" id="page-references">
 
-  <section class="ref-hero">
-    <div class="eyebrow">Portfolio prací</div>
-    <h1>Moje <em>práce</em></h1>
-    <p>Výběr realizovaných zakázek — od posudků po náročné rizikové kácení. Fotky před a po, popis situace a výsledku.</p>
-    <div class="ref-stats-row">
-      <div><div class="ref-stat-num">500+</div><div class="ref-stat-label">ošetřených stromů</div></div>
-      <div><div class="ref-stat-num">12+</div><div class="ref-stat-label">let praxe</div></div>
-      <div><div class="ref-stat-num">100%</div><div class="ref-stat-label">spokojených klientů</div></div>
-    </div>
-  </section>
+  <!-- Zatím nemám žádné reálné reference — sekce je dočasně skrytá (display:none).
+       Až budou hotové zakázky a recenze, odstraňte obalový div a jeho style. -->
+  <div style="display:none">
+    <section class="ref-hero">
+      <div class="eyebrow">Portfolio prací</div>
+      <h1>Moje <em>práce</em></h1>
+      <p>Výběr realizovaných zakázek — od posudků po náročné rizikové kácení. Fotky před a po, popis situace a výsledku.</p>
+      <div class="ref-stats-row">
+        <div><div class="ref-stat-num">500+</div><div class="ref-stat-label">ošetřených stromů</div></div>
+        <div><div class="ref-stat-num">12+</div><div class="ref-stat-label">let praxe</div></div>
+        <div><div class="ref-stat-num">100%</div><div class="ref-stat-label">spokojených klientů</div></div>
+      </div>
+    </section>
+  </div>
 
   <!-- Zatím nemám žádné reálné reference — sekce je dočasně skrytá (display:none).
        Až budou hotové zakázky a recenze, odstraňte obalový div a jeho style. -->
