@@ -1350,7 +1350,8 @@ footer {
   <div class="nav-links">
     <a href="#" onclick="showPage('services');return false;" id="nav-services">Služby</a>
     <a href="#" onclick="showPage('about');return false;" id="nav-about">O mně</a>
-    <a href="#" onclick="showPage('references');return false;" id="nav-references">Reference</a>
+    <!-- Reference dočasně skryté z menu — odstraňte style, až budete mít reálný obsah -->
+    <a href="#" onclick="showPage('references');return false;" id="nav-references" style="display:none">Reference</a>
     <a href="#" onclick="showPage('contact');return false;" id="nav-contact">Kontakt</a>
   </div>
   <button class="nav-cta" onclick="showPage('consult')">Konzultace zdarma</button>
@@ -1371,7 +1372,8 @@ footer {
   <a href="#" onclick="showPage('about');closeMobileMenu();return false;" id="mnav-about">
     <i class="ti ti-user"></i> O mně
   </a>
-  <a href="#" onclick="showPage('references');closeMobileMenu();return false;" id="mnav-references">
+  <!-- Reference dočasně skryté z menu — odstraňte style, až budete mít reálný obsah -->
+  <a href="#" onclick="showPage('references');closeMobileMenu();return false;" id="mnav-references" style="display:none">
     <i class="ti ti-photo"></i> Reference
   </a>
   <a href="#" onclick="showPage('contact');closeMobileMenu();return false;" id="mnav-contact">
@@ -1396,7 +1398,8 @@ footer {
       <p class="hero-sub">Posudky, rizikové kácení, ošetření dřevin. Každý strom je jiný — přistupuji k němu individuálně, bez subdodavatelů.</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="showPage('consult')">Konzultace zdarma</button>
-        <button class="btn-outline" onclick="showPage('references')">Moje práce</button>
+        <!-- Tlačítko na Reference dočasně skryté — odstraňte style, až budete mít reálný obsah -->
+        <button class="btn-outline" onclick="showPage('references')" style="display:none">Moje práce</button>
       </div>
       <div class="hero-stats">
         <!-- Upravte: statistiky -->
@@ -1457,27 +1460,31 @@ footer {
     </div>
   </section>
 
-  <section class="home-reviews">
-    <div class="section-label">Co říkají klienti</div>
-    <div class="reviews-grid">
-      <!-- Upravte: reference -->
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">„Profesionální přístup, přesné a čisté provedení. Posudek byl hotový do tří dnů."</p>
-        <div class="review-author">Markéta V. · správa bytového domu</div>
+  <!-- Zatím nemám žádné reálné reference — sekce je dočasně skrytá (display:none).
+       Až budou hotové zakázky a recenze, odstraňte obalový div a jeho style. -->
+  <div style="display:none">
+    <section class="home-reviews">
+      <div class="section-label">Co říkají klienti</div>
+      <div class="reviews-grid">
+        <!-- Upravte: reference -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Profesionální přístup, přesné a čisté provedení. Posudek byl hotový do tří dnů."</p>
+          <div class="review-author">Markéta V. · správa bytového domu</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Kácení staré borovice proběhlo bez jediného škrábanku na plotu i trávníku."</p>
+          <div class="review-author">Tomáš R. · soukromá zahrada, Průhonice</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Posudek byl srozumitelný i pro laika. Na místě vše vysvětlil a navrhl dlouhodobý plán."</p>
+          <div class="review-author">Jana K. · obec Říčany</div>
+        </div>
       </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">„Kácení staré borovice proběhlo bez jediného škrábanku na plotu i trávníku."</p>
-        <div class="review-author">Tomáš R. · soukromá zahrada, Průhonice</div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">„Posudek byl srozumitelný i pro laika. Na místě vše vysvětlil a navrhl dlouhodobý plán."</p>
-        <div class="review-author">Jana K. · obec Říčany</div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <div class="cta-strip">
     <div class="cta-strip-text">
@@ -2134,7 +2141,9 @@ footer {
         <div class="faq-item"><div class="faq-q">Pracujete i o víkendu?</div><div class="faq-a">Konzultace ano (Po–So). Kácení a ošetření domlouvám převážně v týdnu.</div></div>
       </div>
 
-      <div>
+      <!-- Zatím nemám žádné reálné reference — sekce je dočasně skrytá (display:none).
+           Až budou hotové zakázky a recenze, odstraňte obalový div a jeho style. -->
+      <div style="display:none">
         <div class="sidebar-label">Co říkají klienti</div>
         <div class="testimonial-mini">
           <div class="t-stars">★★★★★</div>
@@ -2156,139 +2165,147 @@ footer {
      ============================================= -->
 <div class="page" id="page-references">
 
-  <section class="ref-hero">
-    <div class="eyebrow">Portfolio prací</div>
-    <h1>Moje <em>práce</em></h1>
-    <p>Výběr realizovaných zakázek — od posudků po náročné rizikové kácení. Fotky před a po, popis situace a výsledku.</p>
-    <div class="ref-stats-row">
-      <div><div class="ref-stat-num">500+</div><div class="ref-stat-label">ošetřených stromů</div></div>
-      <div><div class="ref-stat-num">12+</div><div class="ref-stat-label">let praxe</div></div>
-      <div><div class="ref-stat-num">100%</div><div class="ref-stat-label">spokojených klientů</div></div>
-    </div>
-  </section>
+  <!-- Zatím nemám žádné reálné reference — sekce je dočasně skrytá (display:none).
+       Až budou hotové zakázky a recenze, odstraňte obalový div a jeho style. -->
+  <div style="display:none">
+    <section class="ref-hero">
+      <div class="eyebrow">Portfolio prací</div>
+      <h1>Moje <em>práce</em></h1>
+      <p>Výběr realizovaných zakázek — od posudků po náročné rizikové kácení. Fotky před a po, popis situace a výsledku.</p>
+      <div class="ref-stats-row">
+        <div><div class="ref-stat-num">500+</div><div class="ref-stat-label">ošetřených stromů</div></div>
+        <div><div class="ref-stat-num">12+</div><div class="ref-stat-label">let praxe</div></div>
+        <div><div class="ref-stat-num">100%</div><div class="ref-stat-label">spokojených klientů</div></div>
+      </div>
+    </section>
+  </div>
 
-  <section class="ref-portfolio">
-    <div class="section-label">Realizované zakázky</div>
-    <div class="portfolio-grid">
+  <!-- Zatím nemám žádné reálné reference — sekce je dočasně skrytá (display:none).
+       Až budou hotové zakázky a recenze, odstraňte obalový div a jeho style. -->
+  <div style="display:none">
+    <section class="ref-portfolio">
+      <div class="section-label">Realizované zakázky</div>
+      <div class="portfolio-grid">
 
-      <!-- Hlavní karta — vyplňte nebo nahraďte fotografií -->
-      <div class="portfolio-card featured">
-        <div class="portfolio-img">
-          <!-- Nahraďte: <img src="foto-hlavni.jpg" alt="Popis"> -->
-          <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" style="height:100%">
-            <rect width="680" height="220" fill="#d4e8c0"/>
-            <rect x="0" y="140" width="680" height="80" fill="#c4daa8"/>
-            <rect x="195" y="50" width="16" height="170" rx="5" fill="#7aaa58" opacity="0.7"/>
-            <ellipse cx="203" cy="46" rx="48" ry="40" fill="#a8c882" opacity="0.85"/>
-            <ellipse cx="175" cy="64" rx="34" ry="27" fill="#b8d898"/>
-            <ellipse cx="232" cy="60" rx="38" ry="29" fill="#b8d898"/>
-            <rect x="390" y="35" width="13" height="185" rx="4" fill="#7aaa58" opacity="0.65"/>
-            <ellipse cx="397" cy="32" rx="42" ry="34" fill="#a8c882" opacity="0.8"/>
-            <ellipse cx="368" cy="52" rx="30" ry="23" fill="#b8d898" opacity="0.8"/>
-            <ellipse cx="426" cy="48" rx="33" ry="25" fill="#b8d898" opacity="0.8"/>
-            <rect x="560" y="55" width="11" height="165" rx="4" fill="#7aaa58" opacity="0.55"/>
-            <ellipse cx="566" cy="52" rx="35" ry="28" fill="#a8c882" opacity="0.7"/>
-          </svg>
-          <div class="port-tag">Rizikové kácení</div>
+        <!-- Hlavní karta — vyplňte nebo nahraďte fotografií -->
+        <div class="portfolio-card featured">
+          <div class="portfolio-img">
+            <!-- Nahraďte: <img src="foto-hlavni.jpg" alt="Popis"> -->
+            <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" style="height:100%">
+              <rect width="680" height="220" fill="#d4e8c0"/>
+              <rect x="0" y="140" width="680" height="80" fill="#c4daa8"/>
+              <rect x="195" y="50" width="16" height="170" rx="5" fill="#7aaa58" opacity="0.7"/>
+              <ellipse cx="203" cy="46" rx="48" ry="40" fill="#a8c882" opacity="0.85"/>
+              <ellipse cx="175" cy="64" rx="34" ry="27" fill="#b8d898"/>
+              <ellipse cx="232" cy="60" rx="38" ry="29" fill="#b8d898"/>
+              <rect x="390" y="35" width="13" height="185" rx="4" fill="#7aaa58" opacity="0.65"/>
+              <ellipse cx="397" cy="32" rx="42" ry="34" fill="#a8c882" opacity="0.8"/>
+              <ellipse cx="368" cy="52" rx="30" ry="23" fill="#b8d898" opacity="0.8"/>
+              <ellipse cx="426" cy="48" rx="33" ry="25" fill="#b8d898" opacity="0.8"/>
+              <rect x="560" y="55" width="11" height="165" rx="4" fill="#7aaa58" opacity="0.55"/>
+              <ellipse cx="566" cy="52" rx="35" ry="28" fill="#a8c882" opacity="0.7"/>
+            </svg>
+            <div class="port-tag">Rizikové kácení</div>
+          </div>
+          <div class="portfolio-body">
+            <!-- Upravte: název a popis -->
+            <div class="portfolio-title">Stará lípa u bytového domu — Vinohrady, Praha</div>
+            <div class="portfolio-meta">Praha 2 · Jaro 2024 · Lípa ve IV. stupni hniloby, práce z lana bez plošiny v koordinaci se správou domu</div>
+          </div>
         </div>
-        <div class="portfolio-body">
-          <!-- Upravte: název a popis -->
-          <div class="portfolio-title">Stará lípa u bytového domu — Vinohrady, Praha</div>
-          <div class="portfolio-meta">Praha 2 · Jaro 2024 · Lípa ve IV. stupni hniloby, práce z lana bez plošiny v koordinaci se správou domu</div>
-        </div>
-      </div>
 
-      <!-- Karta 2 -->
-      <div class="portfolio-card">
-        <div class="portfolio-img">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="height:100%">
-            <rect width="340" height="160" fill="#daeacc"/>
-            <rect x="120" y="40" width="11" height="120" rx="4" fill="#7aaa58" opacity="0.65"/>
-            <ellipse cx="126" cy="36" rx="34" ry="28" fill="#a8c882" opacity="0.85"/>
-            <rect x="200" y="35" width="10" height="125" rx="4" fill="#7aaa58" opacity="0.6"/>
-            <ellipse cx="205" cy="32" rx="30" ry="25" fill="#a8c882" opacity="0.8"/>
-          </svg>
-          <div class="port-tag">Dendrologický průzkum</div>
+        <!-- Karta 2 -->
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="height:100%">
+              <rect width="340" height="160" fill="#daeacc"/>
+              <rect x="120" y="40" width="11" height="120" rx="4" fill="#7aaa58" opacity="0.65"/>
+              <ellipse cx="126" cy="36" rx="34" ry="28" fill="#a8c882" opacity="0.85"/>
+              <rect x="200" y="35" width="10" height="125" rx="4" fill="#7aaa58" opacity="0.6"/>
+              <ellipse cx="205" cy="32" rx="30" ry="25" fill="#a8c882" opacity="0.8"/>
+            </svg>
+            <div class="port-tag">Dendrologický průzkum</div>
+          </div>
+          <div class="portfolio-body">
+            <div class="portfolio-title">Dendrologický průzkum — sídliště Chodov</div>
+            <div class="portfolio-meta">Praha 11 · 14 stromů · posudek pro správu městského obvodu</div>
+          </div>
         </div>
-        <div class="portfolio-body">
-          <div class="portfolio-title">Dendrologický průzkum — sídliště Chodov</div>
-          <div class="portfolio-meta">Praha 11 · 14 stromů · posudek pro správu městského obvodu</div>
-        </div>
-      </div>
 
-      <!-- Karta 3 -->
-      <div class="portfolio-card">
-        <div class="portfolio-img">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="height:100%">
-            <rect width="340" height="160" fill="#e4f0d8"/>
-            <rect x="160" y="30" width="14" height="130" rx="5" fill="#7aaa58" opacity="0.65"/>
-            <ellipse cx="167" cy="26" rx="50" ry="42" fill="#b8d898" opacity="0.8"/>
-            <ellipse cx="130" cy="50" rx="36" ry="28" fill="#cce4aa" opacity="0.7"/>
-            <ellipse cx="204" cy="46" rx="38" ry="30" fill="#cce4aa" opacity="0.7"/>
-            <path d="M130 65 Q95 50 75 32" stroke="#5a8a30" stroke-width="2" fill="none" stroke-dasharray="4 3" opacity="0.6"/>
-            <path d="M204 62 Q240 47 260 30" stroke="#5a8a30" stroke-width="2" fill="none" stroke-dasharray="4 3" opacity="0.6"/>
-          </svg>
-          <div class="port-tag">Vzpěry</div>
+        <!-- Karta 3 -->
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="height:100%">
+              <rect width="340" height="160" fill="#e4f0d8"/>
+              <rect x="160" y="30" width="14" height="130" rx="5" fill="#7aaa58" opacity="0.65"/>
+              <ellipse cx="167" cy="26" rx="50" ry="42" fill="#b8d898" opacity="0.8"/>
+              <ellipse cx="130" cy="50" rx="36" ry="28" fill="#cce4aa" opacity="0.7"/>
+              <ellipse cx="204" cy="46" rx="38" ry="30" fill="#cce4aa" opacity="0.7"/>
+              <path d="M130 65 Q95 50 75 32" stroke="#5a8a30" stroke-width="2" fill="none" stroke-dasharray="4 3" opacity="0.6"/>
+              <path d="M204 62 Q240 47 260 30" stroke="#5a8a30" stroke-width="2" fill="none" stroke-dasharray="4 3" opacity="0.6"/>
+            </svg>
+            <div class="port-tag">Vzpěry</div>
+          </div>
+          <div class="portfolio-body">
+            <div class="portfolio-title">Dynamické vzpěry — dub letní, soukromá zahrada</div>
+            <div class="portfolio-meta">Středočeský kraj · Podzim 2023 · Stabilizace vícekmenného dubu</div>
+          </div>
         </div>
-        <div class="portfolio-body">
-          <div class="portfolio-title">Dynamické vzpěry — dub letní, soukromá zahrada</div>
-          <div class="portfolio-meta">Středočeský kraj · Podzim 2023 · Stabilizace vícekmenného dubu</div>
-        </div>
-      </div>
 
-      <!-- Karta 4 — přidejte vlastní fotku -->
-      <div class="portfolio-card">
-        <div class="portfolio-img" style="background:#e8f2e0;flex-direction:column;gap:8px;color:#6a8a50;font-size:12px;">
-          <i class="ti ti-photo-plus" style="font-size:36px;color:#a8c882"></i>
-          <span>Přidejte vlastní fotku</span>
+        <!-- Karta 4 — přidejte vlastní fotku -->
+        <div class="portfolio-card">
+          <div class="portfolio-img" style="background:#e8f2e0;flex-direction:column;gap:8px;color:#6a8a50;font-size:12px;">
+            <i class="ti ti-photo-plus" style="font-size:36px;color:#a8c882"></i>
+            <span>Přidejte vlastní fotku</span>
+          </div>
+          <div class="portfolio-body">
+            <!-- Upravte: popis zakázky -->
+            <div class="portfolio-title">Vaše zakázka</div>
+            <div class="portfolio-meta">Nahraďte vlastní fotografií a popisem</div>
+          </div>
         </div>
-        <div class="portfolio-body">
-          <!-- Upravte: popis zakázky -->
-          <div class="portfolio-title">Vaše zakázka</div>
-          <div class="portfolio-meta">Nahraďte vlastní fotografií a popisem</div>
+
+      </div>
+    </section>
+
+    <!-- Reference klientů -->
+    <section class="ref-reviews">
+      <div class="section-label">Co říkají klienti</div>
+      <div class="ref-reviews-grid">
+        <!-- Upravte: reference -->
+        <div class="ref-review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Profesionální přístup, přesné a čisté provedení. Stromy jsou v perfektním stavu a posudek byl hotový do tří dnů."</p>
+          <div class="review-author">Markéta V. · správa bytového domu</div>
+        </div>
+        <div class="ref-review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Kácení staré borovice proběhlo bez jediného škrábanku na plotu i trávníku. Práce na laně opravdu funguje."</p>
+          <div class="review-author">Tomáš R. · soukromá zahrada, Průhonice</div>
+        </div>
+        <div class="ref-review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Posudek byl srozumitelný i pro laika. Oceňuji, že na místě vysvětlil vše osobně a doporučil dlouhodobý plán péče."</p>
+          <div class="review-author">Jana K. · obec Říčany</div>
+        </div>
+        <div class="ref-review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Přijel do hodiny od zavolání, vše klidně vysvětlil. Nabídka přišla e-mailem ještě ten večer."</p>
+          <div class="review-author">Petr M. · Praha 4</div>
+        </div>
+        <div class="ref-review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Inventarizace 30 stromů byla hotová za dva dny. Zpráva přehledná, mapa přesná. Doporučuji každé obci."</p>
+          <div class="review-author">Bc. Monika H. · Obecní úřad Průhonice</div>
+        </div>
+        <div class="ref-review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Výsadba tří lip podle jeho doporučení a všechny se krásně ujaly. Ví, co dělá, a vysvětlí proč."</p>
+          <div class="review-author">Roman Š. · firemní areál, Středočeský kraj</div>
         </div>
       </div>
-
-    </div>
-  </section>
-
-  <!-- Reference klientů -->
-  <section class="ref-reviews">
-    <div class="section-label">Co říkají klienti</div>
-    <div class="ref-reviews-grid">
-      <!-- Upravte: reference -->
-      <div class="ref-review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">„Profesionální přístup, přesné a čisté provedení. Stromy jsou v perfektním stavu a posudek byl hotový do tří dnů."</p>
-        <div class="review-author">Markéta V. · správa bytového domu</div>
-      </div>
-      <div class="ref-review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">„Kácení staré borovice proběhlo bez jediného škrábanku na plotu i trávníku. Práce na laně opravdu funguje."</p>
-        <div class="review-author">Tomáš R. · soukromá zahrada, Průhonice</div>
-      </div>
-      <div class="ref-review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">„Posudek byl srozumitelný i pro laika. Oceňuji, že na místě vysvětlil vše osobně a doporučil dlouhodobý plán péče."</p>
-        <div class="review-author">Jana K. · obec Říčany</div>
-      </div>
-      <div class="ref-review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">„Přijel do hodiny od zavolání, vše klidně vysvětlil. Nabídka přišla e-mailem ještě ten večer."</p>
-        <div class="review-author">Petr M. · Praha 4</div>
-      </div>
-      <div class="ref-review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">„Inventarizace 30 stromů byla hotová za dva dny. Zpráva přehledná, mapa přesná. Doporučuji každé obci."</p>
-        <div class="review-author">Bc. Monika H. · Obecní úřad Průhonice</div>
-      </div>
-      <div class="ref-review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">„Výsadba tří lip podle jeho doporučení a všechny se krásně ujaly. Ví, co dělá, a vysvětlí proč."</p>
-        <div class="review-author">Roman Š. · firemní areál, Středočeský kraj</div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <div class="cta-strip">
     <div class="cta-strip-text">
