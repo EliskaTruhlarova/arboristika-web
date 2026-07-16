@@ -365,6 +365,76 @@ ul { list-style: none; }
   letter-spacing: 0.05em;
 }
 
+/* O mně teaser na úvodní */
+.home-about {
+  background: var(--bila);
+  border-top: 0.5px solid var(--ramecek-svetly);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  padding: 40px 32px;
+}
+.home-about-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.home-about-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-tmavy);
+  margin-bottom: 12px;
+}
+.home-about-title span {
+  display: block;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-jemny);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+.home-about-text {
+  font-size: 13px;
+  color: var(--text-stredni);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 480px;
+}
+.home-about-certs { display: flex; flex-direction: column; gap: 8px; }
+.home-about-cert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-stredni);
+  background: var(--zelena-pozadi);
+  border-radius: 6px;
+  padding: 12px 14px;
+}
+.home-about-cert i { color: #4a7228; font-size: 16px; flex-shrink: 0; }
+
+/* Kontakt teaser na úvodní */
+.home-contact {
+  background: var(--krem);
+  padding: 40px 32px;
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.home-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.home-contact-grid .contact-row {
+  background: var(--bila);
+  border: 0.5px solid var(--ramecek);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 0;
+}
+
 /* =============================================
    O MNĚ
    ============================================= */
@@ -612,6 +682,20 @@ ul { list-style: none; }
   text-align: center;
 }
 .services-grid-wrap { padding: 32px 32px 0; }
+.price-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--zelena-pozadi);
+  border: 0.5px solid rgba(90,138,48,0.25);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 12px;
+  color: var(--text-stredni);
+  line-height: 1.6;
+  margin: 14px 0 24px;
+}
+.price-note i { color: var(--zelena-stredni); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1297,7 +1381,7 @@ footer {
 
   /* Padding sekcí */
   .hero, .about-hero, .about-certs, .about-values,
-  .home-services, .home-reviews,
+  .home-services, .home-reviews, .home-about, .home-contact,
   .services-hero, .services-grid-wrap,
   .contact-hero, .contact-info, .contact-form-wrap, .contact-map,
   .consult-intro, .consult-steps, .consult-form-wrap, .consult-sidebar,
@@ -1309,6 +1393,7 @@ footer {
   .contact-body, .consult-intro, .consult-body,
   .services-hero, .home-svc-grid, .cert-grid,
   .values-grid, .portfolio-grid, .reviews-grid,
+  .home-about-grid, .home-contact-grid,
   .ref-reviews-grid { grid-template-columns: 1fr; }
 
   /* Hero */
@@ -1494,6 +1579,51 @@ footer {
     </div>
   </section>
 
+  <section class="home-about">
+    <div class="home-about-grid">
+      <div>
+        <div class="section-label">O mně</div>
+        <div class="home-about-title">Matěj Faltys<span>Certifikovaný arborista</span></div>
+        <p class="home-about-text">Certifikovaný arborista s bakalářským titulem v oboru Arboristika z Mendelovy univerzity v Brně. Ke stromům přistupuji jako ke komplikovaným organismům — každou zakázku řeším osobně od konzultace až po úklid pracoviště.</p>
+        <button class="btn-outline" onclick="showPage('about')">Více o mně →</button>
+      </div>
+      <div class="home-about-certs">
+        <div class="home-about-cert"><i class="ti ti-school" aria-hidden="true"></i> Bakalář oboru Arboristika</div>
+        <div class="home-about-cert"><i class="ti ti-first-aid-kit" aria-hidden="true"></i> Certifikace práce ve výškách</div>
+        <div class="home-about-cert"><i class="ti ti-tool" aria-hidden="true"></i> Certifikace práce s motorovou pilou</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="consult-steps">
+    <div class="section-label">Jak probíhá spolupráce</div>
+    <div class="steps-row">
+      <div class="step-card"><div class="step-num">01</div><div class="step-title">Konzultace</div><div class="step-desc">Posoudím strom na místě, probereme možnosti.</div></div>
+      <div class="step-card"><div class="step-num">02</div><div class="step-title">Nabídka</div><div class="step-desc">Dostanete písemnou cenovou nabídku a domluvíme termín.</div></div>
+      <div class="step-card"><div class="step-num">03</div><div class="step-title">Realizace</div><div class="step-desc">Provedení domluveného zákroku.</div></div>
+      <div class="step-card"><div class="step-num">04</div><div class="step-title">Úklid</div><div class="step-desc">Úklid pracoviště a odvoz materiálu.</div></div>
+    </div>
+  </section>
+
+  <section class="home-contact">
+    <div class="section-label">Kontakt</div>
+    <div class="home-contact-grid">
+      <div class="contact-row">
+        <div class="c-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
+        <div><div class="c-label">Telefon</div><div class="c-val">+420 777 123 456<small>Po–So 7:00–18:00</small></div></div>
+      </div>
+      <div class="contact-row">
+        <div class="c-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
+        <div><div class="c-label">E-mail</div><div class="c-val">info@arboristika-faltys.cz<small>Odpověď do 24 h</small></div></div>
+      </div>
+      <div class="contact-row">
+        <div class="c-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+        <div><div class="c-label">Sídlo</div><div class="c-val">Sloupnice, Pardubický kraj</div></div>
+      </div>
+    </div>
+    <button class="btn-outline" onclick="showPage('contact')">Kontaktní údaje →</button>
+  </section>
+
   <!-- Zatím nemám žádné reálné reference — recenze zatím nejsou k dispozici.
        Až nějaké budete mít, přidejte sem novou sekci "Co říkají klienti" s reviews-grid. -->
 
@@ -1622,6 +1752,10 @@ footer {
 
   <div class="services-grid-wrap">
     <div class="section-label">Klikněte na službu pro detail</div>
+    <div class="price-note">
+      <i class="ti ti-info-circle" aria-hidden="true"></i>
+      Uvedené ceny jsou orientační — konečná cena se odvíjí od konkrétní situace na místě. V nezávazné poptávce nám můžete rovnou poslat fotky stromu pro přesnější odhad.
+    </div>
     <div class="services-grid">
 
       <!-- SLUŽBA 1 — Řez stromu -->
