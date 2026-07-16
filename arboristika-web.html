@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jan Novák · Arboristika</title>
+<title>Matěj Faltys · Arboristika</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -462,7 +462,7 @@ ul { list-style: none; }
 }
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 .cert-card {
@@ -487,12 +487,11 @@ ul { list-style: none; }
 /* Příběh + timeline */
 .about-story {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 .about-story-left {
   background: var(--krem);
   padding: 36px 32px;
-  border-right: 0.5px solid var(--ramecek-svetly);
   border-bottom: 0.5px solid var(--ramecek-svetly);
 }
 .about-story-left p {
@@ -580,9 +579,7 @@ ul { list-style: none; }
   border-bottom: 0.5px solid var(--ramecek-svetly);
   padding: 44px 32px 40px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
+  grid-template-columns: 1fr;
 }
 .services-hero h1 {
   font-family: var(--serif);
@@ -696,6 +693,23 @@ ul { list-style: none; }
 }
 .svc-detail-list li:last-child { border-bottom: none; }
 .svc-detail-list li i { color: var(--zelena-stredni); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+/* Seznam dílčích položek s vlastní cenou (např. typy řezu, typy vazeb) */
+.svc-item-list { }
+.svc-item-list li {
+  padding: 8px 0;
+  border-bottom: 0.5px solid #d4e8c0;
+}
+.svc-item-list li:last-child { border-bottom: none; }
+.svc-item-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.svc-item-name { font-size: 12px; font-weight: 500; color: var(--text-tmavy); }
+.svc-item-price { font-size: 12px; font-weight: 500; color: var(--zelena-stredni); white-space: nowrap; }
+.svc-item-desc { font-size: 11.5px; color: var(--text-svetly); line-height: 1.55; margin-top: 2px; }
 .svc-detail-box {
   background: var(--bila);
   border: 0.5px solid #c8dea8;
@@ -1345,7 +1359,7 @@ footer {
   <div class="nav-logo" onclick="showPage('home');closeMobileMenu()">
     <div class="nav-logo-dot"></div>
     <!-- Upravte: název firmy -->
-    Jan Novák · Arboristika
+    Matěj Faltys · Arboristika
   </div>
   <div class="nav-links">
     <a href="#" onclick="showPage('services');return false;" id="nav-services">Služby</a>
@@ -1354,7 +1368,7 @@ footer {
     <a href="#" onclick="showPage('references');return false;" id="nav-references" style="display:none">Reference</a>
     <a href="#" onclick="showPage('contact');return false;" id="nav-contact">Kontakt</a>
   </div>
-  <button class="nav-cta" onclick="showPage('consult')">Konzultace zdarma</button>
+  <button class="nav-cta" onclick="showPage('consult')">Nezávazná poptávka</button>
   <!-- Hamburger tlačítko — viditelné jen na mobilu -->
   <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Otevřít menu">
     <span></span><span></span><span></span>
@@ -1380,7 +1394,7 @@ footer {
     <i class="ti ti-map-pin"></i> Kontakt
   </a>
   <a href="#" class="mobile-menu-cta" onclick="showPage('consult');closeMobileMenu();return false;">
-    <i class="ti ti-calendar"></i> Konzultace zdarma
+    <i class="ti ti-calendar"></i> Nezávazná poptávka
   </a>
 </div>
 
@@ -1391,21 +1405,15 @@ footer {
 
   <section class="hero">
     <div class="hero-left">
-      <div class="eyebrow">Certifikovaný arborista · Praha a okolí</div>
+      <div class="eyebrow">Certifikovaný arborista · Litomyšl, Sloupnice a okolí, Svitavsko</div>
       <!-- Upravte: hlavní nadpis -->
-      <h1>Péče o stromy<br/>s <em>odborností</em><br/>a citem</h1>
+      <h1>Péče o dřeviny<br/><em>odborně</em><br/>a s citem</h1>
       <!-- Upravte: podnadpis -->
       <p class="hero-sub">Posudky, rizikové kácení, ošetření dřevin. Každý strom je jiný — přistupuji k němu individuálně, bez subdodavatelů.</p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="showPage('consult')">Konzultace zdarma</button>
+        <button class="btn-primary" onclick="showPage('consult')">Nezávazná poptávka</button>
         <!-- Tlačítko na Reference dočasně skryté — odstraňte style, až budete mít reálný obsah -->
         <button class="btn-outline" onclick="showPage('references')" style="display:none">Moje práce</button>
-      </div>
-      <div class="hero-stats">
-        <!-- Upravte: statistiky -->
-        <div><div class="stat-num">12+</div><div class="stat-label">let praxe</div></div>
-        <div><div class="stat-num">500+</div><div class="stat-label">ošetřených stromů</div></div>
-        <div><div class="stat-num">ISA</div><div class="stat-label">certifikát</div></div>
       </div>
     </div>
     <div class="hero-right">
@@ -1430,73 +1438,55 @@ footer {
       <div class="home-svc-card" onclick="showPage('services')">
         <div class="svc-icon"><i class="ti ti-tree" aria-hidden="true"></i></div>
         <h3>Řez stromu</h3>
-        <p>Tvarování, redukce koruny, výchovný a bezpečnostní řez. Prodloužení zdraví stromu.</p>
+        <p>Ošetření koruny stromu s cílem dosažení provozní bezpečnosti a perspektivního, zdravého stromu. Řezy zakládací, udržovací, stabilizační a tvarovací.</p>
+      </div>
+      <div class="home-svc-card" onclick="showPage('services')">
+        <div class="svc-icon"><i class="ti ti-link" aria-hidden="true"></i></div>
+        <h3>Vazby v koruně stromu</h3>
+        <p>Svázání koruny stromu speciálními vazebními systémy k dosažení stability problémových stromů při extrémních vlivech počasí.</p>
       </div>
       <div class="home-svc-card" onclick="showPage('services')">
         <div class="svc-icon"><i class="ti ti-file-search" aria-hidden="true"></i></div>
-        <h3>Dendrologický průzkum</h3>
-        <p>Písemné hodnocení zdravotního stavu, statiky a rizik. Podklad pro úřady i pojišťovny.</p>
+        <h3>Hodnocení stromů</h3>
+        <p>Posouzení a zhodnocení stavu jednotlivých stromů nebo celých skupin a vypracování písemné zprávy s plánem péče.</p>
       </div>
       <div class="home-svc-card" onclick="showPage('services')">
         <div class="svc-icon"><i class="ti ti-axe" aria-hidden="true"></i></div>
-        <h3>Kácení</h3>
-        <p>Rizikové kácení z lana v náročných podmínkách — zástavba, omezený prostor, výšky.</p>
+        <h3>Rizikové kácení</h3>
+        <p>Směrové kácení volné nebo s použitím lanové techniky. Rozhoduje velikost stromu a jeho prostranství.</p>
       </div>
       <div class="home-svc-card" onclick="showPage('services')">
         <div class="svc-icon"><i class="ti ti-clipboard-list" aria-hidden="true"></i></div>
         <h3>Inventarizace</h3>
-        <p>Soupis a hodnocení dřevin na pozemku. Ideální pro správy domů, obce i firmy.</p>
+        <p>Soupis, lokalizace a základní dendrometrické údaje stromů v určité oblasti.</p>
       </div>
       <div class="home-svc-card" onclick="showPage('services')">
         <div class="svc-icon"><i class="ti ti-plant" aria-hidden="true"></i></div>
         <h3>Výsadba</h3>
-        <p>Výběr vhodné dřeviny, správná příprava stanoviště a odborná výsadba se zárukou ujmutí.</p>
+        <p>Výběr vhodné dřeviny, správná příprava stanoviště a odborná výsadba.</p>
       </div>
       <div class="home-svc-card" onclick="showPage('services')">
         <div class="svc-icon"><i class="ti ti-message-dots" aria-hidden="true"></i></div>
         <h3>Odborné konzultace</h3>
-        <p>Poradím s péčí o konkrétní strom, s výběrem dřeviny nebo s plánováním zahrady.</p>
+        <p>Poradím Vám s péčí o konkrétní strom a doporučím vhodný postup.</p>
       </div>
     </div>
   </section>
 
-  <!-- Zatím nemám žádné reálné reference — sekce je dočasně skrytá (display:none).
-       Až budou hotové zakázky a recenze, odstraňte obalový div a jeho style. -->
-  <div style="display:none">
-    <section class="home-reviews">
-      <div class="section-label">Co říkají klienti</div>
-      <div class="reviews-grid">
-        <!-- Upravte: reference -->
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">„Profesionální přístup, přesné a čisté provedení. Posudek byl hotový do tří dnů."</p>
-          <div class="review-author">Markéta V. · správa bytového domu</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">„Kácení staré borovice proběhlo bez jediného škrábanku na plotu i trávníku."</p>
-          <div class="review-author">Tomáš R. · soukromá zahrada, Průhonice</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">„Posudek byl srozumitelný i pro laika. Na místě vše vysvětlil a navrhl dlouhodobý plán."</p>
-          <div class="review-author">Jana K. · obec Říčany</div>
-        </div>
-      </div>
-    </section>
-  </div>
+  <!-- Zatím nemám žádné reálné reference — recenze zatím nejsou k dispozici.
+       Až nějaké budete mít, přidejte sem novou sekci "Co říkají klienti" s reviews-grid. -->
 
   <div class="cta-strip">
     <div class="cta-strip-text">
-      Nejste si jistí, co váš strom potřebuje?
-      <span>Přijedu se podívat — první konzultace je zdarma</span>
+      Potřebujete poradit s konkrétním problémem?
+      <span>Přijedu se na Váš strom podívat!</span>
     </div>
-    <button class="btn-white" onclick="showPage('consult')">Konzultace zdarma →</button>
+    <button class="btn-white" onclick="showPage('consult')">Nezávazná poptávka</button>
   </div>
 
   <footer>
-    <div class="footer-logo">Jan Novák · Arboristika</div>
-    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+    <div class="footer-logo">Matěj Faltys · Arboristika</div>
+    <div class="footer-copy">© 2026 · Certifikovaný arborista · Litomyšl a Pardubický kraj</div>
   </footer>
 </div>
 
@@ -1511,14 +1501,10 @@ footer {
       <!-- Upravte: nadpis -->
       <h1>Stromy jsou<br/>moje <em>vášeň</em><br/>i řemeslo</h1>
       <!-- Upravte: představení -->
-      <p class="about-lead">Jsem Jan Novák, certifikovaný arborista s více než 12 lety praxe. Pracuji sám — každou zakázku řeším osobně od prvního pohledu na strom až po úklid pracoviště.</p>
-      <div class="about-quote">
-        <!-- Upravte: citát -->
-        <p>„Zdravý strom nepotřebuje pozornost. Nemocný strom potřebuje správného člověka."</p>
-      </div>
+      <p class="about-lead">Mé jméno je Matěj Faltys a jsem certifikovaný arborista s dosaženým bakalářským titulem v oboru Arboristika na Mendelově univerzitě v Brně a několikaletou praxí. Každou zakázku řeším osobně od prvního pohledu na strom a prvotní konzultace, přes realizaci potřebných zákroků až po úklid pracoviště. Zakládám si na přístupu zohledňujícím co možná nejvíce faktorů, které se týkají konkrétního případu. Přistupuji ke stromům jako k velmi komplikovaným organismům a vždy řeším veškeré souvislosti tak, aby bylo dosaženo co možná nejoptimálnějšího závěru, kdy může strom na stanovišti i nadále bezpečně prospívat a přinášet tak dál širokou škálu svých benefitů. V případech stromů, které jsou již za hranicí rozumné záchrany přistupuji k jejich bezpečnému odstranění. Arboristika je dynamicky se rozvíjející obor, a proto se i po dokončení studia nepřestávám učit novým poznatkům.</p>
     </div>
     <div class="about-hero-right">
-      <!-- Nahraďte <div class="photo-placeholder"> za <img src="foto.jpg" alt="Jan Novák"> -->
+      <!-- Nahraďte <div class="photo-placeholder"> za <img src="foto.jpg" alt="Matěj Faltys"> -->
       <div class="photo-frame">
         <div class="photo-placeholder">
           <i class="ti ti-user" style="font-size:36px;color:#8ab870"></i>
@@ -1526,8 +1512,8 @@ footer {
         </div>
         <div class="photo-caption">
           <!-- Upravte: jméno a titul -->
-          <strong>Jan Novák</strong>
-          Certifikovaný arborista · ISA
+          <strong>Bc. Matěj Faltys</strong>
+          Certifikovaný arborista
         </div>
       </div>
     </div>
@@ -1538,29 +1524,31 @@ footer {
     <div class="cert-grid">
       <!-- Upravte: certifikáty -->
       <div class="cert-card">
-        <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
-        <div class="cert-name">ISA Certified Arborist</div>
-        <div class="cert-org">International Society of Arboriculture</div>
-        <div class="cert-year">od 2014</div>
-      </div>
-      <div class="cert-card">
         <div class="cert-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
-        <div class="cert-name">Ing. lesní inženýrství</div>
-        <div class="cert-org">ČZU Praha</div>
-        <div class="cert-year">2012</div>
+        <div class="cert-name">Bakalář oboru Arboristika</div>
+        <div class="cert-org">Mendelova univerzita v Brně</div>
+        <div class="cert-year">2025</div>
       </div>
       <div class="cert-card">
         <div class="cert-icon"><i class="ti ti-first-aid-kit" aria-hidden="true"></i></div>
-        <div class="cert-name">Práce ve výškách</div>
-        <div class="cert-org">ČÚBP · opakovaně obnoven</div>
-        <div class="cert-year">platné 2026</div>
+        <div class="cert-name">Certifikace práce ve výškách</div>
+        <div class="cert-org">opakovaně obnovováno</div>
+        <div class="cert-year">platné od 2023</div>
       </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="ti ti-tool" aria-hidden="true"></i></div>
+        <div class="cert-name">Certifikace práce s motorovou pilou</div>
+        <div class="cert-org">opakovaně obnovováno</div>
+        <div class="cert-year">platné od 2023</div>
+      </div>
+      <!-- Upravte: pojištění odpovědnosti — doplňte, až bude uzavřené konkrétní pojištění
       <div class="cert-card">
         <div class="cert-icon"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
         <div class="cert-name">Pojištění odpovědnosti</div>
-        <div class="cert-org">5 000 000 Kč · Generali</div>
-        <div class="cert-year">platné 2026</div>
+        <div class="cert-org">— Kč · pojišťovna</div>
+        <div class="cert-year">platné od —</div>
       </div>
+      -->
     </div>
   </section>
 
@@ -1568,84 +1556,23 @@ footer {
     <div class="about-story-left">
       <div class="section-label">Můj příběh</div>
       <!-- Upravte: příběh -->
-      <p>Ke stromům jsem přišel přes les. Po studiu na ČZU jsem několik let pracoval v lesním hospodářství, ale vždy mě víc zajímaly stromy v krajině a ve městech — tam, kde mají příběh a kde na nich záleží konkrétním lidem.</p>
-      <p>V roce 2013 jsem složil zkoušku ISA a od té doby pracuji jako samostatný arborista. Záměrně zůstávám sólový — bez subkontraktorů, bez spěchu. Každého klienta obsloužím osobně.</p>
-      <p>Specializuji se na náročné případy: stromy v zástavbě, v blízkosti elektrického vedení nebo s pokročilým poškozením. Rád poradím i tehdy, když ostatní říkají, že strom musí pryč.</p>
-    </div>
-    <div class="about-timeline">
-      <div class="section-label">Kariéra</div>
-      <!-- Upravte: timeline -->
-      <div class="tl-item">
-        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div><div class="tl-year">2012</div></div>
-        <div class="tl-body">
-          <div class="tl-title">Ing. — ČZU Praha</div>
-          <div class="tl-desc">Obor lesní inženýrství, specializace dendrologie a ochrana dřevin.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div><div class="tl-year">2013</div></div>
-        <div class="tl-body">
-          <div class="tl-title">ISA Certified Arborist</div>
-          <div class="tl-desc">Mezinárodní certifikace — složení zkoušky v Berlíně.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div><div class="tl-year">2014</div></div>
-        <div class="tl-body">
-          <div class="tl-title">Zahájení samostatné praxe</div>
-          <div class="tl-desc">První zakázky v Praze a Středočeském kraji.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div><div class="tl-year">2018</div></div>
-        <div class="tl-body">
-          <div class="tl-title">Posudky pro úřady</div>
-          <div class="tl-desc">Spolupráce s městskými částmi Praha 2, 4 a 10.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left"><div class="tl-dot"></div><div class="tl-year">dnes</div></div>
-        <div class="tl-body">
-          <div class="tl-title">500+ ošetřených stromů</div>
-          <div class="tl-desc">Stále sólová praxe, důraz na kvalitu a osobní přístup.</div>
-        </div>
-      </div>
+      <p>Ke stromům jsem měl odjakživa blízko mj. díky práci mého otce, který se živí jako lesní hospodář. Můj zájem mě zavedl ke studiu na Mendelově univerzitě v Brně, kde jsem po dobu tří let čerpal odborné znalosti od těch nejpovolanějších lidí v našem oboru. Hlavně díky studiu se ve mě skutečně prohloubil zájem o stromy v našich městech, obcích či volné krajině - u stromů, které mají každý svůj příběh a kolikrát jsou i citově spjaty s životy nás lidí.</p>
+      <p>V roce 2025 jsem dokončil své studium s titulem bakalář a od té doby pracuji jako arborista lezec/konzultant.</p>
+      <p>Zaměřuji se na stromy v obtížných podmínkách - v zástavbě, podél komunikací a všude tam, kde stromy rostou v suboptimálních podmínkách a je na místě do jejich vývoje vstoupit a pomoct jim k dalšímu perspektivnímu vývoji. Snažím se nabídnout svůj pohled i v případech, kdy je variantou strom pokácet.</p>
     </div>
   </div>
-
-  <section class="about-values">
-    <div class="section-label">Proč si mě klienti volí znovu</div>
-    <div class="values-grid">
-      <!-- Upravte: hodnoty -->
-      <div class="value-card">
-        <div class="value-num">01</div>
-        <div class="value-title">Osobní přístup</div>
-        <div class="value-desc">Pracuji sám. Na každé zakázce jste v přímém kontaktu se mnou — ne s dispečerem.</div>
-      </div>
-      <div class="value-card">
-        <div class="value-num">02</div>
-        <div class="value-title">Zachování stromu</div>
-        <div class="value-desc">Kácení je vždy poslední možnost. Nejdřív hledám cesty, jak strom zachránit.</div>
-      </div>
-      <div class="value-card">
-        <div class="value-num">03</div>
-        <div class="value-title">Jasná komunikace</div>
-        <div class="value-desc">Před každou prací dostanete písemnou nabídku a vysvětlení proč. Žádná překvapení.</div>
-      </div>
-    </div>
-  </section>
 
   <div class="cta-strip">
     <div class="cta-strip-text">
-      Pojďme se potkat u vašeho stromu
-      <span>První konzultace na místě je zdarma</span>
+      Potřebujete pomoct s konkrétním případem?
+      <span>Přijedu se na Váš strom podívat.</span>
     </div>
-    <button class="btn-white" onclick="showPage('consult')">Objednat konzultaci →</button>
+    <button class="btn-white" onclick="showPage('consult')">Nezávazná poptávka →</button>
   </div>
 
   <footer>
-    <div class="footer-logo">Jan Novák · Arboristika</div>
-    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+    <div class="footer-logo">Matěj Faltys · Arboristika</div>
+    <div class="footer-copy">© 2026 · Certifikovaný arborista · Litomyšl a Pardubický kraj</div>
   </footer>
 </div>
 
@@ -1657,13 +1584,8 @@ footer {
   <section class="services-hero">
     <div>
       <div class="eyebrow">Nabízené služby</div>
-      <h1>Co pro vás<br/><em>udělám</em></h1>
-      <p>Od prvního posouzení stromu přes odborný posudek až po kácení nebo novou výsadbu. Každou službu zajišťuji osobně.</p>
-    </div>
-    <div class="svc-nums">
-      <div><div class="svc-num-val">6</div><div class="svc-num-label">služeb</div></div>
-      <div><div class="svc-num-val">12+</div><div class="svc-num-label">let praxe</div></div>
-      <div><div class="svc-num-val">500+</div><div class="svc-num-label">realizací</div></div>
+      <h1>Co <em>nabízím</em></h1>
+      <p>Od prvotní konzultace přes posouzení stavu stromu až po řez, kácení či novou výsadbu.</p>
     </div>
   </section>
 
@@ -1679,90 +1601,143 @@ footer {
             <div class="svc-card-num">01</div>
           </div>
           <div class="svc-card-title">Řez stromu</div>
-          <p class="svc-card-short">Tvarování, redukce koruny, výchovný a bezpečnostní řez.</p>
+          <p class="svc-card-short">Zakládací, udržovací, stabilizační a tvarovací řez koruny stromu.</p>
         </div>
         <div class="svc-card-footer">
           <!-- Upravte: cena -->
-          <div class="svc-card-price">od 1 800 Kč</div>
+          <div class="svc-card-price">od 150 Kč</div>
           <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
             <div>
               <!-- Upravte: popis služby -->
-              <p class="svc-detail-desc">Správný řez prodlouží životnost stromu a sníží riziko odlomení větví. Provádím bezpečnostní, tvarovací i výchovný řez s ohledem na fyziologii dřeviny.</p>
-              <div class="svc-detail-label">Co je zahrnuto</div>
-              <ul class="svc-detail-list">
-                <li><i class="ti ti-check" aria-hidden="true"></i> Bezpečnostní řez — odstranění suchých větví</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Redukce koruny — snížení hmotnosti</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Tvarování a rovnováha koruny</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Výchovný řez mladých stromů</li>
+              <p class="svc-detail-desc">Řez stromu provádím zvolením vhodné technologie řezu dle odborných arboristických standardů. Každý strom je jiný, a tak vždy záleží na konkrétní situaci — velikosti stromu, zvoleném řezu, manipulaci s dřevní hmotou atd. Konečnou cenu předem domluvíme po osobní konzultaci, popřípadě je možné předběžné ocenění dle Vámi zaslaného popisu s fotografiemi.</p>
+              <div class="svc-detail-label">Typy řezu a ceny</div>
+              <ul class="svc-item-list">
+                <li>
+                  <div class="svc-item-row"><span class="svc-item-name">Výchovný řez</span><span class="svc-item-price">od 150 Kč</span></div>
+                  <div class="svc-item-desc">Podpora přirozeně se vyvíjející architektury mladého stromu.</div>
+                </li>
+                <li>
+                  <div class="svc-item-row"><span class="svc-item-name">Zdravotní řez</span><span class="svc-item-price">od 1 300 Kč</span></div>
+                  <div class="svc-item-desc">Řez se zaměřením na posílení perspektivy a dlouhodobé funkčnosti stromu.</div>
+                </li>
+                <li>
+                  <div class="svc-item-row"><span class="svc-item-name">Bezpečnostní řez</span><span class="svc-item-price">od 850 Kč</span></div>
+                  <div class="svc-item-desc">Jednoduchý řez zaměřený na zajištění provozní bezpečnosti stromu, eliminace rizika padajících částí.</div>
+                </li>
+                <li>
+                  <div class="svc-item-row"><span class="svc-item-name">Lokální redukce</span><span class="svc-item-price">od 850 Kč</span></div>
+                  <div class="svc-item-desc">Zásah pouze v části koruny stromu, např. za účelem vyzvednutí podchozího/průjezdního profilu nebo eliminace konfliktu s překážkou.</div>
+                </li>
+                <li>
+                  <!-- Upravte: doplňte přesnou cenu, až bude k dispozici -->
+                  <div class="svc-item-row"><span class="svc-item-name">Obvodová redukce</span><span class="svc-item-price">cena na dotaz</span></div>
+                  <div class="svc-item-desc">Komplexní zásah většího rozsahu primárně za účelem snížení náporové plochy větru a snížení rizika vyvrácení nebo zlomení stromu.</div>
+                </li>
               </ul>
             </div>
             <div>
               <div class="svc-detail-box">
-                <div class="svc-detail-box-label">Kdy je vhodný čas?</div>
-                <!-- Upravte: tip -->
-                <div class="svc-detail-box-text">Většinu dřevin lze řezat mimo vegetační klid (podzim–zima). Ovocné stromy ideálně v únoru–březnu.</div>
+                <div class="svc-detail-box-label">Nenašli jste konkrétní zásah?</div>
+                <div class="svc-detail-box-text">Neváhejte mě i přesto kontaktovat přes formulář nezávazné poptávky.</div>
               </div>
-              <div class="svc-detail-price-row">
-                <div class="svc-detail-price">od 1 800 Kč <span>/ strom</span></div>
-                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Objednat</button>
+              <div class="svc-detail-price-row" style="justify-content:flex-end;">
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Nezávazná poptávka</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- SLUŽBA 2 — Dendrologický průzkum -->
+      <!-- SLUŽBA 2 — Bezpečnostní vazby -->
       <div class="svc-card" onclick="toggleSvc(this)">
         <div class="svc-card-top">
           <div class="svc-card-icon-row">
-            <div class="svc-icon"><i class="ti ti-file-search" aria-hidden="true"></i></div>
+            <div class="svc-icon"><i class="ti ti-link" aria-hidden="true"></i></div>
             <div class="svc-card-num">02</div>
           </div>
-          <div class="svc-card-title">Dendrologický průzkum</div>
-          <p class="svc-card-short">Posouzení zdravotního stavu, statiky a rizik. Podklad pro úřady.</p>
+          <div class="svc-card-title">Bezpečnostní vazby</div>
+          <p class="svc-card-short">Vázání korun stromů vhodnými vazebními systémy k zajištění jejich provozní bezpečnosti.</p>
         </div>
         <div class="svc-card-footer">
-          <div class="svc-card-price">od 2 500 Kč</div>
+          <div class="svc-card-price">od 3 000 Kč</div>
           <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
             <div>
-              <p class="svc-detail-desc">Písemné hodnocení zdravotního stavu, statické stability a míry rizika. Výstupem je zpráva použitelná jako podklad pro stavební řízení nebo pojistnou událost.</p>
-              <div class="svc-detail-label">Co je zahrnuto</div>
-              <ul class="svc-detail-list">
-                <li><i class="ti ti-check" aria-hidden="true"></i> Terénní průzkum a fotodokumentace</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Hodnocení zdravotního stavu</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Posouzení statické stability</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Doporučení pěstebních opatření</li>
+              <p class="svc-detail-desc">Vázání korun stromů vhodnými vazebními systémy k zajištění jejich provozní bezpečnosti.</p>
+              <div class="svc-detail-label">Typy vazeb a ceny</div>
+              <ul class="svc-item-list">
+                <li>
+                  <div class="svc-item-row"><span class="svc-item-name">Dynamická vazba</span><span class="svc-item-price">3 000–4 000 Kč</span></div>
+                  <div class="svc-item-desc">Systém tvořený syntetickými lany v horní úrovni koruny s účelem zachytávání dynamických pohybů větví či zachycení jejich pádu v případě selhání. 4t systém 3 000 Kč, 8t systém 4 000 Kč.</div>
+                </li>
+                <li>
+                  <div class="svc-item-row"><span class="svc-item-name">Statická vazba</span><span class="svc-item-price">8 000 Kč</span></div>
+                  <div class="svc-item-desc">Podkladnicová vazba tvořená ocelovými lany a dřevěnými podkladnicemi z tvrdého dřeva s účelem zajištění již vzniklého statického defektu v dolní úrovni koruny.</div>
+                </li>
               </ul>
             </div>
             <div>
-              <div class="svc-detail-box">
-                <div class="svc-detail-box-label">Kdy ho potřebujete?</div>
-                <div class="svc-detail-box-text">Před kácením chráněného stromu, při stavbě v blízkosti dřevin, po bouři nebo při podezření na hnilobu.</div>
-              </div>
-              <div class="svc-detail-price-row">
-                <div class="svc-detail-price">od 2 500 Kč <span>/ strom</span></div>
-                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Objednat</button>
+              <div class="svc-detail-price-row" style="justify-content:flex-end;margin-top:0;padding-top:0;border-top:none;">
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Nezávazná poptávka</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- SLUŽBA 3 — Inventarizace -->
+      <!-- SLUŽBA 3 — Hodnocení stromů -->
       <div class="svc-card" onclick="toggleSvc(this)">
         <div class="svc-card-top">
           <div class="svc-card-icon-row">
-            <div class="svc-icon"><i class="ti ti-clipboard-list" aria-hidden="true"></i></div>
+            <div class="svc-icon"><i class="ti ti-file-search" aria-hidden="true"></i></div>
             <div class="svc-card-num">03</div>
           </div>
-          <div class="svc-card-title">Inventarizace dřevin</div>
-          <p class="svc-card-short">Soupis a hodnocení stromů na pozemku pro správy domů a obce.</p>
+          <div class="svc-card-title">Hodnocení stromů</div>
+          <p class="svc-card-short">Posouzení a zhodnocení stavu stromů s vypracováním písemné zprávy a plánu péče.</p>
+        </div>
+        <div class="svc-card-footer">
+          <div class="svc-card-price">od 250 Kč</div>
+          <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
+        </div>
+        <div class="svc-detail">
+          <div class="svc-detail-grid">
+            <div>
+              <p class="svc-detail-desc">Soupis, lokalizace a odborné posouzení stavu stromů na základě kvalitativních parametrů. Vyvození potřebných opatření či plánu péče na základě zjištěných skutečností.</p>
+              <div class="svc-detail-label">Typy hodnocení a ceny</div>
+              <ul class="svc-item-list">
+                <li>
+                  <div class="svc-item-row"><span class="svc-item-name">Inventarizace dřevin, dendrologický průzkum</span><span class="svc-item-price">od 250 Kč</span></div>
+                  <div class="svc-item-desc">Taxonomie, lokalizace, dendrometrie a zhodnocení stavu stromů na vybrané lokalitě.</div>
+                </li>
+                <li>
+                  <div class="svc-item-row"><span class="svc-item-name">Dendrologický posudek</span><span class="svc-item-price">od 2 500 Kč</span></div>
+                  <div class="svc-item-desc">Detailní zhodnocení kvalitativních parametrů stromu s výstupem navrhujícím následný plán péče.</div>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="svc-detail-price-row" style="justify-content:flex-end;margin-top:0;padding-top:0;border-top:none;">
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Nezávazná poptávka</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLUŽBA 4 — Stavební dozor ochrany dřevin -->
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-card-top">
+          <div class="svc-card-icon-row">
+            <div class="svc-icon"><i class="ti ti-building" aria-hidden="true"></i></div>
+            <div class="svc-card-num">04</div>
+          </div>
+          <div class="svc-card-title">Stavební dozor ochrany dřevin</div>
+          <p class="svc-card-short">Dohled nad ochranou dřevin při stavební činnosti.</p>
         </div>
         <div class="svc-card-footer">
           <div class="svc-card-price">dle rozsahu</div>
@@ -1771,21 +1746,10 @@ footer {
         <div class="svc-detail">
           <div class="svc-detail-grid">
             <div>
-              <p class="svc-detail-desc">Systematický soupis všech dřevin na daném území s hodnocením stavu, rizik a doporučením opatření. Výsledkem je tabulka nebo GIS vrstva pro správu zeleně.</p>
-              <div class="svc-detail-label">Co je zahrnuto</div>
-              <ul class="svc-detail-list">
-                <li><i class="ti ti-check" aria-hidden="true"></i> Polohopis a dendrometrické údaje</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Hodnocení zdravotního stavu</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Tabulka + mapové podklady</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Plán péče s prioritami</li>
-              </ul>
+              <p class="svc-detail-desc">Dohled nad dodržováním standardizovaných postupů zajišťujících perspektivní vývoj stromů po dokončení stavby, vytyčení ochranných pásem, určení perspektivních stromů před zahájením stavby.</p>
             </div>
             <div>
-              <div class="svc-detail-box">
-                <div class="svc-detail-box-label">Pro koho je vhodná?</div>
-                <div class="svc-detail-box-text">Správy bytových domů, SVJ, obce, firmy se zahradou, investoři před rozvojem pozemku.</div>
-              </div>
-              <div class="svc-detail-price-row">
+              <div class="svc-detail-price-row" style="margin-top:0;padding-top:0;border-top:none;">
                 <div class="svc-detail-price">dle rozsahu <span>/ poptejte</span></div>
                 <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Poptávka</button>
               </div>
@@ -1794,12 +1758,12 @@ footer {
         </div>
       </div>
 
-      <!-- SLUŽBA 4 — Výsadba -->
+      <!-- SLUŽBA 5 — Výsadba -->
       <div class="svc-card" onclick="toggleSvc(this)">
         <div class="svc-card-top">
           <div class="svc-card-icon-row">
             <div class="svc-icon"><i class="ti ti-plant" aria-hidden="true"></i></div>
-            <div class="svc-card-num">04</div>
+            <div class="svc-card-num">05</div>
           </div>
           <div class="svc-card-title">Výsadba</div>
           <p class="svc-card-short">Výběr vhodné dřeviny, příprava stanoviště a odborná výsadba.</p>
@@ -1834,39 +1798,32 @@ footer {
         </div>
       </div>
 
-      <!-- SLUŽBA 5 — Kácení -->
+      <!-- SLUŽBA 6 — Kácení -->
       <div class="svc-card" onclick="toggleSvc(this)">
         <div class="svc-card-top">
           <div class="svc-card-icon-row">
             <div class="svc-icon"><i class="ti ti-axe" aria-hidden="true"></i></div>
-            <div class="svc-card-num">05</div>
+            <div class="svc-card-num">06</div>
           </div>
           <div class="svc-card-title">Kácení</div>
-          <p class="svc-card-short">Bezpečné kácení z lana v náročných podmínkách — zástavba, výšky.</p>
+          <p class="svc-card-short">Bezpečné kácení volné směrové nebo z lana v náročných podmínkách.</p>
         </div>
         <div class="svc-card-footer">
-          <div class="svc-card-price">od 4 000 Kč</div>
+          <div class="svc-card-price">od 1 500 Kč</div>
           <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
             <div>
-              <p class="svc-detail-desc">Rizikové kácení z lana bez plošiny — bezpečně i tam, kde není místo pro těžkou techniku. Strom rozebírám po sekcích shora dolů.</p>
-              <div class="svc-detail-label">Co je zahrnuto</div>
-              <ul class="svc-detail-list">
-                <li><i class="ti ti-check" aria-hidden="true"></i> Arboristická technika — práce z lana</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Řízené spouštění sekcí</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Štěpkování a odvoz materiálu</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Frézování pařezu (volitelně)</li>
-              </ul>
+              <p class="svc-detail-desc">Bezpečné kácení volné směrové nebo z lana v náročných podmínkách zástavby a jiných cílů pádu. Součástí je možnost vyřízení povolení ke kácení.</p>
             </div>
             <div>
               <div class="svc-detail-box">
-                <div class="svc-detail-box-label">Potřebujete povolení?</div>
-                <div class="svc-detail-box-text">Stromy s obvodem kmene nad 80 cm vyžadují povolení úřadu. Pomohu s žádostí a zajistím posudek jako podklad.</div>
+                <div class="svc-detail-box-label">Potřebujete povolení ke kácení?</div>
+                <div class="svc-detail-box-text">Součástí služby je možnost vyřízení povolení ke kácení.</div>
               </div>
               <div class="svc-detail-price-row">
-                <div class="svc-detail-price">od 4 000 Kč <span>/ strom</span></div>
+                <div class="svc-detail-price">od 1 500 Kč <span>/ strom</span></div>
                 <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Objednat</button>
               </div>
             </div>
@@ -1874,24 +1831,24 @@ footer {
         </div>
       </div>
 
-      <!-- SLUŽBA 6 — Odborné konzultace -->
+      <!-- SLUŽBA 7 — Odborná konzultace -->
       <div class="svc-card" onclick="toggleSvc(this)">
         <div class="svc-card-top">
           <div class="svc-card-icon-row">
             <div class="svc-icon"><i class="ti ti-message-dots" aria-hidden="true"></i></div>
-            <div class="svc-card-num">06</div>
+            <div class="svc-card-num">07</div>
           </div>
-          <div class="svc-card-title">Odborné konzultace</div>
-          <p class="svc-card-short">Poradím s péčí o strom, výběrem dřeviny nebo s plánováním zahrady.</p>
+          <div class="svc-card-title">Odborná konzultace</div>
+          <p class="svc-card-short">Poradím Vám s konkrétní situací.</p>
         </div>
         <div class="svc-card-footer">
-          <div class="svc-card-price">první zdarma</div>
+          <div class="svc-card-price">500 Kč/h</div>
           <div class="svc-card-more"><i class="ti ti-chevron-down" aria-hidden="true"></i> detail</div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
             <div>
-              <p class="svc-detail-desc">Přijedu, podívám se a řeknu vám na rovinu, co doporučuji — bez zbytečných prací navíc. První konzultace přímo u stromu je vždy zdarma.</p>
+              <p class="svc-detail-desc">Přijedu, podívám se a řeknu vám na rovinu, co doporučuji — bez zbytečných prací navíc.</p>
               <div class="svc-detail-label">Co je zahrnuto</div>
               <ul class="svc-detail-list">
                 <li><i class="ti ti-check" aria-hidden="true"></i> Posouzení stavu stromu na místě</li>
@@ -1906,7 +1863,7 @@ footer {
                 <div class="svc-detail-box-text">Kdykoli máte pochybnosti o zdraví stromu nebo plánujete stavbu v jeho blízkosti.</div>
               </div>
               <div class="svc-detail-price-row">
-                <div class="svc-detail-price">první zdarma <span>/ bez závazku</span></div>
+                <div class="svc-detail-price">500 Kč <span>/ hodina</span></div>
                 <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Objednat</button>
               </div>
             </div>
@@ -1920,14 +1877,14 @@ footer {
   <div class="cta-strip">
     <div class="cta-strip-text">
       Nejste si jistí, která služba je ta pravá?
-      <span>Konzultace na místě je zdarma — přijedu a poradím</span>
+      <span>Konzultace na místě — přijedu a poradím</span>
     </div>
-    <button class="btn-white" onclick="showPage('consult')">Konzultace zdarma →</button>
+    <button class="btn-white" onclick="showPage('consult')">Nezávazná poptávka</button>
   </div>
 
   <footer>
-    <div class="footer-logo">Jan Novák · Arboristika</div>
-    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+    <div class="footer-logo">Matěj Faltys · Arboristika</div>
+    <div class="footer-copy">© 2026 · Certifikovaný arborista · Litomyšl a Pardubický kraj</div>
   </footer>
 </div>
 
@@ -1959,11 +1916,11 @@ footer {
       </div>
       <div class="contact-row">
         <div class="c-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
-        <div><div class="c-label">E-mail</div><div class="c-val">jan@arboristika-novak.cz<small>Odpověď do 24 h</small></div></div>
+        <div><div class="c-label">E-mail</div><div class="c-val">info@arboristika-faltys.cz<small>Odpověď do 24 h</small></div></div>
       </div>
       <div class="contact-row">
         <div class="c-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
-        <div><div class="c-label">Sídlo</div><div class="c-val">Praha — Vinohrady<small>Výjezdy po celém Středočeském kraji</small></div></div>
+        <div><div class="c-label">Sídlo</div><div class="c-val">Sloupnice, Pardubický kraj</div></div>
       </div>
       <div class="contact-row">
         <div class="c-icon"><i class="ti ti-truck" aria-hidden="true"></i></div>
@@ -2005,7 +1962,7 @@ footer {
     <!-- Nahraďte: Google Maps embed nebo jiná mapa -->
     <div class="map-placeholder">
       <i class="ti ti-map-2" style="font-size:40px;color:#8ab870"></i>
-      <strong style="color:var(--text-tmavy);font-size:14px;">Praha a Středočeský kraj</strong>
+      <strong style="color:var(--text-tmavy);font-size:14px;">Litomyšl a Pardubický kraj</strong>
       <p>Zde vložte Google Maps embed nebo interaktivní mapu</p>
       <p style="font-size:11px;">Maps embed: vložte &lt;iframe src="..."&gt; místo tohoto bloku</p>
     </div>
@@ -2014,32 +1971,32 @@ footer {
   <div class="cta-strip">
     <div class="cta-strip-text">
       Potřebujete přijet přímo na místo?
-      <span>Objednejte bezplatnou konzultaci u vašeho stromu</span>
+      <span>Objednejte konzultaci u vašeho stromu</span>
     </div>
-    <button class="btn-white" onclick="showPage('consult')">Konzultace zdarma →</button>
+    <button class="btn-white" onclick="showPage('consult')">Nezávazná poptávka</button>
   </div>
 
   <footer>
-    <div class="footer-logo">Jan Novák · Arboristika</div>
-    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+    <div class="footer-logo">Matěj Faltys · Arboristika</div>
+    <div class="footer-copy">© 2026 · Certifikovaný arborista · Litomyšl a Pardubický kraj</div>
   </footer>
 </div>
 
 <!-- =============================================
-     KONZULTACE ZDARMA
+     KONZULTACE
      ============================================= -->
 <div class="page" id="page-consult">
 
   <section class="consult-intro">
     <div>
-      <div class="eyebrow">Konzultace zdarma</div>
-      <h1>Přijedu se<br/>podívat na <em>váš strom</em></h1>
-      <p>Vyplňte formulář a domluvíme termín. Přijedu, posoudím situaci přímo na místě a navrhnu řešení — bez závazku a bez poplatku.</p>
+      <div class="eyebrow">Konzultace</div>
+      <h1>Přijedu se<br/>podívat na <em>Váš strom</em></h1>
+      <p>Vyplňte formulář a domluvíme termín. Přijedu, posoudím situaci přímo na místě a navrhnu řešení.</p>
     </div>
     <div class="consult-perks">
       <div class="perk-row">
         <div class="perk-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
-        <div><div class="perk-title">Přijedu k vám</div><div class="perk-desc">Praha a Středočeský kraj. Doprava do 30 km od Prahy zdarma.</div></div>
+        <div><div class="perk-title">Přijedu k vám</div><div class="perk-desc">Litomyšl a Pardubický kraj. Doprava do 30 km od sídla zdarma.</div></div>
       </div>
       <div class="perk-row">
         <div class="perk-icon"><i class="ti ti-clock" aria-hidden="true"></i></div>
@@ -2055,10 +2012,10 @@ footer {
   <section class="consult-steps">
     <div class="section-label">Jak konzultace probíhá</div>
     <div class="steps-row">
-      <div class="step-card"><div class="step-num">01</div><div class="step-title">Vyplníte formulář</div><div class="step-desc">Popište situaci a přiložte případně fotku stromu e-mailem.</div></div>
-      <div class="step-card"><div class="step-num">02</div><div class="step-title">Domluvíme termín</div><div class="step-desc">Ozvím se do 24 h a navrhneme čas, který vám vyhovuje.</div></div>
+      <div class="step-card"><div class="step-num">01</div><div class="step-title">Vyplníte formulář</div><div class="step-desc">Popište situaci a přiložte případně fotku celého stromu e-mailem.</div></div>
+      <div class="step-card"><div class="step-num">02</div><div class="step-title">Domluvíme termín</div><div class="step-desc">Ozvu se do 24 h a navrhneme termín, který Vám vyhovuje.</div></div>
       <div class="step-card"><div class="step-num">03</div><div class="step-title">Přijedu na místo</div><div class="step-desc">Prohlédnu strom, zhodnotím stav a zodpovím vaše otázky.</div></div>
-      <div class="step-card"><div class="step-num">04</div><div class="step-title">Dostanete nabídku</div><div class="step-desc">Písemné shrnutí závěrů a cenová nabídka bez závazku.</div></div>
+      <div class="step-card"><div class="step-num">04</div><div class="step-title">Dostanete nabídku</div><div class="step-desc">Písemné shrnutí závěrů a cenovou nabídku.</div></div>
     </div>
   </section>
 
@@ -2093,7 +2050,7 @@ footer {
           </div>
           <div class="svc-btn" onclick="this.classList.toggle('sel')">
             <div class="svc-btn-title">Řez / ošetření koruny</div>
-            <div class="svc-btn-sub">Řez, vzpěry, ošetření</div>
+            <div class="svc-btn-sub">Řez, vazby, ošetření</div>
           </div>
         </div>
       </div>
@@ -2114,7 +2071,7 @@ footer {
         </div>
       </div>
 
-      <button class="submit-btn">Odeslat poptávku — konzultace zdarma</button>
+      <button class="submit-btn">Odeslat poptávku</button>
       <p class="form-note">Odesláním souhlasíte se zpracováním osobních údajů. Nikam nic neprodávám.</p>
     </div>
 
@@ -2128,18 +2085,11 @@ footer {
         </div>
         <div class="contact-row">
           <div class="c-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
-          <div><div class="c-label">E-mail</div><div class="c-val">jan@arboristika-novak.cz<small>Odpověď do 24 h</small></div></div>
+          <div><div class="c-label">E-mail</div><div class="c-val">info@arboristika-faltys.cz<small>Odpověď do 24 h</small></div></div>
         </div>
       </div>
 
-      <div>
-        <div class="sidebar-label">Časté otázky</div>
-        <!-- Upravte: FAQ -->
-        <div class="faq-item"><div class="faq-q">Je konzultace opravdu zdarma?</div><div class="faq-a">Ano, bez poplatku i bez závazku. Platíte jen tehdy, pokud se rozhodnete objednat práci.</div></div>
-        <div class="faq-item"><div class="faq-q">Jak daleko dojíždíte?</div><div class="faq-a">Praha a Středočeský kraj. Nad 30 km se účtuje příplatek 6 Kč/km.</div></div>
-        <div class="faq-item"><div class="faq-q">Potřebuji povolení ke kácení?</div><div class="faq-a">Záleží na druhu a obvodu kmene. Poradím vám na místě a pomohu s žádostí.</div></div>
-        <div class="faq-item"><div class="faq-q">Pracujete i o víkendu?</div><div class="faq-a">Konzultace ano (Po–So). Kácení a ošetření domlouvám převážně v týdnu.</div></div>
-      </div>
+      <!-- Časté otázky (FAQ) prozatím odstraněny — přidejte zpět, až budete mít aktuální odpovědi -->
 
       <!-- Zatím nemám žádné reálné reference — sekce je dočasně skrytá (display:none).
            Až budou hotové zakázky a recenze, odstraňte obalový div a jeho style. -->
@@ -2155,8 +2105,8 @@ footer {
   </div>
 
   <footer>
-    <div class="footer-logo">Jan Novák · Arboristika</div>
-    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+    <div class="footer-logo">Matěj Faltys · Arboristika</div>
+    <div class="footer-copy">© 2026 · Certifikovaný arborista · Litomyšl a Pardubický kraj</div>
   </footer>
 </div>
 
@@ -2316,8 +2266,8 @@ footer {
   </div>
 
   <footer>
-    <div class="footer-logo">Jan Novák · Arboristika</div>
-    <div class="footer-copy">© 2026 · ISA Certified Arborist · Praha a Středočeský kraj</div>
+    <div class="footer-logo">Matěj Faltys · Arboristika</div>
+    <div class="footer-copy">© 2026 · Certifikovaný arborista · Litomyšl a Pardubický kraj</div>
   </footer>
 </div>
 
