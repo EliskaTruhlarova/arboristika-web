@@ -964,6 +964,27 @@ ul { list-style: none; }
 .field textarea:focus,
 .field select:focus { border-color: var(--zelena-stredni); }
 .field textarea { resize: vertical; min-height: 90px; }
+.field input[type="file"] {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--text-jemny);
+}
+.field input[type="file"]::file-selector-button {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--zelena-tmavy);
+  background: var(--zelena-pozadi);
+  border: none;
+  border-radius: 3px;
+  padding: 8px 14px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.field input[type="file"]::file-selector-button:hover { background: #dcecc8; }
 .svc-btns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2078,6 +2099,14 @@ footer {
         <span class="fieldset-legend">Popis situace</span>
         <div class="field">
           <textarea placeholder="Druh stromu (pokud víte), přibližná výška, co vás trápí, blízkost budov nebo vedení…"></textarea>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <span class="fieldset-legend">Fotky nebo soubory (nepovinné)</span>
+        <div class="field">
+          <label>Přiložte fotky stromu nebo jiné podklady</label>
+          <input type="file" accept="image/*,.pdf" multiple>
         </div>
       </div>
 
