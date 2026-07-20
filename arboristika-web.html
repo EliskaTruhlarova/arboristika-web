@@ -745,11 +745,27 @@ ul { list-style: none; }
 }
 .svc-card-price { font-size: 13px; color: var(--zelena-stredni); font-weight: 500; }
 .svc-card-note { font-size: 10.5px; color: var(--text-jemny); margin-top: 3px; }
+.svc-card-more {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--zelena-stredni);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.svc-card-more:hover { color: var(--zelena-tmavy); }
+.svc-card-more i { font-size: 15px; transition: transform 0.15s; }
+.svc-card.open .svc-card-more i { transform: rotate(180deg); }
 .svc-detail {
   background: #f0f5ea;
   border-top: 0.5px solid #b8d898;
   padding: 22px 20px;
+  display: none;
 }
+.svc-card.open .svc-detail { display: block; }
 .svc-detail-grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
@@ -1812,6 +1828,7 @@ footer {
             <div class="svc-card-price">od 180 Kč</div>
             <div class="svc-card-note">Cena je orientační</div>
           </div>
+          <div class="svc-card-more" onclick="toggleSvc(this.closest('.svc-card'))">Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i></div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
@@ -1871,6 +1888,7 @@ footer {
             <div class="svc-card-price">od 3 600 Kč</div>
             <div class="svc-card-note">Cena je orientační</div>
           </div>
+          <div class="svc-card-more" onclick="toggleSvc(this.closest('.svc-card'))">Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i></div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
@@ -1912,6 +1930,7 @@ footer {
             <div class="svc-card-price">od 200 Kč</div>
             <div class="svc-card-note">Cena je orientační</div>
           </div>
+          <div class="svc-card-more" onclick="toggleSvc(this.closest('.svc-card'))">Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i></div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
@@ -1957,6 +1976,7 @@ footer {
             <div class="svc-card-price">dle rozsahu</div>
             <div class="svc-card-note">Cena je orientační</div>
           </div>
+          <div class="svc-card-more" onclick="toggleSvc(this.closest('.svc-card'))">Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i></div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
@@ -2009,6 +2029,7 @@ footer {
             <div class="svc-card-price">dle rozsahu</div>
             <div class="svc-card-note">Cena je orientační</div>
           </div>
+          <div class="svc-card-more" onclick="toggleSvc(this.closest('.svc-card'))">Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i></div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
@@ -2051,6 +2072,7 @@ footer {
             <div class="svc-card-price">od 1 800 Kč</div>
             <div class="svc-card-note">Cena je orientační</div>
           </div>
+          <div class="svc-card-more" onclick="toggleSvc(this.closest('.svc-card'))">Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i></div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
@@ -2090,30 +2112,39 @@ footer {
             <div class="svc-card-num">07</div>
           </div>
           <div class="svc-card-title">Odborná konzultace</div>
-          <p class="svc-card-short">Poradím vám s konkrétní situací.</p>
+          <p class="svc-card-short">Poradím vám telefonicky zdarma, nebo se přijedu podívat osobně.</p>
         </div>
         <div class="svc-card-footer">
           <div>
-            <div class="svc-card-price">500 Kč/h</div>
-            <div class="svc-card-note">Cena je orientační · telefonická konzultace zdarma</div>
+            <div class="svc-card-price">Zdarma / 500 Kč</div>
+            <div class="svc-card-note">Cena je orientační · telefonicky zdarma, osobně od 500 Kč/h</div>
           </div>
+          <div class="svc-card-more" onclick="toggleSvc(this.closest('.svc-card'))">Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i></div>
         </div>
         <div class="svc-detail">
           <div class="svc-detail-grid">
             <div>
-              <p class="svc-detail-desc">Přijedu, podívám se a řeknu vám na rovinu, co doporučuji — bez zbytečných prací navíc. Krátkou úvodní konzultaci po telefonu nabízím zdarma.</p>
-              <div class="svc-detail-label">Co je zahrnuto</div>
-              <ul class="svc-detail-list">
-                <li><i class="ti ti-check" aria-hidden="true"></i> Posouzení stavu stromu na místě</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Doporučení dalšího postupu</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Odpovědi na vaše otázky</li>
-                <li><i class="ti ti-check" aria-hidden="true"></i> Písemné shrnutí e-mailem</li>
+              <p class="svc-detail-desc">Vyberte si podle toho, co váš strom potřebuje — krátké poradenství po telefonu zdarma, nebo osobní návštěvu přímo u stromu.</p>
+              <div class="svc-detail-label">Typy konzultace</div>
+              <ul class="svc-item-list">
+                <li>
+                  <div class="svc-item-row"><span class="svc-item-name">Telefonická konzultace</span><span class="svc-item-price">zdarma</span></div>
+                  <div class="svc-item-desc">Krátké poradenství po telefonu — probereme situaci a doporučím další postup.</div>
+                </li>
+                <li>
+                  <div class="svc-item-row"><span class="svc-item-name">Osobní konzultace</span><span class="svc-item-price">500 Kč / hodina</span></div>
+                  <div class="svc-item-desc">Přijedu, podívám se a řeknu vám na rovinu, co doporučuji — bez zbytečných prací navíc.</div>
+                </li>
               </ul>
             </div>
             <div>
               <div class="svc-detail-box">
                 <div class="svc-detail-box-label">Kdy se oplatí zavolat?</div>
                 <div class="svc-detail-box-text">Kdykoli máte pochybnosti o zdraví stromu nebo plánujete stavbu v jeho blízkosti.</div>
+              </div>
+              <div class="svc-detail-price-row">
+                <div class="svc-detail-price">Zdarma <span>/ telefonicky</span></div>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('contact')" style="font-size:12px;padding:9px 16px">Kontaktní formulář</button>
               </div>
               <div class="svc-detail-price-row">
                 <div class="svc-detail-price">500 Kč <span>/ hodina</span></div>
@@ -2575,6 +2606,8 @@ function showPage(id, anchorId, svcKey) {
   if (anchorId) {
     const target = document.getElementById(anchorId);
     if (target) {
+      // Pokud je cílem konkrétní služba, otevřít jen tu — ostatní zůstanou sbalené
+      if (target.classList.contains('svc-card')) openSvcCard(target);
       requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }));
       return;
     }
@@ -2612,6 +2645,28 @@ document.addEventListener('click', function(e) {
 function selectTime(btn) {
   btn.closest('.time-btns').querySelectorAll('.time-btn').forEach(b => b.classList.remove('sel'));
   btn.classList.add('sel');
+}
+
+// Otevře konkrétní kartu služby a sbalí ostatní (jen jedna karta otevřená zároveň)
+function openSvcCard(card) {
+  document.querySelectorAll('.svc-card').forEach(c => {
+    const isTarget = c === card;
+    c.classList.toggle('open', isTarget);
+    const btn = c.querySelector('.svc-card-more');
+    if (btn) btn.innerHTML = isTarget
+      ? 'Skrýt podrobnosti <i class="ti ti-chevron-up" aria-hidden="true"></i>'
+      : 'Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i>';
+  });
+}
+
+function toggleSvc(card) {
+  if (card.classList.contains('open')) {
+    card.classList.remove('open');
+    const btn = card.querySelector('.svc-card-more');
+    if (btn) btn.innerHTML = 'Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i>';
+  } else {
+    openSvcCard(card);
+  }
 }
 
 // Tlačítko zpět nahoru — zobrazí se po odscrollování dolů
