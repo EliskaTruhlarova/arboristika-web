@@ -1284,6 +1284,35 @@ footer {
 }
 .footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
 
+/* Tlačítko zpět nahoru */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--zelena-tmavy);
+  color: var(--bila);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s, transform 0.2s, background 0.15s;
+  z-index: 90;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { background: var(--zelena-stredni); }
+@media (max-width: 640px) {
+  .back-to-top { right: 16px; bottom: 16px; width: 40px; height: 40px; font-size: 16px; }
+}
+
 /* =============================================
    HAMBURGER TLAČÍTKO (skryté na desktopu)
    ============================================= */
@@ -2481,6 +2510,10 @@ footer {
   </footer>
 </div>
 
+<button id="backToTop" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Zpět nahoru">
+  <i class="ti ti-arrow-up" aria-hidden="true"></i>
+</button>
+
 <!-- =============================================
      JAVASCRIPT
      ============================================= -->
@@ -2550,6 +2583,11 @@ function selectTime(btn) {
   btn.closest('.time-btns').querySelectorAll('.time-btn').forEach(b => b.classList.remove('sel'));
   btn.classList.add('sel');
 }
+
+// Tlačítko zpět nahoru — zobrazí se po odscrollování dolů
+window.addEventListener('scroll', () => {
+  document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+});
 </script>
 
 </body>
