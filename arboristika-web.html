@@ -326,6 +326,17 @@ ul { list-style: none; }
   color: var(--text-svetly);
   line-height: 1.65;
 }
+.home-svc-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--zelena-stredni);
+  letter-spacing: 0.02em;
+  margin-top: 12px;
+}
+.home-svc-more:hover { color: var(--zelena-tmavy); text-decoration: underline; }
 
 /* Reference mini na úvodní */
 .home-reviews {
@@ -1534,36 +1545,43 @@ footer {
         <div class="svc-icon"><i class="ti ti-tree" aria-hidden="true"></i></div>
         <h3>Řez stromu</h3>
         <p>Ošetření koruny stromu s cílem dosažení provozní bezpečnosti a perspektivního, zdravého stromu. Řezy zakládací, udržovací, stabilizační a tvarovací.</p>
+        <div class="home-svc-more" onclick="event.stopPropagation();showPage('services','svc-rez')">Podrobnosti →</div>
       </div>
       <div class="home-svc-card" onclick="showPage('services','svc-vazby')">
         <div class="svc-icon"><i class="ti ti-link" aria-hidden="true"></i></div>
         <h3>Instalace bezpečnostních vazeb</h3>
         <p>Svázání koruny stromu speciálními vazebními systémy k dosažení stability problémových stromů při extrémních vlivech počasí.</p>
+        <div class="home-svc-more" onclick="event.stopPropagation();showPage('services','svc-vazby')">Podrobnosti →</div>
       </div>
       <div class="home-svc-card" onclick="showPage('services','svc-hodnoceni')">
         <div class="svc-icon"><i class="ti ti-file-search" aria-hidden="true"></i></div>
         <h3>Hodnocení stromů</h3>
         <p>Posouzení a zhodnocení stavu jednotlivých stromů nebo celých skupin a vypracování písemné zprávy s plánem péče.</p>
+        <div class="home-svc-more" onclick="event.stopPropagation();showPage('services','svc-hodnoceni')">Podrobnosti →</div>
       </div>
       <div class="home-svc-card" onclick="showPage('services','svc-kaceni')">
         <div class="svc-icon"><i class="ti ti-axe" aria-hidden="true"></i></div>
         <h3>Rizikové kácení</h3>
         <p>Směrové kácení volné nebo s použitím lanové techniky. Rozhoduje velikost stromu a jeho prostranství.</p>
+        <div class="home-svc-more" onclick="event.stopPropagation();showPage('services','svc-kaceni')">Podrobnosti →</div>
       </div>
       <div class="home-svc-card" onclick="showPage('services','svc-hodnoceni')">
         <div class="svc-icon"><i class="ti ti-clipboard-list" aria-hidden="true"></i></div>
         <h3>Inventarizace</h3>
         <p>Soupis, lokalizace a základní dendrometrické údaje stromů v určité oblasti.</p>
+        <div class="home-svc-more" onclick="event.stopPropagation();showPage('services','svc-hodnoceni')">Podrobnosti →</div>
       </div>
       <div class="home-svc-card" onclick="showPage('services','svc-vysadba')">
         <div class="svc-icon"><i class="ti ti-plant" aria-hidden="true"></i></div>
         <h3>Výsadba</h3>
         <p>Výběr vhodné dřeviny, správná příprava stanoviště a odborná výsadba.</p>
+        <div class="home-svc-more" onclick="event.stopPropagation();showPage('services','svc-vysadba')">Podrobnosti →</div>
       </div>
       <div class="home-svc-card" onclick="showPage('services','svc-konzultace')">
         <div class="svc-icon"><i class="ti ti-message-dots" aria-hidden="true"></i></div>
         <h3>Odborné konzultace</h3>
         <p>Poradím Vám s péčí o konkrétní strom a doporučím vhodný postup.</p>
+        <div class="home-svc-more" onclick="event.stopPropagation();showPage('services','svc-konzultace')">Podrobnosti →</div>
       </div>
     </div>
   </section>
@@ -1796,7 +1814,7 @@ footer {
                 <div class="svc-detail-box-text">Neváhejte mě i přesto kontaktovat přes formulář nezávazné poptávky.</div>
               </div>
               <div class="svc-detail-price-row" style="justify-content:flex-end;">
-                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Nezávazná poptávka</button>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult',null,'rez')" style="font-size:11px;padding:9px 16px">Nezávazná poptávka</button>
               </div>
             </div>
           </div>
@@ -1833,7 +1851,7 @@ footer {
             </div>
             <div>
               <div class="svc-detail-price-row" style="justify-content:flex-end;margin-top:0;padding-top:0;border-top:none;">
-                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Nezávazná poptávka</button>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult',null,'rez')" style="font-size:11px;padding:9px 16px">Nezávazná poptávka</button>
               </div>
             </div>
           </div>
@@ -1874,7 +1892,7 @@ footer {
             </div>
             <div>
               <div class="svc-detail-price-row" style="justify-content:flex-end;margin-top:0;padding-top:0;border-top:none;">
-                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Nezávazná poptávka</button>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult',null,'pruzkum')" style="font-size:11px;padding:9px 16px">Nezávazná poptávka</button>
               </div>
             </div>
           </div>
@@ -1922,7 +1940,7 @@ footer {
               </div>
               <div class="svc-detail-price-row">
                 <div class="svc-detail-price">dle rozsahu <span>/ poptejte</span></div>
-                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Poptávka</button>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult',null,'stavba')" style="font-size:11px;padding:9px 16px">Poptávka</button>
               </div>
             </div>
           </div>
@@ -1960,7 +1978,7 @@ footer {
               </div>
               <div class="svc-detail-price-row">
                 <div class="svc-detail-price">dle rozsahu <span>/ poptejte</span></div>
-                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Poptávka</button>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult',null,'vysadba')" style="font-size:11px;padding:9px 16px">Poptávka</button>
               </div>
             </div>
           </div>
@@ -2002,7 +2020,7 @@ footer {
               </div>
               <div class="svc-detail-price-row">
                 <div class="svc-detail-price">od 1 800 Kč <span>/ strom</span></div>
-                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Objednat</button>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult',null,'kaceni')" style="font-size:11px;padding:9px 16px">Objednat</button>
               </div>
             </div>
           </div>
@@ -2040,7 +2058,7 @@ footer {
               </div>
               <div class="svc-detail-price-row">
                 <div class="svc-detail-price">500 Kč <span>/ hodina</span></div>
-                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult')" style="font-size:11px;padding:9px 16px">Objednat</button>
+                <button class="btn-primary" onclick="event.stopPropagation();showPage('consult',null,'poradit')" style="font-size:11px;padding:9px 16px">Objednat</button>
               </div>
             </div>
           </div>
@@ -2212,21 +2230,29 @@ footer {
       <div class="fieldset">
         <span class="fieldset-legend">O co jde?</span>
         <div class="svc-btns">
-          <div class="svc-btn sel" onclick="this.classList.toggle('sel')">
+          <div class="svc-btn sel" data-svc="poradit" onclick="this.classList.toggle('sel')">
             <div class="svc-btn-title">Nevím — potřebuji poradit</div>
             <div class="svc-btn-sub">Chci odborný názor</div>
           </div>
-          <div class="svc-btn" onclick="this.classList.toggle('sel')">
-            <div class="svc-btn-title">Kácení</div>
-            <div class="svc-btn-sub">Strom chci pokácet</div>
+          <div class="svc-btn" data-svc="rez" onclick="this.classList.toggle('sel')">
+            <div class="svc-btn-title">Řez / ošetření koruny</div>
+            <div class="svc-btn-sub">Řez, vazby, ošetření</div>
           </div>
-          <div class="svc-btn" onclick="this.classList.toggle('sel')">
+          <div class="svc-btn" data-svc="pruzkum" onclick="this.classList.toggle('sel')">
             <div class="svc-btn-title">Dendrologický průzkum</div>
             <div class="svc-btn-sub">Potřebuji písemné hodnocení</div>
           </div>
-          <div class="svc-btn" onclick="this.classList.toggle('sel')">
-            <div class="svc-btn-title">Řez / ošetření koruny</div>
-            <div class="svc-btn-sub">Řez, vazby, ošetření</div>
+          <div class="svc-btn" data-svc="kaceni" onclick="this.classList.toggle('sel')">
+            <div class="svc-btn-title">Kácení</div>
+            <div class="svc-btn-sub">Strom chci pokácet</div>
+          </div>
+          <div class="svc-btn" data-svc="stavba" onclick="this.classList.toggle('sel')">
+            <div class="svc-btn-title">Ochrana dřevin při stavbě</div>
+            <div class="svc-btn-sub">Stavební projekt v blízkosti stromů</div>
+          </div>
+          <div class="svc-btn" data-svc="vysadba" onclick="this.classList.toggle('sel')">
+            <div class="svc-btn-title">Výsadba</div>
+            <div class="svc-btn-sub">Chci zasadit nový strom</div>
           </div>
         </div>
       </div>
@@ -2461,7 +2487,7 @@ footer {
 <script>
 const pages = ['home','about','services','contact','consult','references'];
 
-function showPage(id, anchorId) {
+function showPage(id, anchorId, svcKey) {
   pages.forEach(p => {
     const el = document.getElementById('page-' + p);
     if (el) el.classList.toggle('active', p === id);
@@ -2476,6 +2502,13 @@ function showPage(id, anchorId) {
     a.classList.remove('active');
     if (a.id === 'mnav-' + id) a.classList.add('active');
   });
+  // Předvyplnění "O co jde?" v poptávkovém formuláři podle služby, ze které uživatel přišel
+  if (id === 'consult') {
+    const key = svcKey || 'poradit';
+    document.querySelectorAll('#page-consult .svc-btn').forEach(b => {
+      b.classList.toggle('sel', b.dataset.svc === key);
+    });
+  }
   if (anchorId) {
     const target = document.getElementById(anchorId);
     if (target) {
