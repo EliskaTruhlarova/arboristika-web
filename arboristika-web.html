@@ -3,7 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matěj Faltys · Arboristika</title>
+<title>Matěj Faltys · Arborista Litomyšl a Pardubický kraj | Arboristika</title>
+<meta name="description" content="Vystudovaný arborista Matěj Faltys pečuje o stromy v Litomyšli a Pardubickém kraji — řez stromů, bezpečnostní vazby, rizikové kácení, výsadby i hodnocení stavu stromů. Nezávazná konzultace zdarma.">
+<meta name="keywords" content="arborista, arboristika, řez stromů, ošetření stromů, kácení stromů, rizikové kácení, bezpečnostní vazby, hodnocení stavu stromů, výsadba stromů, ochrana dřevin při stavbě, Litomyšl, Sloupnice, Pardubický kraj">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Matěj Faltys">
+<link rel="canonical" href="https://www.arbomf.cz/">
+
+<!-- Open Graph / sdílení na sociálních sítích -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:site_name" content="Matěj Faltys · Arboristika">
+<meta property="og:title" content="Matěj Faltys · Arborista Litomyšl a Pardubický kraj">
+<meta property="og:description" content="Vystudovaný arborista Matěj Faltys pečuje o stromy v Litomyšli a Pardubickém kraji — řez, bezpečnostní vazby, kácení, výsadby i odborné posudky.">
+<meta property="og:url" content="https://www.arbomf.cz/">
+<meta property="og:image" content="https://www.arbomf.cz/logo1.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Matěj Faltys · Arborista Litomyšl a Pardubický kraj">
+<meta name="twitter:description" content="Péče o stromy v Litomyšli a Pardubickém kraji — řez, bezpečnostní vazby, kácení, výsadby i odborné posudky.">
+<meta name="twitter:image" content="https://www.arbomf.cz/logo1.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -953,6 +974,13 @@ ul { list-style: none; }
 }
 .map-placeholder i { font-size: 32px; }
 .map-placeholder p { color: var(--text-jemny); font-size: 13px; }
+.map-embed {
+  border: 0.5px solid var(--ramecek);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 260px;
+}
+.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
 
 /* =============================================
    KONZULTACE ZDARMA
@@ -1276,6 +1304,46 @@ ul { list-style: none; }
 }
 
 /* =============================================
+   PRÁVNÍ STRÁNKA (Ochrana osobních údajů)
+   ============================================= */
+.legal-content {
+  background: var(--bila);
+  padding: 40px 32px 56px;
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.legal-content-inner { max-width: 720px; }
+.legal-content h2 {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--text-tmavy);
+  margin: 32px 0 10px;
+}
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content p {
+  font-size: 14px;
+  color: var(--text-stredni);
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+.legal-content ul { margin: 0 0 10px; }
+.legal-content li {
+  font-size: 14px;
+  color: var(--text-stredni);
+  line-height: 1.8;
+  padding-left: 18px;
+  position: relative;
+}
+.legal-content li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--zelena-stredni);
+}
+.legal-content a { color: var(--zelena-tmavy); text-decoration: underline; }
+.legal-updated { font-size: 12px; color: var(--text-jemny); margin-top: 28px; }
+
+/* =============================================
    FORMULÁŘE — sdílený styl
    ============================================= */
 .submit-btn {
@@ -1512,6 +1580,52 @@ footer {
   footer { flex-direction: column; gap: 6px; align-items: flex-start; padding: 18px 16px; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Matěj Faltys · Arboristika",
+  "image": "https://www.arbomf.cz/logo1.png",
+  "url": "https://www.arbomf.cz/",
+  "telephone": "+420774144165",
+  "email": "matej.faltys@arbomf.cz",
+  "description": "Vystudovaný arborista nabízející péči o stromy v Litomyšli a Pardubickém kraji — řez stromů, bezpečnostní vazby, hodnocení stavu stromů, rizikové kácení, výsadby a ochranu dřevin při stavební činnosti.",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sloupnice",
+    "addressRegion": "Pardubický kraj",
+    "addressCountry": "CZ"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Litomyšl a Pardubický kraj"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "14:00"
+    }
+  ],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Řez stromu" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bezpečnostní vazby" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hodnocení stavu stromů" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rizikové kácení" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Výsadby" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ochrana dřevin při stavební činnosti" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Odborné konzultace" } }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1598,7 +1712,7 @@ footer {
   </section>
 
   <section class="home-services">
-    <div class="section-label">Co pro vás udělám</div>
+    <h2 class="section-label">Co pro vás udělám</h2>
     <div class="home-svc-grid">
       <div class="home-svc-card" onclick="showPage('services','svc-rez')">
         <div class="svc-icon"><i class="ti ti-tree" aria-hidden="true"></i></div>
@@ -1648,7 +1762,7 @@ footer {
   <section class="home-about">
     <div class="home-about-grid">
       <div>
-        <div class="section-label">O mně</div>
+        <h2 class="section-label">O mně</h2>
         <div class="home-about-title">Matěj Faltys<span>Vystudovaný arborista</span></div>
         <p class="home-about-text">Vystudovaný arborista s bakalářským titulem v oboru Arboristika z Mendelovy univerzity v Brně. Ke každému stromu přistupuji individuálně a stav posuzuji v širších souvislostech — každou zakázku řeším osobně od konzultace až po úklid pracoviště.</p>
         <button class="btn-outline" onclick="showPage('about')">Více o mně →</button>
@@ -1664,7 +1778,7 @@ footer {
   </section>
 
   <section class="consult-steps">
-    <div class="section-label">Jak probíhá spolupráce</div>
+    <h2 class="section-label">Jak probíhá spolupráce</h2>
     <div class="steps-row">
       <div class="step-card"><div class="step-num">01</div><div class="step-title">Konzultace</div><div class="step-desc">Proberu s vámi vaši situaci — nejen strom, ale cokoliv z oboru arboristiky.</div></div>
       <div class="step-card"><div class="step-num">02</div><div class="step-title">Nabídka</div><div class="step-desc">Dostanete písemnou cenovou nabídku a domluvíme termín.</div></div>
@@ -1674,7 +1788,7 @@ footer {
   </section>
 
   <section class="home-contact">
-    <div class="section-label">Kontakt</div>
+    <h2 class="section-label">Kontakt</h2>
     <div class="home-contact-grid">
       <div class="contact-row">
         <div class="c-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
@@ -1704,7 +1818,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj</div>
+    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -1738,7 +1852,7 @@ footer {
   </section>
 
   <section class="about-certs">
-    <div class="section-label">Vzdělání a certifikace</div>
+    <h2 class="section-label">Vzdělání a certifikace</h2>
     <div class="cert-grid">
       <!-- Upravte: certifikáty -->
       <div class="cert-card">
@@ -1759,19 +1873,17 @@ footer {
         <div class="cert-org">opakovaně obnovováno</div>
         <div class="cert-year">platné od 2023</div>
       </div>
-      <!-- Upravte: limit pojistného plnění, až bude doplněn -->
       <div class="cert-card">
         <div class="cert-icon"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
         <div class="cert-name">Pojištění odpovědnosti</div>
-        <div class="cert-org">limit bude doplněn</div>
-        <div class="cert-year">&nbsp;</div>
+        <div class="cert-org">Kryje případné škody při realizaci zakázek</div>
       </div>
     </div>
   </section>
 
   <div class="about-story">
     <div class="about-story-left">
-      <div class="section-label">Můj příběh</div>
+      <h2 class="section-label">Můj příběh</h2>
       <!-- Upravte: příběh -->
       <p>Ke stromům jsem měl odjakživa blízko mj. díky práci mého otce, který se živí jako lesní hospodář. Můj zájem mě zavedl ke studiu na Mendelově univerzitě v Brně, kde jsem po dobu tří let čerpal odborné znalosti od těch nejpovolanějších lidí v našem oboru. Hlavně díky studiu se ve mě skutečně prohloubil zájem o stromy v našich městech, obcích či volné krajině — u stromů, které mají každý svůj příběh a mnohdy jsou i citově spjaty s našimi životy.</p>
       <p>V roce 2025 jsem studium dokončil dosažením titulu bakalář a během něho jsem nabyl mimo dovednosti stromolezení i znalostí o vnitřních procesech a fungování stromů, chorobách a škůdcích dřevin, biomechanických vlastnostech apod. Získané znalosti a zkušenosti uplatňuji v každodenní praxi.</p>
@@ -1790,7 +1902,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj</div>
+    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -1808,7 +1920,7 @@ footer {
   </section>
 
   <section class="consult-steps">
-    <div class="section-label">Jak probíhá spolupráce</div>
+    <h2 class="section-label">Jak probíhá spolupráce</h2>
     <div class="steps-row">
       <div class="step-card"><div class="step-num">01</div><div class="step-title">Konzultace</div><div class="step-desc">Proberu s vámi vaši situaci — nejen strom, ale cokoliv z oboru arboristiky.</div></div>
       <div class="step-card"><div class="step-num">02</div><div class="step-title">Nabídka</div><div class="step-desc">Dostanete písemnou cenovou nabídku a domluvíme termín.</div></div>
@@ -1818,7 +1930,7 @@ footer {
   </section>
 
   <div class="services-grid-wrap">
-    <div class="section-label">Nabízené služby</div>
+    <h2 class="section-label">Nabízené služby</h2>
     <div class="price-note">
       <i class="ti ti-info-circle" aria-hidden="true"></i>
       Uvedené ceny jsou orientační — konečná cena se odvíjí od konkrétní situace na místě. V nezávazné poptávce mi můžete poslat fotky stromu pro přesnější odhad.
@@ -1832,7 +1944,7 @@ footer {
             <div class="svc-icon"><i class="ti ti-tree" aria-hidden="true"></i></div>
             <div class="svc-card-num">01</div>
           </div>
-          <div class="svc-card-title">Řez stromu</div>
+          <h3 class="svc-card-title">Řez stromu</h3>
           <p class="svc-card-short">Správný výběr vhodného řezu a jeho provedení dle oborových standardů.</p>
         </div>
         <div class="svc-card-footer">
@@ -1891,7 +2003,7 @@ footer {
             <div class="svc-icon"><i class="ti ti-link" aria-hidden="true"></i></div>
             <div class="svc-card-num">02</div>
           </div>
-          <div class="svc-card-title">Bezpečnostní vazby</div>
+          <h3 class="svc-card-title">Bezpečnostní vazby</h3>
           <p class="svc-card-short">Instalace vazebních systémů za účelem snížení rizika selhání částí stromu.</p>
         </div>
         <div class="svc-card-footer">
@@ -1933,7 +2045,7 @@ footer {
             <div class="svc-icon"><i class="ti ti-file-search" aria-hidden="true"></i></div>
             <div class="svc-card-num">03</div>
           </div>
-          <div class="svc-card-title">Hodnocení stavu stromů</div>
+          <h3 class="svc-card-title">Hodnocení stavu stromů</h3>
           <p class="svc-card-short">Posouzení a zhodnocení stavu stromů s možností vypracování detailní písemné zprávy a plánu následné péče.</p>
         </div>
         <div class="svc-card-footer">
@@ -1979,7 +2091,7 @@ footer {
             <div class="svc-icon"><i class="ti ti-building" aria-hidden="true"></i></div>
             <div class="svc-card-num">04</div>
           </div>
-          <div class="svc-card-title">Ochrana dřevin při stavební činnosti</div>
+          <h3 class="svc-card-title">Ochrana dřevin při stavební činnosti</h3>
           <p class="svc-card-short">Vytyčení ochranných pásem, odborný dozor a monitoring dřevin při stavební činnosti.</p>
         </div>
         <div class="svc-card-footer">
@@ -2030,7 +2142,7 @@ footer {
             <div class="svc-icon"><i class="ti ti-plant" aria-hidden="true"></i></div>
             <div class="svc-card-num">05</div>
           </div>
-          <div class="svc-card-title">Výsadby</div>
+          <h3 class="svc-card-title">Výsadby</h3>
           <p class="svc-card-short">Výběr vhodné dřeviny, příprava stanoviště a správně provedená výsadba.</p>
         </div>
         <div class="svc-card-footer">
@@ -2071,7 +2183,7 @@ footer {
             <div class="svc-icon"><i class="ti ti-axe" aria-hidden="true"></i></div>
             <div class="svc-card-num">06</div>
           </div>
-          <div class="svc-card-title">Rizikové kácení</div>
+          <h3 class="svc-card-title">Rizikové kácení</h3>
           <p class="svc-card-short">Bezpečné odstranění rizikových nebo jinak nežádoucích stromů pomocí lanové techniky.</p>
         </div>
         <div class="svc-card-footer">
@@ -2117,7 +2229,7 @@ footer {
             <div class="svc-icon"><i class="ti ti-message-dots" aria-hidden="true"></i></div>
             <div class="svc-card-num">07</div>
           </div>
-          <div class="svc-card-title">Odborná konzultace</div>
+          <h3 class="svc-card-title">Odborná konzultace</h3>
           <p class="svc-card-short">Poradím vám telefonicky zdarma, nebo se přijedu podívat osobně.</p>
         </div>
         <div class="svc-card-footer" style="justify-content:flex-end;">
@@ -2168,7 +2280,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj</div>
+    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -2187,7 +2299,7 @@ footer {
 
   <div class="contact-body">
     <div class="contact-info">
-      <div class="section-label">Kontaktní údaje</div>
+      <h2 class="section-label">Kontaktní údaje</h2>
       <!-- Upravte: kontakty -->
       <div class="contact-row">
         <div class="c-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
@@ -2207,7 +2319,7 @@ footer {
       </div>
 
       <div style="margin-top:24px;">
-        <div class="section-label">Pracovní doba</div>
+        <h2 class="section-label">Pracovní doba</h2>
         <div class="avail-days">
           <div class="day-pill">Po</div>
           <div class="day-pill">Út</div>
@@ -2222,7 +2334,7 @@ footer {
     </div>
 
     <div class="contact-form-wrap">
-      <div class="section-label">Rychlá zpráva</div>
+      <h2 class="section-label">Rychlá zpráva</h2>
       <div class="form-title">Napište mi</div>
       <form id="quickForm" onsubmit="return submitWeb3Form(event, 'quickForm', 'quickFormMsg')">
         <input type="hidden" name="access_key" value="34631e55-80f5-4083-8607-849f1d419bfb">
@@ -2236,20 +2348,16 @@ footer {
         <div class="field"><label>Adresa stromu</label><input type="text" name="Adresa stromu" placeholder="Ulice, Praha"></div>
         <div class="field" style="margin-top:4px;"><label>Zpráva</label><textarea name="Zpráva" placeholder="Popište, s čím potřebujete pomoci…"></textarea></div>
         <button type="submit" class="submit-btn" style="margin-top:12px;">Odeslat zprávu</button>
-        <p class="form-note" style="margin-top:10px;">Odesláním souhlasíte se zpracováním osobních údajů.</p>
+        <p class="form-note" style="margin-top:10px;">Odesláním souhlasíte se <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;color:inherit;">zpracováním osobních údajů</a>.</p>
         <p id="quickFormMsg" style="font-size:13px;text-align:center;margin-top:10px;"></p>
       </form>
     </div>
   </div>
 
   <section class="contact-map">
-    <div class="section-label">Oblast působení</div>
-    <!-- Nahraďte: Google Maps embed nebo jiná mapa -->
-    <div class="map-placeholder">
-      <i class="ti ti-map-2" style="font-size:40px;color:#8ab870"></i>
-      <strong style="color:var(--text-tmavy);font-size:15px;">Litomyšl a Pardubický kraj</strong>
-      <p>Zde vložte Google Maps embed nebo interaktivní mapu</p>
-      <p style="font-size:12px;">Maps embed: vložte &lt;iframe src="..."&gt; místo tohoto bloku</p>
+    <h2 class="section-label">Oblast působení</h2>
+    <div class="map-embed">
+      <iframe src="https://www.google.com/maps?q=Sloupnice%2C%20Pardubick%C3%BD%20kraj%2C%20%C4%8Cesko&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa — Sloupnice, Pardubický kraj" allowfullscreen></iframe>
     </div>
   </section>
 
@@ -2263,7 +2371,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj</div>
+    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -2295,7 +2403,7 @@ footer {
   </section>
 
   <section class="consult-steps">
-    <div class="section-label">Jak konzultace probíhá</div>
+    <h2 class="section-label">Jak konzultace probíhá</h2>
     <div class="steps-row">
       <div class="step-card"><div class="step-num">01</div><div class="step-title">Vyplníte formulář</div><div class="step-desc">Popište situaci a přiložte případně fotku celého stromu e-mailem.</div></div>
       <div class="step-card"><div class="step-num">02</div><div class="step-title">Domluvíme termín</div><div class="step-desc">Ozvu se do 24 h a navrhnu termín, který vám vyhovuje.</div></div>
@@ -2379,7 +2487,7 @@ footer {
         </div>
 
         <button type="submit" class="submit-btn">Odeslat poptávku</button>
-        <p class="form-note">Odesláním souhlasíte se zpracováním osobních údajů. Nikam nic neprodávám.</p>
+        <p class="form-note">Odesláním souhlasíte se <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;color:inherit;">zpracováním osobních údajů</a>. Nikam nic neprodávám.</p>
         <p id="consultFormMsg" style="font-size:13px;text-align:center;margin-top:10px;"></p>
       </form>
     </div>
@@ -2415,7 +2523,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj</div>
+    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -2443,7 +2551,7 @@ footer {
        Až budou hotové zakázky a recenze, odstraňte obalový div a jeho style. -->
   <div style="display:none">
     <section class="ref-portfolio">
-      <div class="section-label">Realizované zakázky</div>
+      <h2 class="section-label">Realizované zakázky</h2>
       <div class="portfolio-grid">
 
         <!-- Hlavní karta — vyplňte nebo nahraďte fotografií -->
@@ -2529,7 +2637,7 @@ footer {
 
     <!-- Reference klientů -->
     <section class="ref-reviews">
-      <div class="section-label">Co říkají klienti</div>
+      <h2 class="section-label">Co říkají klienti</h2>
       <div class="ref-reviews-grid">
         <!-- Upravte: reference -->
         <div class="ref-review-card">
@@ -2576,6 +2684,59 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
+    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+  </footer>
+</div>
+
+<!-- =============================================
+     OCHRANA OSOBNÍCH ÚDAJŮ
+     ============================================= -->
+<div class="page" id="page-privacy">
+
+  <section class="contact-hero">
+    <div>
+      <div class="eyebrow">Právní informace</div>
+      <h1>Ochrana <em>osobních údajů</em></h1>
+      <p>Zásady zpracování osobních údajů podle nařízení GDPR (EU) 2016/679.</p>
+    </div>
+  </section>
+
+  <section class="legal-content">
+    <div class="legal-content-inner">
+      <h2>Správce osobních údajů</h2>
+      <p>Správcem osobních údajů je Matěj Faltys, se sídlem Sloupnice, Pardubický kraj, e-mail <a href="mailto:matej.faltys@arbomf.cz">matej.faltys@arbomf.cz</a>, telefon <a href="tel:+420774144165">+420 774 144 165</a> (dále jen „správce“).</p>
+
+      <h2>Jaké údaje zpracovávám</h2>
+      <p>Prostřednictvím kontaktního a poptávkového formuláře zpracovávám údaje, které mi sami poskytnete:</p>
+      <ul>
+        <li>Jméno a příjmení</li>
+        <li>Telefonní číslo a e-mailová adresa</li>
+        <li>Adresa nebo lokalita stromu / zakázky</li>
+        <li>Obsah zprávy nebo popisu situace</li>
+        <li>Fotografie nebo soubory, které k poptávce přiložíte</li>
+      </ul>
+
+      <h2>Účel a právní základ zpracování</h2>
+      <p>Údaje zpracovávám za účelem vyřízení vaší poptávky nebo zprávy, přípravy cenové nabídky a případné následné komunikace a realizace zakázky. Právním základem je jednání směřující k uzavření smlouvy na vaši žádost (čl. 6 odst. 1 písm. b) GDPR), případně můj oprávněný zájem na vyřízení dotazu (čl. 6 odst. 1 písm. f) GDPR).</p>
+
+      <h2>Jak dlouho údaje uchovávám</h2>
+      <p>Údaje z nerealizovaných poptávek uchovávám nejdéle 12 měsíců od doručení. Pokud z poptávky vznikne zakázka, uchovávám údaje po dobu nezbytnou k jejímu vyřízení a dále po dobu vyžadovanou právními předpisy (např. účetní a daňové evidence).</p>
+
+      <h2>Komu údaje předávám</h2>
+      <p>Formuláře na webu odesílám prostřednictvím služby <a href="https://web3forms.com" target="_blank" rel="noopener">Web3Forms</a>, která zajišťuje technické doručení vyplněného formuláře na můj e-mail a v tomto rozsahu vystupuje jako zpracovatel osobních údajů. Údaje dále nepředávám žádným třetím stranám a nepoužívám je k marketingovým účelům.</p>
+
+      <h2>Vaše práva</h2>
+      <p>Ve vztahu ke svým osobním údajům máte právo na přístup k údajům, jejich opravu nebo výmaz, omezení zpracování, přenositelnost údajů a právo vznést námitku proti zpracování. Souhlas se zpracováním (pokud byl udělen) můžete kdykoli odvolat. Svá práva můžete uplatnit na e-mailu <a href="mailto:matej.faltys@arbomf.cz">matej.faltys@arbomf.cz</a>. Pokud se domníváte, že vaše údaje zpracovávám v rozporu s právními předpisy, máte právo podat stížnost u Úřadu pro ochranu osobních údajů (uoou.cz).</p>
+
+      <h2>Cookies a analytika</h2>
+      <p>Tento web nepoužívá sledovací ani analytické cookies. Ukládá pouze technické nastavení nezbytné pro jeho základní chod.</p>
+
+      <p class="legal-updated">Tyto zásady mohou být čas od času aktualizovány. Poslední aktualizace: srpen 2026.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Matěj Faltys · Arboristika</div>
     <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj</div>
   </footer>
 </div>
@@ -2588,7 +2749,7 @@ footer {
      JAVASCRIPT
      ============================================= -->
 <script>
-const pages = ['home','about','services','contact','consult','references'];
+const pages = ['home','about','services','contact','consult','references','privacy'];
 
 function showPage(id, anchorId, svcKey) {
   pages.forEach(p => {
