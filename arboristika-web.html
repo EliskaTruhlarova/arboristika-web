@@ -84,6 +84,21 @@ ul { list-style: none; }
   padding: 0 32px;
   height: 60px;
 }
+.nav::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  height: 12px;
+  background-image: url('fotky/hero-koruna.jpg');
+  background-size: cover;
+  background-position: center top;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.nav.nav-hero::after { opacity: 0.85; }
 .nav-logo {
   font-family: var(--serif);
   font-size: 17px;
@@ -204,7 +219,11 @@ ul { list-style: none; }
   border-radius: 10px;
 }
 .cta-strip {
-  background: var(--zelena-tmavy);
+  background:
+    linear-gradient(115deg, rgba(45,74,25,0.93) 0%, rgba(33,49,25,0.90) 55%, rgba(33,49,25,0.94) 100%),
+    url('fotky/cta-bg.jpg');
+  background-size: cover;
+  background-position: center 38%;
   padding: 28px 32px;
   display: flex;
   align-items: center;
@@ -273,6 +292,21 @@ ul { list-style: none; }
   pointer-events: none;
   z-index: -1;
 }
+
+/* Jemné fotografické pozadí v hlavičkách podstránek */
+.section-photo-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.22;
+  -webkit-mask-image: linear-gradient(100deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.15) 100%);
+  mask-image: linear-gradient(100deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.15) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
 .hero-left h1 {
   font-family: var(--serif);
   font-size: 52px;
@@ -317,10 +351,22 @@ ul { list-style: none; }
 }
 .hero-right {
   background: var(--zelena-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 30%;
+  display: block;
+}
+.hero-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(23,33,17,0.32) 0%, rgba(23,33,17,0.06) 45%, rgba(23,33,17,0) 65%);
+  pointer-events: none;
 }
 .hero-tree { max-width: 220px; width: 100%; }
 
@@ -328,6 +374,9 @@ ul { list-style: none; }
 .home-services {
   padding: 40px 32px;
   background: var(--krem);
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
 .home-svc-grid {
   display: grid;
@@ -374,6 +423,34 @@ ul { list-style: none; }
   margin-top: 12px;
 }
 .home-svc-more:hover { color: var(--zelena-tmavy); text-decoration: underline; }
+
+/* Galerie V akci na úvodní */
+.home-gallery {
+  padding: 40px 32px;
+  background: var(--bila);
+  border-top: 0.5px solid var(--ramecek-svetly);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+.gallery-item {
+  aspect-ratio: 3/4;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: 1/1; }
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.gallery-item:hover img { transform: scale(1.06); }
 
 /* Reference mini na úvodní */
 .home-reviews {
@@ -534,7 +611,7 @@ ul { list-style: none; }
   padding: 48px 40px;
 }
 .photo-frame {
-  width: 200px;
+  width: 280px;
   aspect-ratio: 3/4;
   background: #c8deb0;
   border-radius: 10px;
@@ -542,6 +619,14 @@ ul { list-style: none; }
   position: relative;
   display: flex;
   align-items: flex-end;
+  box-shadow: 0 18px 40px rgba(30,42,26,0.18);
+}
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  display: block;
 }
 .photo-placeholder {
   width: 100%;
@@ -605,12 +690,29 @@ ul { list-style: none; }
 /* Příběh + timeline */
 .about-story {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1.4fr 1fr;
 }
 .about-story-left {
   background: var(--krem);
   padding: 36px 32px;
   border-bottom: 0.5px solid var(--ramecek-svetly);
+}
+.about-story-photo {
+  background: var(--krem);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  border-left: 0.5px solid var(--ramecek-svetly);
+  padding: 36px 32px;
+  display: flex;
+  align-items: center;
+}
+.about-story-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 14px 32px rgba(30,42,26,0.14);
 }
 .about-story-left p {
   font-size: 14px;
@@ -698,6 +800,9 @@ ul { list-style: none; }
   padding: 44px 32px 40px;
   display: grid;
   grid-template-columns: 1fr;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
 .services-hero h1 {
   font-family: var(--serif);
@@ -890,6 +995,9 @@ ul { list-style: none; }
   background: var(--bila);
   border-bottom: 0.5px solid var(--ramecek-svetly);
   padding: 44px 32px 40px;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
 .contact-hero h1 {
   font-family: var(--serif);
@@ -993,6 +1101,9 @@ ul { list-style: none; }
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: center;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
 .consult-intro h1 {
   font-family: var(--serif);
@@ -1506,12 +1617,12 @@ footer {
 
   /* Padding sekcí */
   .hero, .about-hero, .about-certs, .about-values,
-  .home-services, .home-reviews, .home-about, .home-contact,
+  .home-services, .home-reviews, .home-about, .home-contact, .home-gallery,
   .services-hero, .services-grid-wrap,
   .contact-hero, .contact-info, .contact-form-wrap, .contact-map,
   .consult-intro, .consult-steps, .consult-form-wrap, .consult-sidebar,
   .ref-hero, .ref-portfolio, .ref-reviews,
-  .about-story-left, .about-timeline { padding-left: 16px; padding-right: 16px; }
+  .about-story-left, .about-story-photo, .about-timeline { padding-left: 16px; padding-right: 16px; }
 
   /* Gridy → jeden sloupec */
   .hero, .about-hero, .about-story, .contact-hero,
@@ -1520,6 +1631,9 @@ footer {
   .values-grid, .portfolio-grid, .reviews-grid,
   .home-about-grid, .home-contact-grid,
   .ref-reviews-grid { grid-template-columns: 1fr; }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/9; }
 
   /* Hero */
   .hero-left {
@@ -1535,6 +1649,7 @@ footer {
   .about-hero-left { padding: 36px 16px; border-right: none; border-bottom: 0.5px solid var(--ramecek-svetly); }
   .about-hero-left h1 { font-size: 34px; }
   .about-story-left { border-right: none; border-bottom: 0.5px solid var(--ramecek-svetly); }
+  .about-story-photo { border-left: none; }
   .cert-grid { grid-template-columns: 1fr 1fr; }
 
   /* Hodnoty */
@@ -1632,7 +1747,7 @@ footer {
 <!-- =============================================
      NAVIGACE
      ============================================= -->
-<nav class="nav">
+<nav class="nav nav-hero">
   <div class="nav-logo" onclick="showPage('home');closeMobileMenu()">
     <img src="logo1.png" alt="Matěj Faltys · Arboristika" class="nav-logo-img">
     <!-- Upravte: název firmy -->
@@ -1696,22 +1811,12 @@ footer {
       </div>
     </div>
     <div class="hero-right">
-      <!-- Ilustrace stromu — lze nahradit <img> -->
-      <svg class="hero-tree" viewBox="0 0 220 300" xmlns="http://www.w3.org/2000/svg">
-        <rect x="98" y="185" width="24" height="115" rx="6" fill="#8ab870" opacity="0.45"/>
-        <ellipse cx="110" cy="152" rx="65" ry="58" fill="#b8d898" opacity="0.65"/>
-        <ellipse cx="74" cy="174" rx="47" ry="38" fill="#cce4aa" opacity="0.55"/>
-        <ellipse cx="148" cy="168" rx="50" ry="40" fill="#cce4aa" opacity="0.55"/>
-        <ellipse cx="110" cy="134" rx="52" ry="46" fill="#d8ecc0" opacity="0.7"/>
-        <ellipse cx="110" cy="118" rx="38" ry="32" fill="#e4f4d0" opacity="0.8"/>
-        <rect x="102" y="205" width="16" height="95" rx="5" fill="#7aaa58" opacity="0.4"/>
-        <path d="M110 222 Q74 202 54 177" stroke="#8ab870" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45"/>
-        <path d="M110 242 Q146 217 166 187" stroke="#8ab870" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45"/>
-      </svg>
+      <img src="fotky/hero-koruna.jpg" alt="Matěj Faltys při práci v koruně vzrostlého stromu">
     </div>
   </section>
 
   <section class="home-services">
+    <img class="section-photo-bg" src="fotky/cta-bg.jpg" alt="" aria-hidden="true">
     <h2 class="section-label">Co pro vás udělám</h2>
     <div class="home-svc-grid">
       <div class="home-svc-card" onclick="showPage('services','svc-rez')">
@@ -1787,6 +1892,18 @@ footer {
     </div>
   </section>
 
+  <section class="home-gallery">
+    <h2 class="section-label">V akci</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="fotky/galerie-1.jpg" alt="Matěj Faltys v koruně vzrostlého stromu při stromolezeckém zásahu" loading="lazy"></div>
+      <div class="gallery-item"><img src="fotky/galerie-2.jpg" alt="Řez větve motorovou pilou z lanového přístupu" loading="lazy"></div>
+      <div class="gallery-item"><img src="fotky/galerie-3.jpg" alt="Detail řezu větve ruční pilou" loading="lazy"></div>
+      <div class="gallery-item"><img src="fotky/galerie-4.jpg" alt="Kontrola jištění a lanového systému při výstupu do koruny" loading="lazy"></div>
+      <div class="gallery-item"><img src="fotky/galerie-5.jpg" alt="Matěj Faltys jištěný v koruně stromu" loading="lazy"></div>
+      <div class="gallery-item"><img src="fotky/galerie-6.jpg" alt="Příprava lanové techniky před výstupem do koruny" loading="lazy"></div>
+    </div>
+  </section>
+
   <section class="home-contact">
     <h2 class="section-label">Kontakt</h2>
     <div class="home-contact-grid">
@@ -1836,14 +1953,9 @@ footer {
       <p class="about-lead">Mé jméno je Matěj Faltys a jsem vystudovaný arborista s dosaženým bakalářským titulem v oboru Arboristika na Mendelově univerzitě v Brně a několikaletou praxí. Každou zakázku řeším osobně od prvotního pohledu na konkrétní strom a úvodní konzultace, přes realizaci potřebných zákroků až po úklid pracoviště. Zakládám si na přístupu zohledňujícím co možná nejvíce faktorů, které se týkají konkrétního případu. Přistupuji ke stromům jako k velmi komplikovaným organismům a vždy řeším veškeré souvislosti tak, aby bylo dosaženo co možná nejoptimálnějšího závěru, kdy může strom na stanovišti i nadále bezpečně prospívat a přinášet tak dál širokou škálu svých benefitů. V případech stromů, které jsou již za hranicí rozumné záchrany, přistupuji k jejich bezpečnému odstranění. Arboristika je dynamicky se rozvíjející obor, a proto i po dokončení studia dál aktivně vyhledávám nejnovější poznatky v oboru a svou znalost nepřestávám prohlubovat. Věřím, že čím lepší porozumění vůči stromům máme, tím lépe o ně dovedeme pečovat.</p>
     </div>
     <div class="about-hero-right">
-      <!-- Nahraďte <div class="photo-placeholder"> za <img src="foto.jpg" alt="Matěj Faltys"> -->
       <div class="photo-frame">
-        <div class="photo-placeholder">
-          <i class="ti ti-user" style="font-size:36px;color:#8ab870"></i>
-          Vložte svoji fotku
-        </div>
+        <img src="fotky/portret-matej.jpg" alt="Matěj Faltys, vystudovaný arborista">
         <div class="photo-caption">
-          <!-- Upravte: jméno a titul -->
           <strong>Bc. Matěj Faltys</strong>
           Vystudovaný arborista
         </div>
@@ -1890,6 +2002,9 @@ footer {
       <p>Velkou váhu přikládám problematice ochrany dřevin při stavební činnosti, které se věnuji již od doby studia — zaměřil jsem se na ni i ve své závěrečné práci a měl jsem tu čest své poznatky prezentovat na konferenci SZKT 2025. Ochraně dřevin při rozvoji infrastruktury se chci věnovat i nadále.</p>
       <p>Zaměřuji se na stromy v obtížných podmínkách — v zástavbě, podél komunikací a všude tam, kde stromy rostou v náročných podmínkách a je na místě jim vhodnými opatřeními pomoct k dalšímu perspektivnímu vývoji. Snažím se nabídnout svůj pohled i v případech, kdy je zvažovanou variantou strom pokácet. Vzrostlé stromy jsou všeobecně velice cenné a v opodstatněných případech je na místě pro jejich záchranu vynaložit potřebné úsilí.</p>
     </div>
+    <div class="about-story-photo">
+      <img src="fotky/pribeh-foto.jpg" alt="Matěj Faltys odpočívá po zásahu u vzrostlého stromu">
+    </div>
   </div>
 
   <div class="cta-strip">
@@ -1912,6 +2027,7 @@ footer {
 <div class="page" id="page-services">
 
   <section class="services-hero">
+    <img class="section-photo-bg" src="fotky/hero-watermark-services.jpg" alt="" aria-hidden="true">
     <div>
       <div class="eyebrow">Nabízené služby</div>
       <h1>Co <em>nabízím</em></h1>
@@ -2290,6 +2406,7 @@ footer {
 <div class="page" id="page-contact">
 
   <section class="contact-hero">
+    <img class="section-photo-bg" src="fotky/hero-watermark-contact.jpg" alt="" aria-hidden="true">
     <div>
       <div class="eyebrow">Kontakt</div>
       <h1>Napište<br/>nebo zavolejte <em>přímo</em></h1>
@@ -2381,6 +2498,7 @@ footer {
 <div class="page" id="page-consult">
 
   <section class="consult-intro">
+    <img class="section-photo-bg" src="fotky/hero-watermark-consult.jpg" alt="" aria-hidden="true">
     <div>
       <div class="eyebrow">Konzultace</div>
       <h1>Pošlete mi<br/><em>nezávaznou poptávku</em></h1>
@@ -2756,6 +2874,7 @@ function showPage(id, anchorId, svcKey) {
     const el = document.getElementById('page-' + p);
     if (el) el.classList.toggle('active', p === id);
   });
+  document.querySelector('.nav').classList.toggle('nav-hero', id === 'home');
   // Desktop nav
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.classList.remove('active');
