@@ -1197,6 +1197,32 @@ ul { list-style: none; }
 .svc-btn-sub { font-size: 12px; color: var(--text-jemny); margin-top: 1px; }
 .form-note { font-size: 12px; color: #b0b8a8; text-align: center; margin-top: 10px; }
 
+/* Upozornění po odeslání formuláře */
+.form-alert {
+  display: none;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 14px;
+}
+.form-alert.show { display: flex; }
+.form-alert i { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.form-alert.success {
+  background: var(--zelena-pozadi);
+  border: 0.5px solid rgba(90,138,48,0.3);
+  color: var(--zelena-tmavy);
+}
+.form-alert.success i { color: var(--zelena-stredni); }
+.form-alert.error {
+  background: #fbebeb;
+  border: 0.5px solid rgba(178,59,59,0.3);
+  color: #8a2f2f;
+}
+.form-alert.error i { color: #b23b3b; }
+
 .consult-sidebar {
   background: var(--krem);
   padding: 36px 24px;
@@ -2423,7 +2449,7 @@ footer {
         <div class="field" style="margin-top:4px;"><label>Zpráva</label><textarea name="Zpráva" placeholder="Popište, s čím potřebujete pomoci…"></textarea></div>
         <button type="submit" class="submit-btn" style="margin-top:12px;">Odeslat zprávu</button>
         <p class="form-note" style="margin-top:10px;">Odesláním souhlasíte se <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;color:inherit;">zpracováním osobních údajů</a>.</p>
-        <p id="quickFormMsg" style="font-size:13px;text-align:center;margin-top:10px;"></p>
+        <div id="quickFormMsg" class="form-alert"><i class="ti" aria-hidden="true"></i><span></span></div>
       </form>
     </div>
   </div>
@@ -2549,7 +2575,7 @@ footer {
 
         <button type="submit" class="submit-btn">Odeslat poptávku</button>
         <p class="form-note">Odesláním souhlasíte se <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;color:inherit;">zpracováním osobních údajů</a>. Nikam nic neprodávám.</p>
-        <p id="consultFormMsg" style="font-size:13px;text-align:center;margin-top:10px;"></p>
+        <div id="consultFormMsg" class="form-alert"><i class="ti" aria-hidden="true"></i><span></span></div>
       </form>
     </div>
 
@@ -2943,8 +2969,7 @@ function submitWeb3Form(event, formId, msgId) {
   const originalBtnText = btn.textContent;
   btn.disabled = true;
   btn.textContent = 'Odesílám…';
-  msg.textContent = '';
-  msg.style.color = '';
+  msg.classList.remove('show', 'success', 'error');
 
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
@@ -2954,16 +2979,14 @@ function submitWeb3Form(event, formId, msgId) {
     .then(res => res.json())
     .then(data => {
       if (data.success) {
-        msg.textContent = 'Díky, zpráva byla odeslána. Ozvu se vám co nejdřív.';
-        msg.style.color = 'var(--zelena-tmavy)';
+        showFormAlert(msg, 'success', 'ti-circle-check', 'Díky, zpráva byla úspěšně odeslána. Ozvu se vám co nejdřív.');
         form.reset();
       } else {
         throw new Error(data.message || 'Odeslání se nezdařilo');
       }
     })
     .catch(() => {
-      msg.textContent = 'Odeslání se nepovedlo. Zkuste to prosím znovu nebo mi zavolejte / napište přímo na e-mail.';
-      msg.style.color = '#b23b3b';
+      showFormAlert(msg, 'error', 'ti-alert-circle', 'Odeslání se nepovedlo. Zkuste to prosím znovu nebo mi zavolejte / napište přímo na e-mail.');
     })
     .finally(() => {
       btn.disabled = false;
@@ -2971,6 +2994,13 @@ function submitWeb3Form(event, formId, msgId) {
     });
 
   return false;
+}
+
+function showFormAlert(el, type, iconClass, text) {
+  el.querySelector('i').className = 'ti ' + iconClass;
+  el.querySelector('span').textContent = text;
+  el.classList.add('show', type);
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 </script>
 
