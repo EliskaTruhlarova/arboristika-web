@@ -91,7 +91,7 @@ ul { list-style: none; }
   right: 0;
   bottom: -12px;
   height: 12px;
-  background-image: url('fotky/hero-koruna.jpg');
+  background-image: url('fotky/cta-bg.jpg');
   background-size: cover;
   background-position: center top;
   opacity: 0;
@@ -904,9 +904,12 @@ ul { list-style: none; }
   background: #f0f5ea;
   border-top: 0.5px solid #b8d898;
   padding: 22px 20px;
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.35s ease;
 }
-.svc-card.open .svc-detail { display: block; }
+.svc-card.open .svc-detail { opacity: 1; }
 .svc-detail-grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
@@ -1603,6 +1606,53 @@ footer {
 }
 .mobile-menu-cta:hover { background: var(--zelena-stredni) !important; color: var(--bila) !important; }
 .mobile-menu-cta i { color: var(--bila) !important; }
+
+/* =============================================
+   INTERAKTIVITA — hover efekty a scroll animace
+   ============================================= */
+.home-svc-card, .svc-card, .cert-card, .review-card, .step-card,
+.value-card, .portfolio-card, .testimonial-mini, .ref-review-card {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.15s;
+}
+.home-svc-card:hover, .svc-card:hover, .cert-card:hover, .review-card:hover,
+.step-card:hover, .value-card:hover, .portfolio-card:hover,
+.testimonial-mini:hover, .ref-review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(30,42,26,0.12);
+}
+.gallery-item { transition: transform 0.22s ease, box-shadow 0.22s ease; }
+.gallery-item:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(30,42,26,0.18); }
+
+.btn-primary, .btn-outline, .cta-strip .btn-white, .submit-btn, .nav-cta {
+  transition: background 0.15s, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-primary:hover, .cta-strip .btn-white:hover, .submit-btn:hover, .nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(30,42,26,0.2);
+}
+.btn-outline:hover { transform: translateY(-2px); }
+.btn-primary:active, .btn-outline:active, .cta-strip .btn-white:active,
+.submit-btn:active, .nav-cta:active { transform: translateY(0); box-shadow: none; }
+
+.home-about-cert, .contact-row, .day-pill, .faq-item .faq-q {
+  transition: transform 0.18s ease;
+}
+.home-about-cert:hover { transform: translateX(3px); }
+
+/* Zjevování obsahu při scrollování */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .home-svc-card, .svc-card, .cert-card, .review-card, .step-card,
+  .value-card, .portfolio-card, .testimonial-mini, .ref-review-card,
+  .gallery-item, .btn-primary, .btn-outline, .cta-strip .btn-white,
+  .submit-btn, .nav-cta { transition: none; }
+}
 
 /* =============================================
    RESPONZIVITA
@@ -2942,9 +2992,11 @@ function openSvcCard(card) {
     const isTarget = c === card;
     c.classList.toggle('open', isTarget);
     const btn = c.querySelector('.svc-card-more');
+    const detail = c.querySelector('.svc-detail');
     if (btn) btn.innerHTML = isTarget
       ? 'Skrýt podrobnosti <i class="ti ti-chevron-up" aria-hidden="true"></i>'
       : 'Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i>';
+    if (detail) detail.style.maxHeight = isTarget ? detail.scrollHeight + 'px' : '0px';
   });
 }
 
@@ -2953,6 +3005,8 @@ function toggleSvc(card) {
     card.classList.remove('open');
     const btn = card.querySelector('.svc-card-more');
     if (btn) btn.innerHTML = 'Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i>';
+    const detail = card.querySelector('.svc-detail');
+    if (detail) detail.style.maxHeight = '0px';
   } else {
     openSvcCard(card);
   }
@@ -2962,6 +3016,28 @@ function toggleSvc(card) {
 window.addEventListener('scroll', () => {
   document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
 });
+
+// Jemné zjevení karet a sekcí při scrollování
+const revealSelectors = [
+  '.home-svc-card', '.svc-card', '.cert-card', '.review-card', '.step-card',
+  '.value-card', '.portfolio-card', '.testimonial-mini', '.ref-review-card',
+  '.gallery-item', '.about-story-left p', '.legal-content h2'
+];
+document.querySelectorAll(revealSelectors.join(',')).forEach(el => el.classList.add('reveal'));
+
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -10px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+}
 
 // Odeslání formulářů přes Web3Forms — bez opuštění stránky
 function submitWeb3Form(event, formId, msgId) {
