@@ -84,21 +84,6 @@ ul { list-style: none; }
   padding: 0 32px;
   height: 60px;
 }
-.nav::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -12px;
-  height: 12px;
-  background-image: url('fotky/cta-bg.jpg');
-  background-size: cover;
-  background-position: center top;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-}
-.nav.nav-hero::after { opacity: 0.85; }
 .nav-logo {
   font-family: var(--serif);
   font-size: 17px;
@@ -148,6 +133,19 @@ ul { list-style: none; }
   transition: background 0.15s;
 }
 .nav-cta:hover { background: var(--zelena-stredni); }
+.nav-right { display: flex; align-items: center; gap: 22px; }
+.nav-phone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-stredni);
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+.nav-phone:hover { color: var(--zelena-tmavy); }
+.nav-phone i { font-size: 17px; color: var(--zelena-stredni); }
 
 /* =============================================
    STRÁNKY (záložky)
@@ -219,11 +217,7 @@ ul { list-style: none; }
   border-radius: 10px;
 }
 .cta-strip {
-  background:
-    linear-gradient(115deg, rgba(45,74,25,0.93) 0%, rgba(33,49,25,0.90) 55%, rgba(33,49,25,0.94) 100%),
-    url('fotky/cta-bg.jpg');
-  background-size: cover;
-  background-position: center 38%;
+  background: var(--zelena-tmavy);
   padding: 28px 32px;
   display: flex;
   align-items: center;
@@ -280,33 +274,7 @@ ul { list-style: none; }
   flex-direction: column;
   justify-content: center;
 }
-.hero-watermark {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 1000px;
-  max-width: none;
-  height: auto;
-  opacity: 0.06;
-  pointer-events: none;
-  z-index: -1;
-}
 
-/* Jemné fotografické pozadí v hlavičkách podstránek */
-.section-photo-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  opacity: 0.22;
-  -webkit-mask-image: linear-gradient(100deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.15) 100%);
-  mask-image: linear-gradient(100deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.15) 100%);
-  pointer-events: none;
-  z-index: -1;
-}
 .hero-left h1 {
   font-family: var(--serif);
   font-size: 52px;
@@ -350,23 +318,10 @@ ul { list-style: none; }
   margin-top: 4px;
 }
 .hero-right {
-  background: var(--zelena-bg);
-  position: relative;
-  overflow: hidden;
-}
-.hero-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 60% 30%;
-  display: block;
-}
-.hero-right::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, rgba(23,33,17,0.32) 0%, rgba(23,33,17,0.06) 45%, rgba(23,33,17,0) 65%);
-  pointer-events: none;
+  background-image: url('fotky/hero-koruna.jpg');
+  background-size: cover;
+  background-position: 60% 30%;
+  background-repeat: no-repeat;
 }
 .hero-tree { max-width: 220px; width: 100%; }
 
@@ -374,9 +329,6 @@ ul { list-style: none; }
 .home-services {
   padding: 40px 32px;
   background: var(--krem);
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
 }
 .home-svc-grid {
   display: grid;
@@ -423,34 +375,6 @@ ul { list-style: none; }
   margin-top: 12px;
 }
 .home-svc-more:hover { color: var(--zelena-tmavy); text-decoration: underline; }
-
-/* Galerie V akci na úvodní */
-.home-gallery {
-  padding: 40px 32px;
-  background: var(--bila);
-  border-top: 0.5px solid var(--ramecek-svetly);
-  border-bottom: 0.5px solid var(--ramecek-svetly);
-}
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-}
-.gallery-item {
-  aspect-ratio: 3/4;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-}
-.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: 1/1; }
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s ease;
-}
-.gallery-item:hover img { transform: scale(1.06); }
 
 /* Reference mini na úvodní */
 .home-reviews {
@@ -657,6 +581,25 @@ ul { list-style: none; }
   margin-bottom: 1px;
 }
 
+/* O firmě */
+.about-company {
+  background: var(--krem);
+  border-bottom: 0.5px solid var(--ramecek-svetly);
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.about-company img { width: 340px; height: auto; flex-shrink: 0; }
+.about-company-text h2 {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--text-tmavy);
+  margin-bottom: 6px;
+}
+.about-company-text p { font-size: 13px; color: var(--text-stredni); line-height: 1.7; max-width: 520px; }
+
 /* Certifikáty */
 .about-certs {
   padding: 36px 32px;
@@ -800,9 +743,6 @@ ul { list-style: none; }
   padding: 44px 32px 40px;
   display: grid;
   grid-template-columns: 1fr;
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
 }
 .services-hero h1 {
   font-family: var(--serif);
@@ -998,9 +938,6 @@ ul { list-style: none; }
   background: var(--bila);
   border-bottom: 0.5px solid var(--ramecek-svetly);
   padding: 44px 32px 40px;
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
 }
 .contact-hero h1 {
   font-family: var(--serif);
@@ -1104,9 +1041,6 @@ ul { list-style: none; }
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: center;
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
 }
 .consult-intro h1 {
   font-family: var(--serif);
@@ -1258,25 +1192,6 @@ ul { list-style: none; }
 .svc-btn-title { font-size: 13px; font-weight: 500; color: var(--text-tmavy); }
 .svc-btn.sel .svc-btn-title { color: var(--zelena-tmavy); }
 .svc-btn-sub { font-size: 12px; color: var(--text-jemny); margin-top: 1px; }
-.time-btns {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-.time-btn {
-  background: var(--krem);
-  border: 0.5px solid var(--ramecek);
-  border-radius: 4px;
-  padding: 9px 10px;
-  font-family: var(--sans);
-  font-size: 13px;
-  color: var(--text-stredni);
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.15s;
-}
-.time-btn:hover { border-color: #a8c882; }
-.time-btn.sel { background: var(--zelena-pozadi); border-color: var(--zelena-stredni); color: var(--zelena-tmavy); font-weight: 500; }
 .form-note { font-size: 12px; color: #b0b8a8; text-align: center; margin-top: 10px; }
 
 .consult-sidebar {
@@ -1620,9 +1535,6 @@ footer {
   transform: translateY(-4px);
   box-shadow: 0 14px 32px rgba(30,42,26,0.12);
 }
-.gallery-item { transition: transform 0.22s ease, box-shadow 0.22s ease; }
-.gallery-item:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(30,42,26,0.18); }
-
 .btn-primary, .btn-outline, .cta-strip .btn-white, .submit-btn, .nav-cta {
   transition: background 0.15s, transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -1650,7 +1562,7 @@ footer {
   .reveal { opacity: 1; transform: none; transition: none; }
   .home-svc-card, .svc-card, .cert-card, .review-card, .step-card,
   .value-card, .portfolio-card, .testimonial-mini, .ref-review-card,
-  .gallery-item, .btn-primary, .btn-outline, .cta-strip .btn-white,
+  .btn-primary, .btn-outline, .cta-strip .btn-white,
   .submit-btn, .nav-cta { transition: none; }
 }
 
@@ -1661,13 +1573,13 @@ footer {
   /* Nav — skrýt desktop prvky, ukázat hamburger */
   .nav { padding: 0 16px; }
   .nav-links { display: none; }
-  .nav-cta { display: none; }
+  .nav-right { display: none; }
   .nav-hamburger { display: flex; }
   .mobile-menu { display: block; }
 
   /* Padding sekcí */
   .hero, .about-hero, .about-certs, .about-values,
-  .home-services, .home-reviews, .home-about, .home-contact, .home-gallery,
+  .home-services, .home-reviews, .home-about, .home-contact,
   .services-hero, .services-grid-wrap,
   .contact-hero, .contact-info, .contact-form-wrap, .contact-map,
   .consult-intro, .consult-steps, .consult-form-wrap, .consult-sidebar,
@@ -1682,9 +1594,6 @@ footer {
   .home-about-grid, .home-contact-grid,
   .ref-reviews-grid { grid-template-columns: 1fr; }
 
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/9; }
-
   /* Hero */
   .hero-left {
     padding: 36px 16px 32px;
@@ -1692,11 +1601,14 @@ footer {
     border-bottom: 0.5px solid var(--ramecek-svetly);
   }
   .hero-left h1 { font-size: 38px; }
-  .hero-right, .about-hero-right { display: none; }
+  .hero-right { height: 240px; }
+  .about-hero-right { padding: 28px 16px 36px; }
   .hero-stats { gap: 20px; }
 
   /* About */
   .about-hero-left { padding: 36px 16px; border-right: none; border-bottom: 0.5px solid var(--ramecek-svetly); }
+  .about-company { flex-direction: column; text-align: center; padding: 24px 16px; }
+  .about-company-text p { max-width: none; }
   .about-hero-left h1 { font-size: 34px; }
   .about-story-left { border-right: none; border-bottom: 0.5px solid var(--ramecek-svetly); }
   .about-story-photo { border-left: none; }
@@ -1728,7 +1640,6 @@ footer {
   .consult-sidebar { border-left: none; border-top: 0.5px solid var(--ramecek-svetly); }
   .field-row { grid-template-columns: 1fr; }
   .svc-btns { grid-template-columns: 1fr; }
-  .time-btns { grid-template-columns: 1fr; }
 
   /* Reference */
   .ref-hero { padding: 32px 16px 28px; }
@@ -1797,7 +1708,7 @@ footer {
 <!-- =============================================
      NAVIGACE
      ============================================= -->
-<nav class="nav nav-hero">
+<nav class="nav">
   <div class="nav-logo" onclick="showPage('home');closeMobileMenu()">
     <img src="logo1.png" alt="Matěj Faltys · Arboristika" class="nav-logo-img">
     <!-- Upravte: název firmy -->
@@ -1811,7 +1722,10 @@ footer {
     <a href="#" onclick="showPage('references');return false;" id="nav-references" style="display:none">Reference</a>
     <a href="#" onclick="showPage('contact');return false;" id="nav-contact">Kontakt</a>
   </div>
-  <button class="nav-cta" onclick="showPage('consult')">Nezávazná poptávka</button>
+  <div class="nav-right">
+    <a href="tel:+420774144165" class="nav-phone"><i class="ti ti-phone" aria-hidden="true"></i> +420 774 144 165</a>
+    <button class="nav-cta" onclick="showPage('consult')">Nezávazná poptávka</button>
+  </div>
   <!-- Hamburger tlačítko — viditelné jen na mobilu -->
   <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Otevřít menu">
     <span></span><span></span><span></span>
@@ -1848,7 +1762,6 @@ footer {
 
   <section class="hero">
     <div class="hero-left">
-      <img src="logo1.png" alt="" aria-hidden="true" class="hero-watermark">
       <div class="eyebrow">Vystudovaný arborista · Pardubický kraj a okolí</div>
       <!-- Upravte: hlavní nadpis -->
       <h1>Péče o dřeviny<br/><em>odborně</em><br/>a s citem</h1>
@@ -1860,13 +1773,10 @@ footer {
         <button class="btn-outline" onclick="showPage('references')" style="display:none">Moje práce</button>
       </div>
     </div>
-    <div class="hero-right">
-      <img src="fotky/hero-koruna.jpg" alt="Matěj Faltys při práci v koruně vzrostlého stromu">
-    </div>
+    <div class="hero-right" role="img" aria-label="Matěj Faltys při práci v koruně vzrostlého stromu"></div>
   </section>
 
   <section class="home-services">
-    <img class="section-photo-bg" src="fotky/cta-bg.jpg" alt="" aria-hidden="true">
     <h2 class="section-label">Co pro vás udělám</h2>
     <div class="home-svc-grid">
       <div class="home-svc-card" onclick="showPage('services','svc-rez')">
@@ -1942,18 +1852,6 @@ footer {
     </div>
   </section>
 
-  <section class="home-gallery">
-    <h2 class="section-label">V akci</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="fotky/galerie-1.jpg" alt="Matěj Faltys v koruně vzrostlého stromu při stromolezeckém zásahu" loading="lazy"></div>
-      <div class="gallery-item"><img src="fotky/galerie-2.jpg" alt="Řez větve motorovou pilou z lanového přístupu" loading="lazy"></div>
-      <div class="gallery-item"><img src="fotky/galerie-3.jpg" alt="Detail řezu větve ruční pilou" loading="lazy"></div>
-      <div class="gallery-item"><img src="fotky/galerie-4.jpg" alt="Kontrola jištění a lanového systému při výstupu do koruny" loading="lazy"></div>
-      <div class="gallery-item"><img src="fotky/galerie-5.jpg" alt="Matěj Faltys jištěný v koruně stromu" loading="lazy"></div>
-      <div class="gallery-item"><img src="fotky/galerie-6.jpg" alt="Příprava lanové techniky před výstupem do koruny" loading="lazy"></div>
-    </div>
-  </section>
-
   <section class="home-contact">
     <h2 class="section-label">Kontakt</h2>
     <div class="home-contact-grid">
@@ -1967,7 +1865,7 @@ footer {
       </div>
       <div class="contact-row">
         <div class="c-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
-        <div><div class="c-label">Sídlo</div><div class="c-val">Sloupnice, Pardubický kraj</div></div>
+        <div><div class="c-label">Oblast působení</div><div class="c-val">Pardubický kraj a okolí</div></div>
       </div>
     </div>
   </section>
@@ -1985,7 +1883,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 · ARBO MF, Matěj Faltys · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -2010,6 +1908,14 @@ footer {
           Vystudovaný arborista
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="about-company">
+    <img src="fotky/arbo-mf-logo.png" alt="ARBO MF – logo">
+    <div class="about-company-text">
+      <h2>ARBO MF</h2>
+      <p>Podnikám pod obchodním jménem ArboMF, IČO 29830206, se sídlem Sloupnice, Pardubický kraj.</p>
     </div>
   </section>
 
@@ -2067,7 +1973,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 · ARBO MF, Matěj Faltys · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -2077,7 +1983,6 @@ footer {
 <div class="page" id="page-services">
 
   <section class="services-hero">
-    <img class="section-photo-bg" src="fotky/hero-watermark-services.jpg" alt="" aria-hidden="true">
     <div>
       <div class="eyebrow">Nabízené služby</div>
       <h1>Co <em>nabízím</em></h1>
@@ -2446,7 +2351,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 · ARBO MF, Matěj Faltys · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -2456,7 +2361,6 @@ footer {
 <div class="page" id="page-contact">
 
   <section class="contact-hero">
-    <img class="section-photo-bg" src="fotky/hero-watermark-contact.jpg" alt="" aria-hidden="true">
     <div>
       <div class="eyebrow">Kontakt</div>
       <h1>Napište<br/>nebo zavolejte <em>přímo</em></h1>
@@ -2478,7 +2382,7 @@ footer {
       </div>
       <div class="contact-row">
         <div class="c-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
-        <div><div class="c-label">Sídlo</div><div class="c-val">Sloupnice, Pardubický kraj</div></div>
+        <div><div class="c-label">Oblast působení</div><div class="c-val">Pardubický kraj a okolí</div></div>
       </div>
       <div class="contact-row">
         <div class="c-icon"><i class="ti ti-truck" aria-hidden="true"></i></div>
@@ -2502,17 +2406,17 @@ footer {
 
     <div class="contact-form-wrap">
       <h2 class="section-label">Rychlá zpráva</h2>
-      <div class="form-title">Napište mi</div>
+      <div class="form-title">Napište mi a rád se Vám ozvu</div>
       <form id="quickForm" onsubmit="return submitWeb3Form(event, 'quickForm', 'quickFormMsg')">
         <input type="hidden" name="access_key" value="34631e55-80f5-4083-8607-849f1d419bfb">
         <input type="hidden" name="subject" value="Nová zpráva z webu — Rychlá zpráva">
         <input type="hidden" name="from_name" value="Web Arboristika Faltys">
         <div class="field"><label>Jméno a příjmení</label><input type="text" name="Jméno a příjmení" placeholder="Jana Nováková" required></div>
         <div class="field-row">
-          <div class="field"><label>Telefon</label><input type="tel" name="Telefon" placeholder="+420 777 000 000"></div>
-          <div class="field"><label>E-mail</label><input type="email" name="E-mail" placeholder="jana@example.cz" required></div>
+          <div class="field"><label>Telefon</label><input type="tel" name="Telefon" placeholder="+420 777 000 000" required></div>
+          <div class="field"><label>E-mail</label><input type="email" name="E-mail" placeholder="jana@example.cz"></div>
         </div>
-        <div class="field"><label>Adresa stromu</label><input type="text" name="Adresa stromu" placeholder="Ulice, Praha"></div>
+        <div class="field"><label>Lokalita</label><input type="text" name="Lokalita" placeholder="Ulice, Praha"></div>
         <div class="field" style="margin-top:4px;"><label>Zpráva</label><textarea name="Zpráva" placeholder="Popište, s čím potřebujete pomoci…"></textarea></div>
         <button type="submit" class="submit-btn" style="margin-top:12px;">Odeslat zprávu</button>
         <p class="form-note" style="margin-top:10px;">Odesláním souhlasíte se <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;color:inherit;">zpracováním osobních údajů</a>.</p>
@@ -2538,7 +2442,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 · ARBO MF, Matěj Faltys · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -2548,7 +2452,6 @@ footer {
 <div class="page" id="page-consult">
 
   <section class="consult-intro">
-    <img class="section-photo-bg" src="fotky/hero-watermark-consult.jpg" alt="" aria-hidden="true">
     <div>
       <div class="eyebrow">Konzultace</div>
       <h1>Pošlete mi<br/><em>nezávaznou poptávku</em></h1>
@@ -2589,16 +2492,15 @@ footer {
         <input type="hidden" name="subject" value="Nová poptávka konzultace z webu">
         <input type="hidden" name="from_name" value="Web Arboristika Faltys">
         <input type="hidden" name="Vybraná služba" id="svcHidden">
-        <input type="hidden" name="Preferovaný čas výjezdu" id="timeHidden">
 
         <div class="fieldset">
           <span class="fieldset-legend">Vaše kontaktní údaje</span>
           <div class="field-row">
             <div class="field"><label>Jméno a příjmení</label><input type="text" name="Jméno a příjmení" placeholder="Jana Nováková" required></div>
-            <div class="field"><label>Telefon</label><input type="tel" name="Telefon" placeholder="+420 777 000 000"></div>
+            <div class="field"><label>Telefon</label><input type="tel" name="Telefon" placeholder="+420 777 000 000" required></div>
           </div>
-          <div class="field"><label>E-mail</label><input type="email" name="E-mail" placeholder="jana@example.cz" required></div>
-          <div class="field"><label>Adresa nebo lokalita stromu</label><input type="text" name="Adresa nebo lokalita stromu" placeholder="Mánesova 12, Praha 2"></div>
+          <div class="field"><label>E-mail</label><input type="email" name="E-mail" placeholder="jana@example.cz"></div>
+          <div class="field"><label>Přibližná lokalita stromu</label><input type="text" name="Přibližná lokalita stromu" placeholder="např. Praha 2"></div>
         </div>
 
         <div class="fieldset">
@@ -2618,23 +2520,11 @@ footer {
               <div class="svc-btn-title">Rizikové kácení</div>
             </div>
             <div class="svc-btn" data-svc="stavba" onclick="this.classList.toggle('sel')">
-              <div class="svc-btn-title">Ochrana dřevin při stavbě</div>
+              <div class="svc-btn-title">Ochrana dřevin při stavební činnosti</div>
             </div>
             <div class="svc-btn" data-svc="vysadba" onclick="this.classList.toggle('sel')">
               <div class="svc-btn-title">Výsadby</div>
             </div>
-          </div>
-        </div>
-
-        <div class="fieldset">
-          <span class="fieldset-legend">Preferovaný čas výjezdu</span>
-          <div class="time-btns">
-            <div class="time-btn sel" onclick="selectTime(this)">Dopoledne (do 12 hodin)</div>
-            <div class="time-btn" onclick="selectTime(this)">Odpoledne (12–18)</div>
-          </div>
-          <div class="field" style="margin-top:10px;">
-            <label>Máte vlastní preferovaný čas? Napište ho a pokusím se zavolat tou dobou.</label>
-            <input type="text" name="Vlastní preferovaný čas" placeholder="např. úterý po 16:00">
           </div>
         </div>
 
@@ -2691,7 +2581,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 · ARBO MF, Matěj Faltys · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -2852,7 +2742,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 · ARBO MF, Matěj Faltys · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
   </footer>
 </div>
 
@@ -2872,14 +2762,14 @@ footer {
   <section class="legal-content">
     <div class="legal-content-inner">
       <h2>Správce osobních údajů</h2>
-      <p>Správcem osobních údajů je Matěj Faltys, se sídlem Sloupnice, Pardubický kraj, e-mail <a href="mailto:matej.faltys@arbomf.cz">matej.faltys@arbomf.cz</a>, telefon <a href="tel:+420774144165">+420 774 144 165</a> (dále jen „správce“).</p>
+      <p>Správcem osobních údajů je Matěj Faltys, podnikající pod obchodním jménem ARBO MF, IČO 29830206, se sídlem Sloupnice, Pardubický kraj, e-mail <a href="mailto:matej.faltys@arbomf.cz">matej.faltys@arbomf.cz</a>, telefon <a href="tel:+420774144165">+420 774 144 165</a> (dále jen „správce“).</p>
 
       <h2>Jaké údaje zpracovávám</h2>
       <p>Prostřednictvím kontaktního a poptávkového formuláře zpracovávám údaje, které mi sami poskytnete:</p>
       <ul>
         <li>Jméno a příjmení</li>
         <li>Telefonní číslo a e-mailová adresa</li>
-        <li>Adresa nebo lokalita stromu / zakázky</li>
+        <li>Přibližná lokalita stromu / zakázky</li>
         <li>Obsah zprávy nebo popisu situace</li>
         <li>Fotografie nebo soubory, které k poptávce přiložíte</li>
       </ul>
@@ -2905,7 +2795,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 · Vystudovaný arborista · Litomyšl a Pardubický kraj</div>
+    <div class="footer-copy">© 2026 · ARBO MF, Matěj Faltys · IČO 29830206 · Litomyšl a Pardubický kraj</div>
   </footer>
 </div>
 
@@ -2924,7 +2814,6 @@ function showPage(id, anchorId, svcKey) {
     const el = document.getElementById('page-' + p);
     if (el) el.classList.toggle('active', p === id);
   });
-  document.querySelector('.nav').classList.toggle('nav-hero', id === 'home');
   // Desktop nav
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.classList.remove('active');
@@ -2981,11 +2870,6 @@ document.addEventListener('click', function(e) {
   }
 });
 
-function selectTime(btn) {
-  btn.closest('.time-btns').querySelectorAll('.time-btn').forEach(b => b.classList.remove('sel'));
-  btn.classList.add('sel');
-}
-
 // Otevře konkrétní kartu služby a sbalí ostatní (jen jedna karta otevřená zároveň)
 function openSvcCard(card) {
   document.querySelectorAll('.svc-card').forEach(c => {
@@ -3021,7 +2905,7 @@ window.addEventListener('scroll', () => {
 const revealSelectors = [
   '.home-svc-card', '.svc-card', '.cert-card', '.review-card', '.step-card',
   '.value-card', '.portfolio-card', '.testimonial-mini', '.ref-review-card',
-  '.gallery-item', '.about-story-left p', '.legal-content h2'
+  '.about-story-left p', '.legal-content h2'
 ];
 document.querySelectorAll(revealSelectors.join(',')).forEach(el => el.classList.add('reveal'));
 
@@ -3046,16 +2930,11 @@ function submitWeb3Form(event, formId, msgId) {
   const msg = document.getElementById(msgId);
   const btn = form.querySelector('.submit-btn');
 
-  // U poptávkového formuláře doplnit vybranou službu a preferovaný čas do skrytých polí
+  // U poptávkového formuláře doplnit vybranou službu do skrytého pole
   const svcHidden = form.querySelector('#svcHidden');
   if (svcHidden) {
     const selected = Array.from(form.querySelectorAll('.svc-btn.sel .svc-btn-title')).map(el => el.textContent.trim());
     svcHidden.value = selected.join(', ') || '—';
-  }
-  const timeHidden = form.querySelector('#timeHidden');
-  if (timeHidden) {
-    const selectedTime = form.querySelector('.time-btn.sel');
-    timeHidden.value = selectedTime ? selectedTime.textContent.trim() : '—';
   }
 
   const originalBtnText = btn.textContent;
