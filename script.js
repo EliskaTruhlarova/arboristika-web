@@ -26,7 +26,7 @@ document.addEventListener('click', function(e) {
 });
 
 // Otevře konkrétní kartu služby a sbalí ostatní (jen jedna karta otevřená zároveň)
-function openSvcCard(card) {
+function openSvcCard(card, scrollToTop) {
   document.querySelectorAll('.svc-card').forEach(c => {
     const isTarget = c === card;
     c.classList.toggle('open', isTarget);
@@ -37,6 +37,9 @@ function openSvcCard(card) {
       : 'Podrobnosti <i class="ti ti-chevron-down" aria-hidden="true"></i>';
     if (detail) detail.style.maxHeight = isTarget ? detail.scrollHeight + 'px' : '0px';
   });
+  if (scrollToTop) {
+    requestAnimationFrame(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  }
 }
 
 function toggleSvc(card) {
@@ -47,7 +50,7 @@ function toggleSvc(card) {
     const detail = card.querySelector('.svc-detail');
     if (detail) detail.style.maxHeight = '0px';
   } else {
-    openSvcCard(card);
+    openSvcCard(card, true);
   }
 }
 
@@ -56,8 +59,7 @@ function toggleSvc(card) {
   if (!location.hash) return;
   const target = document.getElementById(location.hash.slice(1));
   if (!target || !target.classList.contains('svc-card')) return;
-  openSvcCard(target);
-  requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  openSvcCard(target, true);
 })();
 
 // Na stránce Konzultace: pokud adresa obsahuje #klíč-služby, předvyplnit "O co jde?"
