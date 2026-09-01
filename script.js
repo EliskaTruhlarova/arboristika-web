@@ -50,7 +50,7 @@ function toggleSvc(card) {
     const detail = card.querySelector('.svc-detail');
     if (detail) detail.style.maxHeight = '0px';
   } else {
-    openSvcCard(card, true);
+    openSvcCard(card, false);
   }
 }
 
