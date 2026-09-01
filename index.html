@@ -2516,7 +2516,7 @@ footer {
     <div class="consult-form-wrap">
       <div class="form-title">Objednat konzultaci</div>
 
-      <form id="consultForm" enctype="multipart/form-data" onsubmit="return submitWeb3Form(event, 'consultForm', 'consultFormMsg')">
+      <form id="consultForm" onsubmit="return submitWeb3Form(event, 'consultForm', 'consultFormMsg')">
         <input type="hidden" name="access_key" value="34631e55-80f5-4083-8607-849f1d419bfb">
         <input type="hidden" name="subject" value="Nová poptávka konzultace z webu">
         <input type="hidden" name="from_name" value="Web Arboristika Faltys">
@@ -2562,15 +2562,6 @@ footer {
           <div class="field">
             <textarea name="Popis situace" placeholder="Druh stromu (pokud víte), přibližná výška, co vás trápí, blízkost budov nebo vedení…"></textarea>
           </div>
-        </div>
-
-        <div class="fieldset">
-          <span class="fieldset-legend">Fotky nebo soubory (nepovinné)</span>
-          <div class="field">
-            <label>Přiložte fotky stromu nebo jiné podklady</label>
-            <input type="file" name="Prilohy" accept="image/*,.pdf" multiple>
-          </div>
-          <p style="font-size:12px;color:var(--text-jemny);margin-top:8px;">Fotky pomůžou s přesnějším cenovým odhadem, hodí se i při telefonické domluvě.</p>
         </div>
 
         <button type="submit" class="submit-btn">Odeslat poptávku</button>
@@ -2800,7 +2791,6 @@ footer {
         <li>Telefonní číslo a e-mailová adresa</li>
         <li>Přibližná lokalita stromu / zakázky</li>
         <li>Obsah zprávy nebo popisu situace</li>
-        <li>Fotografie nebo soubory, které k poptávce přiložíte</li>
       </ul>
 
       <h2>Účel a právní základ zpracování</h2>
