@@ -1469,6 +1469,50 @@ footer {
 }
 
 /* =============================================
+   COOKIE LIŠTA
+   ============================================= */
+.cookie-banner {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  background: var(--zelena-tmavy);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  z-index: 200;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.18);
+  transform: translateY(120%);
+  transition: transform 0.3s ease;
+}
+.cookie-banner.show { transform: translateY(0); }
+.cookie-banner p { font-size: 13px; line-height: 1.6; max-width: 640px; color: rgba(255,255,255,0.9); margin: 0; }
+.cookie-banner p a { text-decoration: underline; color: var(--bila); }
+.cookie-banner-btns { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-banner-btns button {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cookie-accept { background: var(--bila); color: var(--zelena-tmavy); }
+.cookie-accept:hover { background: var(--zelena-pozadi); }
+.cookie-reject { background: transparent !important; color: var(--bila); border: 1px solid rgba(255,255,255,0.4) !important; }
+.cookie-reject:hover { background: rgba(255,255,255,0.12) !important; }
+@media (max-width: 640px) {
+  .cookie-banner { flex-direction: column; align-items: stretch; padding: 16px; }
+  .cookie-banner-btns { justify-content: stretch; }
+  .cookie-banner-btns button { flex: 1; }
+}
+
+/* =============================================
    HAMBURGER TLAČÍTKO (skryté na desktopu)
    ============================================= */
 .nav-hamburger {
@@ -1912,7 +1956,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a> · <a href="#" onclick="reopenCookieBanner();return false;" style="text-decoration:underline;">Nastavení cookies</a></div>
   </footer>
 </div>
 
@@ -2002,7 +2046,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a> · <a href="#" onclick="reopenCookieBanner();return false;" style="text-decoration:underline;">Nastavení cookies</a></div>
   </footer>
 </div>
 
@@ -2380,7 +2424,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a> · <a href="#" onclick="reopenCookieBanner();return false;" style="text-decoration:underline;">Nastavení cookies</a></div>
   </footer>
 </div>
 
@@ -2471,7 +2515,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a> · <a href="#" onclick="reopenCookieBanner();return false;" style="text-decoration:underline;">Nastavení cookies</a></div>
   </footer>
 </div>
 
@@ -2601,7 +2645,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a> · <a href="#" onclick="reopenCookieBanner();return false;" style="text-decoration:underline;">Nastavení cookies</a></div>
   </footer>
 </div>
 
@@ -2762,7 +2806,7 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a></div>
+    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="showPage('privacy');return false;" style="text-decoration:underline;">Ochrana osobních údajů</a> · <a href="#" onclick="reopenCookieBanner();return false;" style="text-decoration:underline;">Nastavení cookies</a></div>
   </footer>
 </div>
 
@@ -2791,6 +2835,7 @@ footer {
         <li>Telefonní číslo a e-mailová adresa</li>
         <li>Přibližná lokalita stromu / zakázky</li>
         <li>Obsah zprávy nebo popisu situace</li>
+        <li>Se souhlasem dále anonymizované údaje o návštěvnosti webu (Google Analytics) — viz Cookies a analytika níže</li>
       </ul>
 
       <h2>Účel a právní základ zpracování</h2>
@@ -2800,13 +2845,13 @@ footer {
       <p>Údaje z nerealizovaných poptávek uchovávám nejdéle 12 měsíců od doručení. Pokud z poptávky vznikne zakázka, uchovávám údaje po dobu nezbytnou k jejímu vyřízení a dále po dobu vyžadovanou právními předpisy (např. účetní a daňové evidence).</p>
 
       <h2>Komu údaje předávám</h2>
-      <p>Formuláře na webu odesílám prostřednictvím služby <a href="https://web3forms.com" target="_blank" rel="noopener">Web3Forms</a>, která zajišťuje technické doručení vyplněného formuláře na můj e-mail a v tomto rozsahu vystupuje jako zpracovatel osobních údajů. Údaje dále nepředávám žádným třetím stranám a nepoužívám je k marketingovým účelům.</p>
+      <p>Formuláře na webu odesílám prostřednictvím služby <a href="https://web3forms.com" target="_blank" rel="noopener">Web3Forms</a>, která zajišťuje technické doručení vyplněného formuláře na můj e-mail a v tomto rozsahu vystupuje jako zpracovatel osobních údajů. Se souhlasem s analytickými cookies dále údaje o návštěvnosti webu zpracovává společnost Google Ireland Limited v rámci služby Google Analytics. Údaje dále nepředávám žádným třetím stranám a nepoužívám je k marketingovým účelům.</p>
 
       <h2>Vaše práva</h2>
       <p>Ve vztahu ke svým osobním údajům máte právo na přístup k údajům, jejich opravu nebo výmaz, omezení zpracování, přenositelnost údajů a právo vznést námitku proti zpracování. Souhlas se zpracováním (pokud byl udělen) můžete kdykoli odvolat. Svá práva můžete uplatnit na e-mailu <a href="mailto:matej.faltys@arbomf.cz">matej.faltys@arbomf.cz</a>. Pokud se domníváte, že vaše údaje zpracovávám v rozporu s právními předpisy, máte právo podat stížnost u Úřadu pro ochranu osobních údajů (uoou.cz).</p>
 
       <h2>Cookies a analytika</h2>
-      <p>Tento web nepoužívá sledovací ani analytické cookies. Ukládá pouze technické nastavení nezbytné pro jeho základní chod.</p>
+      <p>Tento web používá službu Google Analytics k anonymizované analýze návštěvnosti (např. počet návštěvníků, zobrazené stránky). Tato služba k tomu využívá cookies. Analytické cookies se ukládají pouze na základě vašeho souhlasu, který si vyžádáme lištou při první návštěvě webu. Svůj souhlas můžete kdykoli změnit nebo odvolat přes odkaz „Nastavení cookies“ v patičce webu, případně smazáním cookies přímo v prohlížeči. Provozovatelem služby Google Analytics je společnost Google Ireland Limited; více informací najdete v <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">zásadách ochrany soukromí Google</a>.</p>
 
       <p class="legal-updated">Tyto zásady mohou být čas od času aktualizovány. Poslední aktualizace: srpen 2026.</p>
     </div>
@@ -2814,13 +2859,21 @@ footer {
 
   <footer>
     <div class="footer-logo">Matěj Faltys · Arboristika</div>
-    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj</div>
+    <div class="footer-copy">© 2026 ARBO MF, Matěj Faltys · Všechna práva vyhrazena · IČO 29830206 · Litomyšl a Pardubický kraj · <a href="#" onclick="reopenCookieBanner();return false;" style="text-decoration:underline;">Nastavení cookies</a></div>
   </footer>
 </div>
 
 <button id="backToTop" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Zpět nahoru">
   <i class="ti ti-arrow-up" aria-hidden="true"></i>
 </button>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>Tento web používá cookies pro anonymizovanou analýzu návštěvnosti (Google Analytics). Používáme je pouze s vaším souhlasem. Více v <a href="#" onclick="showPage('privacy');closeMobileMenu();return false;">Ochraně osobních údajů</a>.</p>
+  <div class="cookie-banner-btns">
+    <button class="cookie-reject" onclick="setCookieConsent(false)">Odmítnout</button>
+    <button class="cookie-accept" onclick="setCookieConsent(true)">Přijmout</button>
+  </div>
+</div>
 
 <!-- =============================================
      JAVASCRIPT
@@ -2992,6 +3045,42 @@ function showFormAlert(el, type, iconClass, text) {
   el.classList.add('show', type);
   el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
+
+// Google Analytics — načte se až po souhlasu s cookies
+const GA_MEASUREMENT_ID = 'G-XN3QYCCZM2';
+
+function loadGoogleAnalytics() {
+  if (window.gaLoaded) return;
+  window.gaLoaded = true;
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+  document.head.appendChild(script);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
+}
+
+function setCookieConsent(accepted) {
+  try { localStorage.setItem('cookie_consent', accepted ? 'accepted' : 'rejected'); } catch (e) {}
+  document.getElementById('cookieBanner').classList.remove('show');
+  if (accepted) loadGoogleAnalytics();
+}
+
+function reopenCookieBanner() {
+  document.getElementById('cookieBanner').classList.add('show');
+}
+
+(function initCookieConsent() {
+  let consent = null;
+  try { consent = localStorage.getItem('cookie_consent'); } catch (e) {}
+  if (consent === 'accepted') {
+    loadGoogleAnalytics();
+  } else if (consent === null) {
+    document.getElementById('cookieBanner').classList.add('show');
+  }
+})();
 </script>
 
 </body>
