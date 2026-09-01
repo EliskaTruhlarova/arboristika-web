@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.arbomf.cz/sitemap.xml
+Sitemap: https://arbomf.cz/sitemap.xml
